@@ -1,0 +1,53 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mat-drawer-inner-container {
+  overflow: hidden !important;
+}
+
+
+
+mat-sidenav-container {
+  height: calc(100vh - 64px);
+}
+
+mat-sidenav {
+  width: 200px;
+  height: 100%;
+  background-color: rgb(249, 199, 181);
+  color: white;
+}
+// mat-sidenav.opened {
+//   width: 300px;
+// }
+mat-sidenav-content {
+  padding: 20px;
+  margin-left: 200px;
+  height: 100%;
+  overflow: auto;
+}
+
+// mat-toolbar {
+//   height: 64px;
+//   background-color: #1976d2;
+//   color: white;
+// }
+
+// mat-toolbar button {
+//   margin-right: 16px;
+// }
+
+// mat-toolbar button .menu-icon {
+//   font-size: 24px;
+//   color: white;
+//   transition: transform 0.2s;
+// }
+
+// mat-toolbar button:hover .menu-icon {
+//   transform: scale(1.2);
+// }
+
+
