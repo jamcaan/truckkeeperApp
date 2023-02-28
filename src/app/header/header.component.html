@@ -1,9 +1,29 @@
 <header>
-  <mat-toolbar color="primary">
+  <mat-toolbar color="coral">
     <button mat-icon-button (click)="toggleSidenav()">
-      <mat-icon >menu</mat-icon>
+      <mat-icon>menu</mat-icon>
     </button>
-    <span>My App</span>
+    <span>Load Keeper</span>
+    <div class="left-corner">
+      <ng-template #loggedOut>
+        <button
+          mat-button
+          routerLink="/signin"
+          *ngIf="!(authService.isAuthenticated | async)"
+        >
+          <mat-icon>login</mat-icon>
+          <span>Login</span>
+        </button>
+      </ng-template>
+      <button
+        mat-button
+        routerLink="/signout"
+        (click)="signout()"
+        *ngIf="authService.isAuthenticated | async; else loggedOut"
+      >
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </div>
   </mat-toolbar>
 </header>
-

@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
+// import { MatButtonModule } from '@angular/material/button';
+// import { MatIconModule } from '@angular/material/icon';
+// import { MatToolbarModule } from '@angular/material/toolbar';
+// import { MatSidenavModule } from '@angular/material/sidenav';
+// import { MatListModule } from '@angular/material/list';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AuthModule } from './auth/auth.module';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -39,13 +40,15 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
+    // MatButtonModule,
+    // MatIconModule,
+    // MatToolbarModule,
+    // MatSidenavModule,
+    // MatListModule,
     AuthModule,
-    DashboardModule
+    DashboardModule,
+    MaterialModule,
+
 
   ],
   providers: [],
