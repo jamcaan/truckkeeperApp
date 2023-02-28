@@ -1,1 +1,64 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin-top: 20px;
+}
 
+@media screen and (max-width: 768px) {
+  .login-container {
+    margin: 0 10px;
+  }
+}
+
+mat-card {
+  width: 400px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.button-container a {
+  color: #777;
+  font-size: 0.7rem;
+  text-decoration: none;
+}
+.button-container button {
+  margin-left: 16px;
+}
+.button-container a:hover {
+  text-decoration: underline;
+}
+
+.coral {
+  color: coral;
+}
+
+.card-header-box {
+  background-color: coral;
+  color: white;
+  // padding: 16px;
+  border-radius: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-header-box mat-card-header mat-card-title {
+  margin-bottom: 10px;
+  color: white;
+}
