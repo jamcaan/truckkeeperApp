@@ -5,7 +5,7 @@ import { DriversComponent } from './drivers/drivers.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { LoadsComponent } from './loads/loads.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -13,12 +13,10 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     HomeComponent,
     DriversComponent,
     ExpensesComponent,
-    LoadsComponent
+    LoadsComponent,
+    // HeaderComponent,
+    // SidenavComponent
   ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-
-  ]
+  imports: [CommonModule, DashboardRoutingModule, MaterialModule],
 })
-export class DashboardModule { }
+export class DashboardModule {}

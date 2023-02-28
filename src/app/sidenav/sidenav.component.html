@@ -1,16 +1,30 @@
 <mat-nav-list>
-  <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
-    <mat-icon>dashboard</mat-icon>
-    <span>Dashboard</span>
-  </a>
-  <a mat-list-item routerLink="/signin" routerLinkActive="active">
-    <mat-icon>lock</mat-icon>
-    <span>Login</span>
-  </a>
-  <a mat-list-item routerLink="/signup" routerLinkActive="active">
+  <div *ngIf="authService.isAuthenticated | async">
+    <a mat-button routerLink="/dashboard" routerLinkActive="active">
+      <mat-icon>dashboard</mat-icon>
+      <span>Dashboard</span>
+    </a>
+  </div>
+  <div class="div" *ngIf="authService.isAuthenticated | async; else logIn">
+    <a
+      mat-button
+      routerLink="/signout"
+      routerLinkActive="active"
+      (click)="signout()"
+    >
+      <mat-icon>lock</mat-icon>
+      <span>Logout</span>
+    </a>
+  </div>
+  <a mat-button routerLink="/signup" routerLinkActive="active">
     <mat-icon>person_add</mat-icon>
-    <span>Signup</span>
+    <span>Sign Up</span>
   </a>
 </mat-nav-list>
 
-
+<ng-template #logIn>
+  <a mat-button routerLink="/signin" routerLinkActive="active-link">
+    <mat-icon>lock</mat-icon>
+    <span>Login</span>
+  </a>
+</ng-template>

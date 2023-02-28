@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Test",
+      "lastname": "First",
+      "username": "jama",
+      "password": "jama123"
+    },
+    {
+      "id": 2,
+      "firstname": "Jama",
+      "lastname": "Mohamed"
+    },
+    {
+      "id": 3,
+      "firstname": "John",
+      "lastname": "Alen"
+    }
+  ],
+  "signin": [
+    {
+      "id": 0.17714359788677103,
+      "username": "jama",
+      "password": "jama123",
+      "userId": 1
+    },
+    {
+      "username": "John",
+      "password": "john123",
+      "id": 2.1771435978867713,
+      "userId": 2
+    }
+  ],
+  "signout": {},
+  "drivers": [{}]
+}
