@@ -1,0 +1,134 @@
+/* Style the stepper icons */
+::ng-deep .mat-horizontal-stepper-header {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .mat-step-header .mat-step-icon:not(.mat-step-icon-selected) {
+  background-color: rgb(203, 202, 202);
+  border-color: rgb(203, 202, 202);
+  color: white;
+}
+
+::ng-deep .mat-step-header .mat-step-icon.mat-step-icon-selected {
+  background-color: coral;
+  border-color: coral;
+  color: white;
+}
+
+mat-horizontal-stepper {
+  margin: 0;
+}
+
+/* Set up some common styles for the whole form */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the outer container */
+.signup-container {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 16px;
+}
+
+/* Center the stepper */
+.mat-horizontal-stepper-header-container {
+  justify-content: center;
+}
+
+/* Style the stepper icons */
+.mat-horizontal-stepper-header {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-step-header .mat-step-icon {
+  background-color: transparent;
+  border: 2px solid #ccc;
+  color: #ccc;
+}
+
+.mat-step-header .mat-step-icon.mat-step-icon-selected {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #fff;
+}
+
+/* Style the form fields */
+mat-form-field {
+  margin-top: 1px;
+  width: 100%;
+}
+
+mat-form-field input[type="text"],
+mat-form-field input[type="email"],
+mat-form-field input[type="password"] {
+  font-size: 14px;
+  padding: 8px;
+}
+
+/* Style the form field icons */
+mat-icon.coral {
+  color: coral;
+}
+
+/* Style the buttons */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+button {
+  min-width: 88px;
+}
+
+.signup-card-header-box {
+  background-color: coral;
+  color: white;
+  border-radius: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 16px;
+  margin-left: 35px;
+  margin-right: 35px;
+  margin-bottom: 16px;
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signup-card-header-box mat-card-header mat-card-title {
+  margin-bottom: 10px;
+  color: white;
+}
+
+/* Add some margin to the form content */
+.mat-card-content {
+  margin: 0 0 16px 0;
+}
+
+/* Media queries */
+@media screen and (max-width: 767px) {
+  /* Reduce margin of outer container on smaller devices */
+  .signup-container {
+    margin: 0 16px;
+  }
+
+  /* Center the stepper on smaller devices */
+  .mat-horizontal-stepper-header-container {
+    margin: 0 24px;
+  }
+
+  /* Reduce margin of form fields on smaller devices */
+  mat-form-field {
+    margin-top: 8px;
+  }
+
+  /* Reduce margin of form content on smaller devices */
+  .mat-card-content {
+    margin: 0 8px;
+  }
+}
