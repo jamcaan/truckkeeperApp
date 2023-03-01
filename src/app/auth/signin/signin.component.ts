@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, filter, take, throwError } from 'rxjs';
 import { User } from '../models/auth.model';
@@ -12,22 +19,46 @@ import { UserStore } from '../user-store';
 })
 export class SigninComponent implements OnInit {
   userId: number = 1;
-  username = '';
-  password = '';
+  hide = true;
+
+  loginForm?: FormGroup;
 
   constructor(
     public authService: AuthService,
     private route: Router,
-    private userStore: UserStore
+    private userStore: UserStore,
+    private fb: FormBuilder
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(25),
+          Validators.minLength(4),
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+        ],
+      ],
+    });
+  }
 
   signin() {
+    if (!this.loginForm?.valid) {
+      return;
+    }
     const credentials: User = {
-      id: this.userId,
-      username: this.username,
-      password: this.password,
+      id: 1,
+      username: this.loginForm.get('username')?.value,
+      password: this.loginForm.get('password')?.value,
     };
     this.authService.signin(credentials, this.userId);
     this.authService.isAuthenticated
@@ -41,5 +72,30 @@ export class SigninComponent implements OnInit {
       .subscribe(() => {
         this.route.navigate(['/dashboard']);
       });
+  }
+
+  validateControl(controlName: string) {
+    const control = this.loginForm?.get(controlName);
+    if (control && !control.valid && (control?.dirty || control?.touched)) {
+      const errors = control.errors;
+      let errorMessage = '';
+      for (const errorNames in errors) {
+        switch (errorNames) {
+          case 'required':
+            errorMessage = 'Field is required';
+            break;
+          case 'maxlength':
+            errorMessage = `Field must be at max of ${errors['maxlength'].requiredLength} characters long`;
+            break;
+          case 'minlength':
+            errorMessage = `Field must be at least ${errors['minlength'].requiredLength} characters long`;
+            break;
+          default:
+            return '';
+        }
+      }
+      return errorMessage;
+    }
+    return '';
   }
 }

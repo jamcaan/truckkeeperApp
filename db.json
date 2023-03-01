@@ -5,7 +5,7 @@
       "firstname": "Test",
       "lastname": "First",
       "username": "jama",
-      "password": "jama123"
+      "password": "jama1234"
     },
     {
       "id": 2,
@@ -33,5 +33,7 @@
     }
   ],
   "signout": {},
-  "drivers": [{}]
+  "drivers": [
+    {}
+  ]
 }
