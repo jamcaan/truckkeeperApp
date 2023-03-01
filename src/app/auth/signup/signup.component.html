@@ -1,1 +1,216 @@
-<p>signup works!</p>
+<div class="signup-container mat-elevation-z0">
+  <mat-card>
+    <div class="signup-card-header-box">
+      <mat-card-header>
+        <mat-card-title>Sign Up</mat-card-title>
+      </mat-card-header>
+    </div>
+
+    <mat-card-content>
+      <form [formGroup]="$any(signupForm)" (ngSubmit)="submit()" class="form">
+        <mat-horizontal-stepper>
+          <!-- Step One -->
+          <mat-step formGroupName="stepOne">
+            <ng-template matStepLabel>Your Info</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>First Name</mat-label>
+              <input
+                matInput
+                placeholder="First Name"
+                formControlName="firstName"
+              />
+              <mat-icon matSuffix class="coral">person</mat-icon>
+
+              <mat-error
+                *ngIf="
+                  signupForm?.get('stepOne.firstName')?.invalid &&
+                  (signupForm?.get('stepOne.firstName')?.dirty ||
+                    signupForm?.get('stepOne.firstName')?.touched)
+                "
+                >Please enter a valid first name.</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Last Name</mat-label>
+
+              <input
+                matInput
+                placeholder="Last Name"
+                formControlName="lastName"
+              />
+              <mat-icon matSuffix class="coral">person</mat-icon>
+              <mat-error
+                *ngIf="
+                  signupForm?.get('stepOne.lastName')?.invalid &&
+                  (signupForm?.get('stepOne.lastName')?.dirty ||
+                    signupForm?.get('stepOne.lastName')?.touched)
+                "
+                >Please enter a valid last name.</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Company Name</mat-label>
+              <input
+                matInput
+                placeholder="Company Name"
+                formControlName="companyName"
+              />
+              <mat-icon matSuffix class="coral">business</mat-icon>
+
+              <mat-error
+                *ngIf="
+                  signupForm?.get('stepOne.companyName')?.invalid &&
+                  (signupForm?.get('stepOne.companyName')?.dirty ||
+                    signupForm?.get('stepOne.companyName')?.touched)
+                "
+                >Please enter a valid company name.</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" formControlName="email" />
+              <mat-icon matSuffix class="coral">email</mat-icon>
+
+              <mat-error
+                *ngIf="
+                  signupForm?.get('stepOne.email')?.invalid &&
+                  (signupForm?.get('stepOne.email')?.dirty ||
+                    signupForm?.get('stepOne.email')?.touched)
+                "
+                >Please enter a valid email address.</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Phone Number</mat-label>
+              <input
+                matInput
+                placeholder="Phone Number"
+                formControlName="phoneNumber"
+              />
+              <mat-icon matSuffix class="coral">phone</mat-icon>
+
+              <mat-error
+                *ngIf="
+                  signupForm?.get('stepOne.phoneNumber')?.invalid &&
+                  (signupForm?.get('stepOne.phoneNumber')?.dirty ||
+                    signupForm?.get('stepOne.phoneNumber')?.touched)
+                "
+                >Please enter a valid phone number.</mat-error
+              >
+            </mat-form-field>
+            <div class="button-container">
+              <button mat-raised-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <!-- Step Two -->
+          <mat-step formGroupName="stepTwo">
+            <ng-template matStepLabel>Address</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Address</mat-label>
+              <mat-icon matSuffix class="coral">home</mat-icon>
+
+              <input matInput placeholder="Address" formControlName="address" />
+              <mat-error
+                *ngIf="
+                  signupForm?.get('stepTwo.address')?.invalid &&
+                  (signupForm?.get('stepTwo.address')?.dirty ||
+                    signupForm?.get('stepTwo.address')?.touched)
+                "
+                >Please enter a valid address.</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>City</mat-label>
+              <mat-icon matSuffix class="coral">location_city</mat-icon>
+
+              <input matInput placeholder="City" formControlName="city" />
+              <mat-error
+                *ngIf="
+                  signupForm?.get('stepTwo.city')?.invalid &&
+                  (signupForm?.get('stepTwo.city')?.dirty ||
+                    signupForm?.get('stepTwo.city')?.touched)
+                "
+                >Please enter a valid city.</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>State</mat-label>
+              <mat-icon matSuffix class="coral">location_on</mat-icon>
+              <input matInput placeholder="State" formControlName="state" />
+              <mat-error
+                *ngIf="
+                  signupForm?.get('stepTwo.state')?.invalid &&
+                  (signupForm?.get('stepTwo.state')?.dirty ||
+                    signupForm?.get('stepTwo.state')?.touched)
+                "
+                >Please enter a valid state.</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>ZipCode</mat-label>
+              <mat-icon matSuffix class="coral">local_post_office</mat-icon>
+              <input matInput placeholder="ZipCode" formControlName="zipCode" />
+              <mat-error
+                *ngIf="
+                  signupForm?.get('stepTwo.zipCode')?.invalid &&
+                  (signupForm?.get('stepTwo.zipCode')?.dirty ||
+                    signupForm?.get('stepTwo.zipCode')?.touched)
+                "
+                >Please enter a valid state.</mat-error
+              >
+            </mat-form-field>
+            <div class="button-container">
+              <button mat-raised-button matStepperPrevious>Back</button>
+
+              <button mat-raised-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <!-- Step Three -->
+          <mat-step formGroupName="stepThree">
+            <ng-template matStepLabel>Your Credentials</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Username</mat-label>
+              <mat-icon class="coral" matSuffix>personal</mat-icon>
+
+              <input matInput formControlName="username" />
+              <mat-error *ngIf="signupForm?.get('stepThree.username')?.touched"
+                >Field required</mat-error
+              >
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'"
+              />
+              <mat-icon class="coral" matSuffix (click)="hide = !hide">{{
+                hide ? "visibility_off" : "visibility"
+              }}</mat-icon>
+              <mat-error></mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Confirm Password</mat-label>
+              <input
+                matInput
+                formControlName="confirmPassword"
+                [type]="hide ? 'password' : 'text'"
+              />
+              <mat-icon class="coral" matSuffix (click)="hide = !hide">{{
+                hide ? "visibility_off" : "visibility"
+              }}</mat-icon>
+              <mat-error></mat-error>
+            </mat-form-field>
+
+            <div class="button-container">
+              <button mat-raised-button matStepperPrevious>Back</button>
+              <button mat-raised-button>Submit</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
