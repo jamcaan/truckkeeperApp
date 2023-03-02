@@ -21,14 +21,9 @@
               />
               <mat-icon matSuffix class="coral">person</mat-icon>
 
-              <mat-error
-                *ngIf="
-                  signupForm?.get('stepOne.firstName')?.invalid &&
-                  (signupForm?.get('stepOne.firstName')?.dirty ||
-                    signupForm?.get('stepOne.firstName')?.touched)
-                "
-                >Please enter a valid first name.</mat-error
-              >
+              <mat-error>{{
+                validateControl("stepOne", "firstName")
+              }}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Last Name</mat-label>
@@ -39,14 +34,9 @@
                 formControlName="lastName"
               />
               <mat-icon matSuffix class="coral">person</mat-icon>
-              <mat-error
-                *ngIf="
-                  signupForm?.get('stepOne.lastName')?.invalid &&
-                  (signupForm?.get('stepOne.lastName')?.dirty ||
-                    signupForm?.get('stepOne.lastName')?.touched)
-                "
-                >Please enter a valid last name.</mat-error
-              >
+              <mat-error>{{
+                validateControl("stepOne", "lastName")
+              }}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Company Name</mat-label>
@@ -57,14 +47,9 @@
               />
               <mat-icon matSuffix class="coral">business</mat-icon>
 
-              <mat-error
-                *ngIf="
-                  signupForm?.get('stepOne.companyName')?.invalid &&
-                  (signupForm?.get('stepOne.companyName')?.dirty ||
-                    signupForm?.get('stepOne.companyName')?.touched)
-                "
-                >Please enter a valid company name.</mat-error
-              >
+              <mat-error>{{
+                validateControl("stepOne", "companyName")
+              }}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Email</mat-label>
@@ -77,26 +62,22 @@
                   (signupForm?.get('stepOne.email')?.dirty ||
                     signupForm?.get('stepOne.email')?.touched)
                 "
-                >Please enter a valid email address.</mat-error
+                >{{ validateControl("stepOne", "email") }}</mat-error
               >
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Phone Number</mat-label>
               <input
+                type="tel"
                 matInput
                 placeholder="Phone Number"
                 formControlName="phoneNumber"
+                (keydown)="onPhoneInput($event)"
               />
               <mat-icon matSuffix class="coral">phone</mat-icon>
-
-              <mat-error
-                *ngIf="
-                  signupForm?.get('stepOne.phoneNumber')?.invalid &&
-                  (signupForm?.get('stepOne.phoneNumber')?.dirty ||
-                    signupForm?.get('stepOne.phoneNumber')?.touched)
-                "
-                >Please enter a valid phone number.</mat-error
-              >
+              <mat-error>{{
+                validateControl("stepOne", "phoneNumber")
+              }}</mat-error>
             </mat-form-field>
             <div class="button-container">
               <button mat-raised-button matStepperNext>Next</button>
@@ -110,54 +91,26 @@
               <mat-icon matSuffix class="coral">home</mat-icon>
 
               <input matInput placeholder="Address" formControlName="address" />
-              <mat-error
-                *ngIf="
-                  signupForm?.get('stepTwo.address')?.invalid &&
-                  (signupForm?.get('stepTwo.address')?.dirty ||
-                    signupForm?.get('stepTwo.address')?.touched)
-                "
-                >Please enter a valid address.</mat-error
-              >
+              <mat-error>{{ validateControl("stepTwo", "address") }}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>City</mat-label>
               <mat-icon matSuffix class="coral">location_city</mat-icon>
 
               <input matInput placeholder="City" formControlName="city" />
-              <mat-error
-                *ngIf="
-                  signupForm?.get('stepTwo.city')?.invalid &&
-                  (signupForm?.get('stepTwo.city')?.dirty ||
-                    signupForm?.get('stepTwo.city')?.touched)
-                "
-                >Please enter a valid city.</mat-error
-              >
+              <mat-error>{{ validateControl("stepTwo", "city") }}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>State</mat-label>
               <mat-icon matSuffix class="coral">location_on</mat-icon>
               <input matInput placeholder="State" formControlName="state" />
-              <mat-error
-                *ngIf="
-                  signupForm?.get('stepTwo.state')?.invalid &&
-                  (signupForm?.get('stepTwo.state')?.dirty ||
-                    signupForm?.get('stepTwo.state')?.touched)
-                "
-                >Please enter a valid state.</mat-error
-              >
+              <mat-error>{{ validateControl("stepTwo", "state") }}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>ZipCode</mat-label>
               <mat-icon matSuffix class="coral">local_post_office</mat-icon>
               <input matInput placeholder="ZipCode" formControlName="zipCode" />
-              <mat-error
-                *ngIf="
-                  signupForm?.get('stepTwo.zipCode')?.invalid &&
-                  (signupForm?.get('stepTwo.zipCode')?.dirty ||
-                    signupForm?.get('stepTwo.zipCode')?.touched)
-                "
-                >Please enter a valid state.</mat-error
-              >
+              <mat-error>{{ validateControl("stepTwo", "zipCode") }}</mat-error>
             </mat-form-field>
             <div class="button-container">
               <button mat-raised-button matStepperPrevious>Back</button>
@@ -173,8 +126,9 @@
               <mat-icon class="coral" matSuffix>personal</mat-icon>
 
               <input matInput formControlName="username" />
-              <mat-error *ngIf="signupForm?.get('stepThree.username')?.touched"
-                >Field required</mat-error
+              <mat-error
+                *ngIf="signupForm?.get('stepThree.username')?.touched"
+                >{{ validateControl("stepThree", "username") }}</mat-error
               >
             </mat-form-field>
 
@@ -188,7 +142,9 @@
               <mat-icon class="coral" matSuffix (click)="hide = !hide">{{
                 hide ? "visibility_off" : "visibility"
               }}</mat-icon>
-              <mat-error></mat-error>
+              <mat-error>{{
+                validateControl("stepThree", "password")
+              }}</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -201,7 +157,9 @@
               <mat-icon class="coral" matSuffix (click)="hide = !hide">{{
                 hide ? "visibility_off" : "visibility"
               }}</mat-icon>
-              <mat-error></mat-error>
+              <mat-error>{{
+                validateControl("stepThree", "confirmPassword")
+              }}</mat-error>
             </mat-form-field>
 
             <div class="button-container">
