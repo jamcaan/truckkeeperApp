@@ -149,15 +149,15 @@ export class SignupComponent {
     return '';
   }
 
-  //Validating phone number in this format (xxx) xxx-xxxx
-  customPatternValidator(phoneRegex: RegExp): ValidatorFn {
+  //Can validate any pattern any field
+  customPatternValidator(regex: RegExp): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value;
       if (!value) {
         return { required: true };
       }
-      if (!phoneRegex.test(value)) {
-        return { phone: true } || { zipCode: true };
+      if (!regex.test(value)) {
+        return { phone: true } || { zipCode: true }; //Form fields
       }
       return null;
     };
