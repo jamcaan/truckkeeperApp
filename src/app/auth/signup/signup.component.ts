@@ -109,8 +109,6 @@ export class SignupComponent {
     if (!this.signupForm?.invalid) {
       return;
     }
-
-    console.log('Form values: ', this.signupForm?.value);
     //TODO: Submission API
   }
 
