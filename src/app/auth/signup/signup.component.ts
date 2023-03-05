@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import {
   AbstractControl,
-  FormArray,
   FormBuilder,
   FormGroup,
   ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { getStates } from 'src/app/shared/shared.data';
+import { States } from 'src/app/shared/shared.model';
+import { User } from '../models/auth.model';
+import { AuthService } from '../services/auth.service';
+import { v4 } from 'uuid';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -18,33 +23,47 @@ export class SignupComponent {
   signupForm?: FormGroup;
   currentStep: number = 0;
   hide = true;
-  readonly phoneNumber: string = '';
+  states: States[] = [];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private route: Router
+  ) {}
   ngOnInit(): void {
     this.signupForm = this.fb.group({
       stepOne: this.fb.group({
         firstName: ['', [Validators.required, Validators.minLength(2)]],
         lastName: ['', [Validators.required]],
         companyName: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.email,
+            this.customPatternValidator(
+              /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              'invalidEmail'
+            ),
+          ],
+        ],
         phoneNumber: [
           '',
           [
             Validators.required,
-            this.customPatternValidator(/^\(\d{3}\) \d{3}-\d{4}$/),
+            this.customPatternValidator(/^\(\d{3}\) \d{3}-\d{4}$/, 'phone'),
           ],
         ],
       }),
       stepTwo: this.fb.group({
-        address: ['', [Validators.required]],
+        street: ['', [Validators.required]],
         city: ['', [Validators.required]],
         state: ['', [Validators.required]],
         zipCode: [
           '',
           [
             Validators.required,
-            this.customPatternValidator(/^[0-9]+$/),
+            this.customPatternValidator(/^[0-9]+$/, 'zipCode'),
             Validators.minLength(5),
             Validators.maxLength(5),
           ],
@@ -80,36 +99,73 @@ export class SignupComponent {
         { validator: this.matchPassword }
       ),
     });
+
+    this.getStates();
   }
 
   matchPassword(group: FormGroup) {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { passwordsNotMatched: true };
+    return password === confirmPassword
+      ? null
+      : group.get('confirmPassword')?.setErrors({ passwordsNotMatched: true });
   }
 
-  get stepForm(): FormArray {
-    return this.signupForm?.get('stepForms') as FormArray;
-  }
+  // get stepForm(): FormArray {
+  //   return this.signupForm?.get('stepForms') as FormArray;
+  // }
 
-  nextStep() {
-    const currentStepForm = this.signupForm?.get(
-      `step${this.currentStep}`
-    ) as FormGroup;
-    if (currentStepForm.valid) {
-      this.currentStep++;
-    }
-  }
+  // nextStep() {
+  //   const currentStepForm = this.signupForm?.get(
+  //     `step${this.currentStep}`
+  //   ) as FormGroup;
+  //   if (currentStepForm.valid) {
+  //     this.currentStep++;
+  //   }
+  // }
 
-  previousStep() {
-    this.currentStep--;
-  }
+  // previousStep() {
+  //   this.currentStep--;
+  // }
 
-  submit() {
-    if (!this.signupForm?.invalid) {
+  signup() {
+    if (!this.signupForm?.valid) {
       return;
     }
-    //TODO: Submission API
+    const payload: User = {
+      id: v4(),
+      role: 'User',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      firstName: this.signupForm?.get('stepOne')?.get('firstName')?.value,
+      lastName: this.signupForm?.get('stepOne')?.get('lastName')?.value,
+      companyName: this.signupForm?.get('stepOne')?.get('companyName')?.value,
+      phoneNumber: this.signupForm?.get('stepOne')?.get('phoneNumber')?.value,
+      email: this.signupForm?.get('stepOne')?.get('email')?.value,
+      address: {
+        street: this.signupForm?.get('stepTwo')?.get('street')?.value,
+        city: this.signupForm?.get('stepTwo')?.get('city')?.value,
+        state: this.signupForm?.get('stepTwo')?.get('state')?.value,
+        zipCode: this.signupForm?.get('stepTwo')?.get('zipCode')?.value,
+      },
+      username: this.signupForm?.get('stepThree')?.get('username')?.value,
+      password: this.signupForm?.get('stepThree')?.get('password')?.value,
+      active: true,
+    };
+    this.authService.signup(payload).subscribe({
+      next: (response) => {
+        if (response.success) {
+          console.log('Saved successfuly!', response);
+          this.route.navigate(['/signin']);
+        } else {
+          console.log(response.message);
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {},
+    });
   }
 
   //Validating controls and returnig custom messages
@@ -138,6 +194,13 @@ export class SignupComponent {
           case 'zipCode':
             errorMessage = 'ZipCode numbers must be digits only';
             break;
+          case 'passwordsNotMatched':
+            errorMessage = 'Passwords must match';
+            break;
+          case 'invalidEmail':
+            errorMessage = 'Email still not valid';
+            break;
+
           default:
             return '';
         }
@@ -148,14 +211,16 @@ export class SignupComponent {
   }
 
   //Can validate any pattern any field
-  customPatternValidator(regex: RegExp): ValidatorFn {
+  customPatternValidator(regex: RegExp, errorKey: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value;
       if (!value) {
         return { required: true };
       }
       if (!regex.test(value)) {
-        return { phone: true } || { zipCode: true }; //Form fields
+        const error = {} as ValidationErrors;
+        error[errorKey] = true;
+        return error;
       }
       return null;
     };
@@ -182,5 +247,9 @@ export class SignupComponent {
   onPhoneInput(event: Event) {
     const input = event.target as HTMLInputElement;
     input.value = this.maskPhone(input.value);
+  }
+
+  getStates() {
+    this.states = getStates();
   }
 }
