@@ -1,21 +1,22 @@
 export interface User {
-  id: number;
+  id: string;
+  firstName: string;
+  lastName: string;
   username: string;
   password: string;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  companyName?: string;
-  phoneNumber?: string;
-  address?: {
+  email: string;
+  companyName: string;
+  phoneNumber: string;
+  address: {
     street: string;
     city: string;
     state: string;
-    zip: string;
+    zipCode: string;
   };
-  role?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  role: string;
+  createdAt: Date;
+  updatedAt: Date;
+  active: boolean;
 }
 
 export interface Drivers {
@@ -35,4 +36,11 @@ export interface Drivers {
   };
   userId: number;
   active: boolean;
+}
+
+export interface HttpResponseObject<T> {
+  success: boolean;
+  message?: string;
+  data?: T | undefined;
+  status: number;
 }

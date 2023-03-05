@@ -1,21 +1,104 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstname": "Test",
-      "lastname": "First",
-      "username": "jama",
-      "password": "jama1234"
+      "id": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb",
+      "role": "User",
+      "createdAt": "2023-03-05T15:20:14.823Z",
+      "updatedAt": "2023-03-05T15:20:14.823Z",
+      "firstName": "Mohamed",
+      "lastName": "Jama",
+      "companyName": "Sagal Logistics",
+      "phoneNumber": "(234) 567-8888",
+      "email": "sagal@gmail.com",
+      "address": {
+        "street": "4578 South St ",
+        "city": "Columbus",
+        "state": "OH",
+        "zipCode": "43230"
+      },
+      "username": "sagal",
+      "password": "sagal1234",
+      "active": true
     },
     {
-      "id": 2,
-      "firstname": "Jama",
-      "lastname": "Mohamed"
+      "id": "29af4836-5eb0-42f7-8672-2ef0b2fcda28",
+      "role": "User",
+      "createdAt": "2023-03-05T15:21:32.596Z",
+      "updatedAt": "2023-03-05T15:21:32.596Z",
+      "firstName": "John",
+      "lastName": "Smith",
+      "companyName": "smiths",
+      "phoneNumber": "(234) 567-8888",
+      "email": "smiths@gmail.com",
+      "address": {
+        "street": "4567",
+        "city": "Columbus",
+        "state": "OH",
+        "zipCode": "43230"
+      },
+      "username": "smith",
+      "password": "john1234",
+      "active": true
     },
     {
-      "id": 3,
-      "firstname": "John",
-      "lastname": "Alen"
+      "id": "1a221eee-9492-4bd4-8a1c-b073ffa5e9ec",
+      "role": "User",
+      "createdAt": "2023-03-05T16:05:16.480Z",
+      "updatedAt": "2023-03-05T16:05:16.480Z",
+      "firstName": "Geele",
+      "lastName": "Diiriye",
+      "companyName": "geele",
+      "phoneNumber": "(435) 577-7776",
+      "email": "geele@gmail.com",
+      "address": {
+        "street": "5676",
+        "city": "Columbus",
+        "state": "OH",
+        "zipCode": "45678"
+      },
+      "username": "geele",
+      "password": "geele1234",
+      "active": true
+    },
+    {
+      "id": "811a53bd-0a7b-45b4-8879-7f2034dcc03f",
+      "role": "User",
+      "createdAt": "2023-03-05T16:23:39.967Z",
+      "updatedAt": "2023-03-05T16:23:39.967Z",
+      "firstName": "Farah",
+      "lastName": "Diriye",
+      "companyName": "diriye",
+      "phoneNumber": "(345) 678-8888",
+      "email": "diriye@gmail.com",
+      "address": {
+        "street": "4576",
+        "city": "Kansas City",
+        "state": "KS",
+        "zipCode": "78765"
+      },
+      "username": "diriye",
+      "password": "diriye1234",
+      "active": true
+    },
+    {
+      "id": "2e454b1d-eaa6-4256-867a-b260e8686784",
+      "role": "User",
+      "createdAt": "2023-03-05T17:14:04.860Z",
+      "updatedAt": "2023-03-05T17:14:04.860Z",
+      "firstName": "Mr Honda",
+      "lastName": "Honda",
+      "companyName": "honda",
+      "phoneNumber": "(457) 777-7777",
+      "email": "honda@gmail.com",
+      "address": {
+        "street": "6353 New York Ave",
+        "city": "New York",
+        "state": "NY",
+        "zipCode": "65443"
+      },
+      "username": "honda",
+      "password": "honda1234",
+      "active": true
     }
   ],
   "signin": [

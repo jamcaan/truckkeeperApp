@@ -7,9 +7,5 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./signout.component.scss'],
 })
 export class SignoutComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
-
+  ngOnInit(): void {}
 }

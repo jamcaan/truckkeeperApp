@@ -7,7 +7,7 @@
     </div>
 
     <mat-card-content>
-      <form [formGroup]="$any(signupForm)" (ngSubmit)="submit()" class="form">
+      <form [formGroup]="$any(signupForm)" (ngSubmit)="signup()" class="form">
         <mat-horizontal-stepper>
           <!-- Step One -->
           <mat-step formGroupName="stepOne">
@@ -80,7 +80,13 @@
               }}</mat-error>
             </mat-form-field>
             <div class="button-container">
-              <button mat-raised-button matStepperNext>Next</button>
+              <button
+                mat-raised-button
+                matStepperNext
+                [disabled]="signupForm?.get('stepOne')?.invalid"
+              >
+                Next
+              </button>
             </div>
           </mat-step>
           <!-- Step Two -->
@@ -90,8 +96,8 @@
               <mat-label>Address</mat-label>
               <mat-icon matSuffix class="coral">home</mat-icon>
 
-              <input matInput placeholder="Address" formControlName="address" />
-              <mat-error>{{ validateControl("stepTwo", "address") }}</mat-error>
+              <input matInput placeholder="Address" formControlName="street" />
+              <mat-error>{{ validateControl("stepTwo", "street") }}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>City</mat-label>
@@ -100,10 +106,17 @@
               <input matInput placeholder="City" formControlName="city" />
               <mat-error>{{ validateControl("stepTwo", "city") }}</mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="address-width">
               <mat-label>State</mat-label>
               <mat-icon matSuffix class="coral">location_on</mat-icon>
-              <input matInput placeholder="State" formControlName="state" />
+
+              <mat-select formControlName="state">
+                <mat-option
+                  *ngFor="let state of states"
+                  [value]="state.shortname"
+                  >{{ state.shortname }}</mat-option
+                >
+              </mat-select>
               <mat-error>{{ validateControl("stepTwo", "state") }}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -115,7 +128,13 @@
             <div class="button-container">
               <button mat-raised-button matStepperPrevious>Back</button>
 
-              <button mat-raised-button matStepperNext>Next</button>
+              <button
+                mat-raised-button
+                matStepperNext
+                [disabled]="signupForm?.get('stepTwo')?.invalid"
+              >
+                Next
+              </button>
             </div>
           </mat-step>
           <!-- Step Three -->
@@ -164,7 +183,9 @@
 
             <div class="button-container">
               <button mat-raised-button matStepperPrevious>Back</button>
-              <button mat-raised-button>Submit</button>
+              <button mat-raised-button [disabled]="signupForm?.invalid">
+                Submit
+              </button>
             </div>
           </mat-step>
         </mat-horizontal-stepper>

@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, filter, take, throwError } from 'rxjs';
 import { User } from '../models/auth.model';
 import { AuthService } from '../services/auth.service';
 import { UserStore } from '../user-store';
@@ -18,7 +11,7 @@ import { UserStore } from '../user-store';
   styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit {
-  userId: number = 1;
+  userId: string = 'e3f7fd6e-d9ae-46fd-8282-272f112e08eb';
   hide = true;
 
   loginForm?: FormGroup;
@@ -55,23 +48,36 @@ export class SigninComponent implements OnInit {
     if (!this.loginForm?.valid) {
       return;
     }
-    const credentials: User = {
-      id: 1,
+    const credentials: Partial<User> = {
+      id: this.userId,
       username: this.loginForm.get('username')?.value,
       password: this.loginForm.get('password')?.value,
     };
-    this.authService.signin(credentials, this.userId);
-    this.authService.isAuthenticated
-      .pipe(
-        filter((loggedIn) => loggedIn),
-        take(1),
-        catchError((error) => {
-          return throwError(() => new Error(error));
-        })
-      )
-      .subscribe(() => {
-        this.route.navigate(['/dashboard']);
-      });
+    this.authService.signin(credentials, this.userId).subscribe({
+      next: (response) => {
+        if (response.success) {
+          console.log('Succesfully singed in', response);
+          this.route.navigate(['/dashboard']);
+        } else {
+          console.log(response.message);
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {},
+    });
+    // this.authService.isAuthenticated
+    //   .pipe(
+    //     filter((loggedIn) => loggedIn),
+    //     take(1),
+    //     catchError((error) => {
+    //       return throwError(() => new Error(error));
+    //     })
+    //   )
+    //   .subscribe(() => {
+    //     this.route.navigate(['/dashboard']);
+    //   });
   }
 
   validateControl(controlName: string) {

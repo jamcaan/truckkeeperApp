@@ -12,7 +12,7 @@ import {
 } from '@ngneat/elf-persist-state';
 
 interface User {
-  id: number;
+  id: string;
   username: string;
   password: string;
 }
