@@ -19,24 +19,24 @@ export interface User {
   active: boolean;
 }
 
-export interface Drivers {
-  id: number;
-  driverFname: string;
-  middleInitial: string;
-  driverLname: string;
-  truckNumber: string;
-  licenseNo: string;
-  phoneNumber: string;
-  email: string;
-  address: {
-    street: string;
-    state: string;
-    city: string;
-    zipCode: string;
-  };
-  userId: number;
-  active: boolean;
-}
+// export interface Drivers {
+//   id: number;
+//   driverFname: string;
+//   middleInitial: string;
+//   driverLname: string;
+//   truckNumber: string;
+//   licenseNo: string;
+//   phoneNumber: string;
+//   email: string;
+//   address: {
+//     street: string;
+//     state: string;
+//     city: string;
+//     zipCode: string;
+//   };
+//   userId: number;
+//   active: boolean;
+// }
 
 export interface HttpResponseObject<T> {
   success: boolean;

@@ -1,0 +1,26 @@
+<div class="driver-list-container">
+  <div class="driver-list">
+    <div class="driver-list-header">
+      <h5>Driver List</h5>
+      <button mat-raised-button (click)="openDialog()">Add Driver</button>
+    </div>
+    <mat-list *ngIf="driverService.getDriversList() | async" class="mat-list">
+      <app-driver-list-item
+        *ngFor="let driver of driverService.driversList$ | async"
+        [driver]="driver"
+        [selected]="driver === selectedDriver"
+        (driverSelected)="onDriverSelected($event)"
+        [routerLink]="driver.id"
+      ></app-driver-list-item>
+    </mat-list>
+  </div>
+  <!-- <div class="driver-details" *ngIf="selectedDriver">
+    <app-driver-details [driver]="selectedDriver"></app-driver-details>
+  </div> -->
+</div>
+
+<ng-template #driverModal let-modal>
+  <div cu-m-content class="modal-body">
+    <app-add-new-driver></app-add-new-driver>
+  </div>
+</ng-template>

@@ -1,0 +1,169 @@
+<app-modal [headerText]="'Add New Driver'">
+  <div cu-m-content class="modal-body">
+    <div class="form-fields-container">
+      <form [formGroup]="$any(addDriverForm)">
+        <div class="form-fields-left" formGroupName="stepOne">
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+            <mat-icon matSuffix class="coral">person</mat-icon>
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepOne",
+                "firstName"
+              )
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+            <mat-icon matSuffix class="coral">person</mat-icon>
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepOne",
+                "lastName"
+              )
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Truck Number</mat-label>
+            <input matInput formControlName="truckNumber" />
+            <mat-icon matSuffix class="coral">commute</mat-icon>
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepOne",
+                "truckNumber"
+              )
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>License No</mat-label>
+            <input matInput formControlName="licenseNo" />
+            <mat-icon matSuffix class="coral">picture_in_picture</mat-icon>
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepOne",
+                "licenseNo"
+              )
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-icon matSuffix class="coral">email</mat-icon>
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepOne",
+                "email"
+              )
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-fields-left" formGroupName="stepTwo">
+          <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input
+              matInput
+              formControlName="phoneNumber"
+              (keydown)="customFormatterService.onPhoneInput($event)"
+            />
+            <mat-icon matSuffix class="coral">smartphone</mat-icon>
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepTwo",
+                "phoneNumber"
+              )
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="street" />
+            <mat-icon matSuffix class="coral">home</mat-icon>
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepTwo",
+                "street"
+              )
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>City</mat-label>
+            <mat-icon matSuffix class="coral">location_city</mat-icon>
+
+            <input matInput placeholder="City" formControlName="city" />
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepTwo",
+                "city"
+              )
+            }}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="address-width">
+            <mat-label>State</mat-label>
+            <mat-icon matSuffix class="coral">location_on</mat-icon>
+
+            <mat-select formControlName="state">
+              <mat-option
+                *ngFor="let state of states"
+                [value]="state.shortname"
+                >{{ state.shortname }}</mat-option
+              >
+            </mat-select>
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepTwo",
+                "state"
+              )
+            }}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>ZipCode</mat-label>
+            <mat-icon matSuffix class="coral">local_post_office</mat-icon>
+            <input matInput placeholder="ZipCode" formControlName="zipCode" />
+            <mat-error>{{
+              customFormatterService.validateControl(
+                $any(addDriverForm),
+                "stepTwo",
+                "zipCode"
+              )
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <button
+    mat-button
+    cu-modal-footer
+    class="modal-cancel-button"
+    (click)="onModalClose()"
+  >
+    Cancel
+  </button>
+  <button
+    [disabled]="addDriverForm?.invalid"
+    mat-raised-button
+    cu-modal-footer
+    class="modal-submit-button"
+    type="submit"
+    (click)="onSubmit()"
+  >
+    Submit
+  </button>
+</app-modal>

@@ -1,0 +1,53 @@
+.form-fields-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-fields-left {
+  padding-left: 20px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.form-fields-right {
+  padding-right: 20px;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.mat-form-field {
+  margin: 10px;
+  width: 100%;
+}
+
+/* Styles for devices with a maximum width of 767px */
+@media only screen and (max-width: 767px) {
+  .form-fields-container {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 0 5%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .form-fields-left,
+  .form-fields-right {
+    width: 90%;
+    float: none;
+  }
+
+  .form-fields-left {
+    margin-right: 10%;
+  }
+
+  .mat-form-field {
+    margin: 10px 0;
+    width: 100%;
+  }
+}

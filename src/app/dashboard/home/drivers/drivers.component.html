@@ -1,0 +1,52 @@
+<!-- <h2>Driver List</h2>
+<button mat-raised-button color="primary">Add Driver</button>
+
+<mat-list>
+  <mat-list-item>
+    <div mat-list-avatar></div>
+    <div mat-line>Ali</div>
+    <div mat-line>License: TV4565444</div>
+    <div mat-line>Phone: 432-678-6543</div>
+    <div mat-line>Email: ali@gmail.com</div>
+    <div mat-list-item-ripple></div>
+    <button mat-icon-button mat-list-icon aria-label="Edit">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button mat-list-icon aria-label="Delete">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list> -->
+<div class="driver-list-container">
+  <div class="driver-list">
+    <div class="driver-list-header">
+      <!-- <h4>Driver List</h4> -->
+      <button mat-raised-button>Add Driver</button>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-list>
+      <div *ngFor="let driver of drivers" class="driver-list-item">
+        <div class="driver-list-item-name">
+          <div>{{ driver.name }}</div>
+        </div>
+        <div class="driver-list-item-icons">
+          <button mat-icon-button mat-list-icon aria-label="Add">
+            <mat-icon class="coral">add</mat-icon>
+          </button>
+          <button mat-icon-button mat-list-icon aria-label="Edit">
+            <mat-icon class="coral">edit</mat-icon>
+          </button>
+          <button mat-icon-button mat-list-icon aria-label="Delete">
+            <mat-icon class="coral">delete</mat-icon>
+          </button>
+          <button mat-icon-button mat-list-icon aria-label="Deactivate">
+            <mat-icon class="coral">person</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-list>
+  </div>
+</div>
+
+
+
