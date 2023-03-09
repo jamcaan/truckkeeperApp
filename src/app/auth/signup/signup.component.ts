@@ -111,22 +111,6 @@ export class SignupComponent {
       : group.get('confirmPassword')?.setErrors({ passwordsNotMatched: true });
   }
 
-  // get stepForm(): FormArray {
-  //   return this.signupForm?.get('stepForms') as FormArray;
-  // }
-
-  // nextStep() {
-  //   const currentStepForm = this.signupForm?.get(
-  //     `step${this.currentStep}`
-  //   ) as FormGroup;
-  //   if (currentStepForm.valid) {
-  //     this.currentStep++;
-  //   }
-  // }
-
-  // previousStep() {
-  //   this.currentStep--;
-  // }
 
   signup() {
     if (!this.signupForm?.valid) {

@@ -41,7 +41,7 @@ export class AuthService {
           const responseObject: HttpResponseObject<User> = {
             success: true,
             message: 'User signed in successfully!',
-            data,
+            data: data,
             status: 200
           };
           return responseObject;

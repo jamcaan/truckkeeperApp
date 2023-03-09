@@ -1,0 +1,20 @@
+<!-- <div class="driver-details" *ngIf="driver">
+  <h2>Driver Details</h2>
+  <div class="driver-info">
+    <div>{{ driver.firstName }} {{ driver.lastName }}</div>
+    <div>License: {{ driver.licenseNumber }}</div>
+  </div>
+</div> -->
+
+
+<div class="driver-details-container" *ngIf="driver">
+  <div class="driver-details-card">
+    <h2>Driver Details</h2>
+    <div class="driver-details">
+      <p>First Name: {{driver.firstName}}</p>
+      <p>Last Name: {{driver.lastName}}</p>
+    </div>
+  </div>
+</div>
+
+
