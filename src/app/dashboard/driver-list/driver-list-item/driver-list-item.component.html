@@ -1,33 +1,3 @@
-<!-- <div class="driver-list-item-container">
-  <div class="driver-list"> -->
-
-<!-- <mat-list class="mat-list">
-  <div
-    class="driver-list-item"
-    [ngClass]="{ selected: selected }"
-    (click)="selectDriver()"
-  >
-    <div class="driver-list-item-name">
-      <div>{{ driver.firstName }}</div>
-    </div>
-    <div class="driver-list-item-icons">
-      <button mat-icon-button mat-list-icon aria-label="Add">
-        <mat-icon class="coral">add</mat-icon>
-      </button>
-      <button mat-icon-button mat-list-icon aria-label="Edit">
-        <mat-icon class="coral">edit</mat-icon>
-      </button>
-      <button mat-icon-button mat-list-icon aria-label="Delete">
-        <mat-icon class="coral">delete</mat-icon>
-      </button>
-      <button mat-icon-button mat-list-icon aria-label="Deactivate">
-        <mat-icon class="coral">person</mat-icon>
-      </button>
-    </div>
-  </div>
-</mat-list> -->
-<!-- </div>
-</div> -->
 <mat-list class="mat-list">
   <div
     class="driver-list-item"
@@ -38,7 +8,12 @@
       <div>{{ driver.firstName }}</div>
     </div>
     <div class="driver-list-item-icons">
-      <button mat-icon-button mat-list-icon aria-label="Add">
+      <button
+        mat-icon-button
+        mat-list-icon
+        aria-label="Add"
+        (click)="openDialog()"
+      >
         <mat-icon class="coral">add</mat-icon>
       </button>
       <button mat-icon-button mat-list-icon aria-label="Edit">
@@ -53,3 +28,9 @@
     </div>
   </div>
 </mat-list>
+
+<ng-template #loadModal let-modal>
+  <!-- <div cu-m-content class="modal-body"> -->
+  <app-add-load [driver]="driver"></app-add-load>
+  <!-- </div> -->
+</ng-template>

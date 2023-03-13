@@ -1,5 +1,4 @@
-import { States } from "./shared.model";
-
+import { Commission, ExpensesCatergory, States } from './shared.model';
 
 export function getStates(): States[] {
   return [
@@ -277,6 +276,95 @@ export function getStates(): States[] {
       id: '55',
       longname: 'Wyoming',
       shortname: 'WY',
+    },
+  ];
+}
+
+export function getCommission(): Commission[] {
+  return [
+    {
+      id: '1',
+      value: 8 / 100,
+      percentage: '8%',
+    },
+    {
+      id: '2',
+      value: 9 / 100,
+      percentage: '9%',
+    },
+    {
+      id: '3',
+      value: 10 / 100,
+      percentage: '10%',
+    },
+    {
+      id: '4',
+      value: 11 / 100,
+      percentage: '11%',
+    },
+    {
+      id: '5',
+      value: 12 / 100,
+      percentage: '12%',
+    },
+    {
+      id: '6',
+      value: 13 / 100,
+      percentage: '13%',
+    },
+    {
+      id: '7',
+      value: 14 / 100,
+      percentage: '14%',
+    },
+    {
+      id: '8',
+      value: 15 / 100,
+      percentage: '15%',
+    },
+    {
+      id: '9',
+      value: 16 / 100,
+      percentage: '16%',
+    },
+    {
+      id: '10',
+      value: 17 / 100,
+      percentage: '17%',
+    },
+    {
+      id: '11',
+      value: 18 / 100,
+      percentage: '18%',
+    },
+    {
+      id: '12',
+      value: 19 / 100,
+      percentage: '19%',
+    },
+    {
+      id: '13',
+      value: 20 / 100,
+      percentage: '20%',
+    },
+  ];
+}
+
+export function getCatergories(): ExpensesCatergory[] {
+  return [
+    {
+      id: '1',
+      type: [
+        {
+          type: 'Insurance',
+        },
+        {
+          type: 'Gas',
+        },
+        {
+          type: 'Other',
+        },
+      ],
     },
   ];
 }

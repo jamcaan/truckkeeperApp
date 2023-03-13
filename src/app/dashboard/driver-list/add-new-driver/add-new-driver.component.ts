@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { map, of } from 'rxjs';
 import { CustomFormatterService } from 'src/app/shared/customFormatter.service';
 import { getStates } from 'src/app/shared/shared.data';
 import { States } from 'src/app/shared/shared.model';
@@ -109,10 +108,17 @@ export class AddNewDriverComponent implements OnInit {
       userId: test.ids[0],
     };
 
-    this.driverService.addDriver(payload).subscribe();
-    console.log('This AddDriverForm values are: ', payload);
-    this.addDriverForm.reset();
-    this.dialog.closeAll();
+    this.driverService.addDriver(payload).subscribe({
+      next: (response) => {
+        console.log('Successfully added new Driver!', response);
+        this.addDriverForm?.reset();
+        this.onModalClose();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {},
+    });
   }
 
   onModalClose(): void {

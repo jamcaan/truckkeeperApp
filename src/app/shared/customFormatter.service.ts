@@ -13,8 +13,12 @@ export class CustomFormatterService {
   constructor() {}
 
   //Validating controls and returnig custom messages
-  validateControl(formGroupName: FormGroup, step: string, controlName: string) {
-    const control = formGroupName?.get(step)?.get(controlName);
+  validateControl(
+    formGroupName?: FormGroup,
+    step?: string,
+    controlName?: string
+  ) {
+    const control = formGroupName?.get(step!)?.get(controlName!);
     if (control && !control?.valid && (control?.dirty || control?.touched)) {
       const errors = control.errors;
       let errorMessage = '';
@@ -38,6 +42,9 @@ export class CustomFormatterService {
           case 'zipCode':
             errorMessage = 'ZipCode numbers must be digits only';
             break;
+          case 'amount':
+            errorMessage = 'Amount numbers must be digits only';
+            break;
           case 'passwordsNotMatched':
             errorMessage = 'Passwords must match';
             break;
@@ -45,6 +52,34 @@ export class CustomFormatterService {
             errorMessage = 'Field must be a valid email';
             break;
 
+          default:
+            return '';
+        }
+      }
+      return errorMessage;
+    }
+    return '';
+  }
+
+  validateFormWithoutStep(formGroupName?: FormGroup, controlName?: string) {
+    const control = formGroupName?.get(controlName!);
+    if (control && !control?.valid && (control?.dirty || control?.touched)) {
+      const errors = control.errors;
+      let errorMessage = '';
+      for (const errorNames in errors) {
+        switch (errorNames) {
+          case 'required':
+            errorMessage = 'Field is required';
+            break;
+          case 'maxlength':
+            errorMessage = `Field must be max of ${errors['maxlength'].requiredLength} characters long`;
+            break;
+          case 'minlength':
+            errorMessage = `Field must be at least ${errors['minlength'].requiredLength} characters long`;
+            break;
+          case 'amount':
+            errorMessage = 'Amount numbers must be digits only';
+            break;
           default:
             return '';
         }
