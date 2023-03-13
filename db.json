@@ -236,5 +236,67 @@
       "active": true,
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
     }
+  ],
+  "loads": [
+    {
+      "id": "f6a1fe2b-d87f-4476-836f-d5b6e45cc2d4",
+      "loadnumber": "5765451",
+      "date": "2023-03-12T16:09:37.109Z",
+      "from": "OH",
+      "destination": "GA",
+      "commPercentage": 0.1,
+      "amount": "9080",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "7c986b23-23b5-4643-9fd2-d9278e2be7a5",
+      "loadnumber": "35459982",
+      "date": "2023-03-13T13:19:57.876Z",
+      "from": "HI",
+      "destination": "RI",
+      "commPercentage": 0.1,
+      "amount": "4000",
+      "driverId": "f524a17f-156f-47e3-935e-32f564230749"
+    },
+    {
+      "id": "745d97c4-e2b8-4465-9315-040fccb87d23",
+      "loadnumber": "4663455",
+      "date": "2023-03-13T13:29:51.842Z",
+      "from": "AR",
+      "destination": "CA",
+      "commPercentage": 0.1,
+      "amount": "5000",
+      "driverId": "142b64ed-2e3f-425b-9a77-597a82f5dbc7"
+    },
+    {
+      "id": "c871a7dd-6783-4b62-ab38-16c049ad5216",
+      "loadnumber": "2334343",
+      "date": "2023-03-13T14:45:03.433Z",
+      "from": "OH",
+      "destination": "NE",
+      "commPercentage": 0.1,
+      "amount": "5990.90",
+      "driverId": "fdcf013d-62fb-42af-b49e-7e90692a4698"
+    },
+    {
+      "id": "3debc356-79dc-4734-a00a-e0c5dd4f8dcc",
+      "loadnumber": "344334",
+      "date": "2023-03-13T14:55:25.389Z",
+      "from": "HI",
+      "destination": "FL",
+      "commPercentage": 0.1,
+      "amount": "6900",
+      "driverId": "f524a17f-156f-47e3-935e-32f564230749"
+    },
+    {
+      "id": "b37b5732-2bac-4abf-a4e0-aa7739507fdb",
+      "loadnumber": "343454",
+      "date": "2023-03-13T15:08:33.057Z",
+      "from": "RI",
+      "destination": "UT",
+      "commPercentage": 0.1,
+      "amount": "3000",
+      "driverId": "c23e68ad-5ab7-4859-8df5-1ae2c19670c7"
+    }
   ]
 }

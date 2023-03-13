@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Drivers } from '../../models/driver.model';
 
 @Component({
@@ -7,15 +15,24 @@ import { Drivers } from '../../models/driver.model';
   styleUrls: ['./driver-list-item.component.scss'],
 })
 export class DriverListItemComponent {
-  // @Output() driver!: Driver;
   @Input() driver!: Drivers;
 
-  // @Output() selected!: boolean
   @Input() selected!: boolean;
 
   @Output() driverSelected = new EventEmitter<Drivers>();
 
+  @ViewChild('loadModal') loadModal!: TemplateRef<any>;
+
+  constructor(private dialog: MatDialog) {}
+
   selectDriver() {
     this.driverSelected.emit(this.driver);
+  }
+
+  openDialog() {
+    this.dialog.open(this.loadModal, {
+      width: '800px',
+      height: '627px',
+    });
   }
 }

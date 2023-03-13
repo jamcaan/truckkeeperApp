@@ -11,10 +11,11 @@ import { DriverListItemComponent } from './driver-list/driver-list-item/driver-l
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DriverDetailsComponent } from './driver-list/driver-details/driver-details.component';
 import { LoadsListComponent } from './loads-list/loads-list.component';
-import { LoadsItemListComponent } from './loads-item-list/loads-item-list.component';
+import { LoadsItemListComponent } from './loads-list/loads-item-list/loads-item-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { AddNewDriverComponent } from './driver-list/add-new-driver/add-new-driver.component';
 import { ModalComponent } from '../shared/modal/modal.component';
+import { AddLoadComponent } from './loads-list/add-load/add-load.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ModalComponent } from '../shared/modal/modal.component';
     LoadsListComponent,
     LoadsItemListComponent,
     AddNewDriverComponent,
+    AddLoadComponent,
   ],
   imports: [
     CommonModule,
