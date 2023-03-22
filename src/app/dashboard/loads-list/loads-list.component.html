@@ -1,1 +1,129 @@
-<p>loads-list works!</p>
+<div class="container" *ngIf="loadsList$ | async as loadsList">
+  <mat-table [dataSource]="loadsList" class="my-table" multiTemplateDataRows>
+    <ng-container matColumnDef="loadnumber">
+      <mat-header-cell *matHeaderCellDef class="my-header-cell">
+        Load #
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="my-cell">
+        {{ element.data.loadnumber }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef class="my-header-cell">
+        Date
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="my-cell">
+        {{ element.data.date | date }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="from">
+      <mat-header-cell *matHeaderCellDef class="my-header-cell">
+        From
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="my-cell">
+        {{ element.data.from }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="destination">
+      <mat-header-cell *matHeaderCellDef class="my-header-cell">
+        Destination
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="my-cell">
+        {{ element.data.destination }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="commPercentage">
+      <mat-header-cell *matHeaderCellDef class="my-header-cell">
+        Commission
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="my-cell">
+        {{ element.data.commPercentage | percent }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef class="my-header-cell">
+        Amount
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="amount-cell">
+        {{ element.data.amount | currency }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="my-header-cell">
+        Actions
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="my-cell-actions">
+        <button mat-icon-button class="my-button">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button class="my-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="my-button">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          class="my-button"
+          mat-icon-button
+          (click)="
+            expandedElement === element
+              ? (expandedElement = null)
+              : (expandedElement = element)
+          "
+        >
+          <mat-icon
+            >visibility
+            {{
+              expandedElement === element ? "expand_less" : "expand_more"
+            }}</mat-icon
+          >
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedContent">
+      <mat-cell
+        *matCellDef="let element"
+        [attr.colspan]="displayedColumns.length"
+        class="cell"
+      >
+        <!-- <div class="expandable-row" *ngIf="expandedElement === element">
+          Hello
+        </div> -->
+
+        <div class="expandable-row" *ngIf="expandedElement === element">
+          <mat-list>
+            <mat-list-item>
+              <div matLine>test</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div matLine>tsfsf</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div matLine>5678</div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns"
+      class="my-header-row"
+    ></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="data-row"
+    ></mat-row>
+    <mat-row
+      *matRowDef="let row; columns: ['expandedContent']"
+      [@detailExpand]="expandedElement === row ? 'expanded' : 'collapsed'"
+      class="detail-row"
+    ></mat-row>
+  </mat-table>
+</div>

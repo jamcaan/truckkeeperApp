@@ -4,19 +4,21 @@
       <h5>Driver List</h5>
       <button mat-raised-button (click)="openDialog()">Add Driver</button>
     </div>
-    <mat-list *ngIf="driverService.getDriversList() | async" class="mat-list">
+    <mat-list *ngIf="(driversList$ | async)?.success" class="mat-list">
       <app-driver-list-item
-        *ngFor="let driver of driverService.driversList$ | async"
+        *ngFor="let driver of (driversList$ | async)?.data"
         [driver]="driver"
         [selected]="driver === selectedDriver"
         (driverSelected)="onDriverSelected($event)"
         [routerLink]="driver.id"
+        routerLinkActive="true"
       ></app-driver-list-item>
     </mat-list>
   </div>
-  <!-- <div class="driver-details" *ngIf="selectedDriver">
-    <app-driver-details [driver]="selectedDriver"></app-driver-details>
-  </div> -->
+  <div class="driver-details" *ngIf="selectedDriver">
+    <!-- <app-driver-details [driver]="selectedDriver"></app-driver-details> -->
+    <app-loads-list [driver]="selectedDriver"></app-loads-list>
+  </div>
 </div>
 
 <ng-template #driverModal let-modal>

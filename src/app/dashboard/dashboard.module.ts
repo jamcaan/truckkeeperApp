@@ -16,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AddNewDriverComponent } from './driver-list/add-new-driver/add-new-driver.component';
 import { ModalComponent } from '../shared/modal/modal.component';
 import { AddLoadComponent } from './loads-list/add-load/add-load.component';
+import { LoadDetailComponent } from './loads-list/load-detail/load-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AddLoadComponent } from './loads-list/add-load/add-load.component';
     LoadsItemListComponent,
     AddNewDriverComponent,
     AddLoadComponent,
+    LoadDetailComponent,
   ],
   imports: [
     CommonModule,

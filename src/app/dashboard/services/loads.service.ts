@@ -29,7 +29,7 @@ export class LoadsService {
         map((data: Loads) => {
           const responseObject: HttpResponseObject<Loads> = {
             success: true,
-            message: 'New Load added successfuly',
+            message: 'New Driver added successfuly',
             data: data,
             status: 200,
           };
@@ -43,12 +43,62 @@ export class LoadsService {
         catchError((error) => {
           const responseObject: HttpResponseObject<Loads> = {
             success: false,
-            message: `Unable to add new Load. Error occurred ${error}`,
+            message: `Unable to add new driver. Error occurred ${error}`,
             data: undefined,
             status: error.status,
           };
           return of(responseObject);
         })
       );
+  }
+
+  getLoadsByDriver(driverId: string): Observable<HttpResponseObject<Loads>[]> {
+    this.http
+      .get<Loads[]>(`${environment.baseUrl}/drivers/${driverId}/loads`)
+      .subscribe({
+        next: (data: Loads[]) => {
+          this.loadsList$.next(data);
+        },
+        error: (err) => {
+          console.log('Error occurred while getting drivers list:', err);
+        },
+        complete: () => {},
+      });
+    return this.loadsList$.asObservable().pipe(
+      map((data: Loads[]) => {
+        const responseObject: HttpResponseObject<Loads>[] = data.map((d) => ({
+          success: true,
+          message: 'Driver retrieved successfully',
+          data: d,
+          status: 200,
+        }));
+        return responseObject;
+      }),
+      catchError((error) => {
+        console.log('Error occurred while getting drivers list:', error);
+        const responseObject: HttpResponseObject<Loads>[] = [
+          {
+            success: false,
+            message: `Unable to retrieve drivers. Error occurred ${error}`,
+            data: undefined,
+            status: error.status,
+          },
+        ];
+        return of(responseObject);
+      })
+    );
+  }
+
+  getLoadsList(): Observable<HttpResponseObject<Loads[]>> {
+    return this.loadsList$.asObservable().pipe(
+      map((drivers: Loads[]) => {
+        return {
+          success: true,
+          message: 'Drivers retrieved successfully',
+          data: drivers,
+          status: 200,
+        };
+      })
+    );
   }
 }

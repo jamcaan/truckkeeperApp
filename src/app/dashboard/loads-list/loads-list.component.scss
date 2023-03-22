@@ -1,0 +1,92 @@
+/* Table Container Styles */
+.container {
+  margin-top: 20px;
+  width: 99%;
+  overflow-x: auto;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  align-items: flex-start;
+}
+
+/* Table Styles */
+.my-table {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.my-header-cell {
+  max-width: 114px;
+  text-align: left;
+  font-weight: bold;
+}
+.my-cell {
+  max-width: 114px;
+  text-align: left;
+}
+
+.amount-cell {
+  max-width: 114px;
+  justify-content: flex-end;
+}
+.my-cell-date {
+  max-width: 118px;
+  text-align: left;
+}
+
+/* Header Cell Styles */
+.my-header-cell {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  border-bottom: none;
+  padding: 12px;
+  max-width: 114px;
+}
+
+/* Cell Styles */
+.my-cell {
+  text-align: center;
+  padding: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-bottom: 1px solid #ccc;
+  max-width: 114px;
+}
+
+/* Actions Cell Styles */
+.my-cell-actions {
+  text-align: left;
+  // padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Button Styles */
+.my-button {
+  margin: 0 1px;
+  color: coral;
+}
+
+.my-button:hover {
+  background-color: rgb(244, 242, 242);
+}
+
+/* Header Row Styles */
+.my-header-row {
+  margin-top: 20px;
+  position: sticky;
+  top: 0;
+  background-color: coral;
+  border-bottom: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Actions Column Styles */
+.my-actions-column {
+  width: 150px;
+}

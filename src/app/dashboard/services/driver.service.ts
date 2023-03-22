@@ -6,9 +6,7 @@ import {
   catchError,
   map,
   Observable,
-  of,
-  switchMap,
-  tap,
+  of
 } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
@@ -40,8 +38,11 @@ export class DriverService {
             data: data,
             status: 200,
           };
-          if(responseObject.data)
-          this.driversList$.next([...this.driversList$.getValue(), responseObject.data]);
+          if (responseObject.data)
+            this.driversList$.next([
+              ...this.driversList$.getValue(),
+              responseObject.data,
+            ]);
           return responseObject;
         }),
         catchError((error) => {
@@ -55,7 +56,6 @@ export class DriverService {
         })
       );
   }
-
 
   getAllDriversList(): Observable<HttpResponseObject<Drivers>[]> {
     return this.http.get<Drivers[]>(`${environment.baseUrl}/drivers`).pipe(

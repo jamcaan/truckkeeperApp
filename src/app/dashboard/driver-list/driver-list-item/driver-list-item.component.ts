@@ -2,11 +2,13 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnInit,
   Output,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { Drivers } from '../../models/driver.model';
 
 @Component({
@@ -14,7 +16,7 @@ import { Drivers } from '../../models/driver.model';
   templateUrl: './driver-list-item.component.html',
   styleUrls: ['./driver-list-item.component.scss'],
 })
-export class DriverListItemComponent {
+export class DriverListItemComponent implements OnInit {
   @Input() driver!: Drivers;
 
   @Input() selected!: boolean;
@@ -25,6 +27,7 @@ export class DriverListItemComponent {
 
   constructor(private dialog: MatDialog) {}
 
+
   selectDriver() {
     this.driverSelected.emit(this.driver);
   }
@@ -34,5 +37,8 @@ export class DriverListItemComponent {
       width: '800px',
       height: '627px',
     });
+  }
+
+  ngOnInit(): void {
   }
 }
