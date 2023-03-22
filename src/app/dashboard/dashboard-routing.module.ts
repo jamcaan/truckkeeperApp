@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DriverDetailsComponent } from './driver-list/driver-details/driver-details.component';
 import { HomeComponent } from './home/home.component';
+import { LoadsListComponent } from './loads-list/loads-list.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: DriverDetailsComponent,
+        component: LoadsListComponent,
       },
     ],
   },

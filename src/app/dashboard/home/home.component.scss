@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.display-left {
+  float: left;
+  width: 400px;
+}
+
+.display-right {
+  float: right;
+  flex-grow: 1;
+  width: 60%;
+  // border: 2px solid red;
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+    width: 100%;
+  }
+
+  .display-right {
+    margin-left: 20px;
+    width: 100%;
+  }
+}
