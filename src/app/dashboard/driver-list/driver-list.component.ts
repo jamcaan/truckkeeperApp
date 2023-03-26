@@ -13,10 +13,8 @@ import { DriverService } from '../services/driver.service';
 export class DriverListComponent implements OnInit {
   constructor(private dialog: MatDialog, public driverService: DriverService) {}
 
-  showModal!: boolean;
-
   isModalVisible = false;
-  @ViewChild('driverModal') driverModal!: TemplateRef<any>;
+  @ViewChild('AddLoadModal') AddLoadModal!: TemplateRef<any>;
 
   driversList$: Observable<HttpResponseObject<Drivers[]>> | undefined;
 
@@ -34,7 +32,7 @@ export class DriverListComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(this.driverModal, {
+    this.dialog.open(this.AddLoadModal, {
       width: '800px',
       height: '600px',
     });
