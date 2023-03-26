@@ -1,0 +1,72 @@
+<!-- <app-expenses-list (onSubmitted)="newExpensesAdded()"></app-expenses-list> -->
+
+<app-modal [headerText]="'Add Expense'">
+  <div cu-m-content class="modal-body">
+    <form [formGroup]="addExpenseForm">
+      <div class="row">
+        <mat-form-field class="form-field-width">
+          <mat-label>Amount</mat-label>
+          <input matInput formControlName="amount" />
+          <mat-error
+            >{{
+              customFormatterService.validateFormWithoutStep(
+                addExpenseForm,
+                "amount"
+              )
+            }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field class="form-field-width">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type">
+            <span *ngFor="let category of expensesCategory">
+              <mat-option
+                *ngFor="let type of category.type"
+                [value]="type.type"
+              >
+                {{ type.type }}
+              </mat-option>
+            </span>
+          </mat-select>
+          <mat-error
+            >{{
+              customFormatterService.validateFormWithoutStep(
+                addExpenseForm,
+                "type"
+              )
+            }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field class="form-field-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+
+          <mat-error>
+            {{
+              customFormatterService.validateFormWithoutStep(
+                addExpenseForm,
+                "description"
+              )
+            }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+
+  <button mat-button cu-modal-footer (click)="onModalClose()">Cancel</button>
+  <button
+    mat-button
+    cu-modal-footer
+    (click)="newExpensesAdded()"
+    [disabled]="addExpenseForm.invalid"
+  >
+    Submit
+  </button>
+</app-modal>

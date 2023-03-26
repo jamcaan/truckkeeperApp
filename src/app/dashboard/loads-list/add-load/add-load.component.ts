@@ -27,7 +27,7 @@ export class AddLoadComponent implements OnInit {
     public customFormatterService: CustomFormatterService
   ) {}
   ngOnInit(): void {
-    (this.addLoadForm = this.fb.group({
+    this.addLoadForm = this.fb.group({
       loadnumber: ['', [Validators.required]],
       date: [new Date(), [Validators.required]],
       from: ['', [Validators.required]],
@@ -43,8 +43,9 @@ export class AddLoadComponent implements OnInit {
           ),
         ],
       ],
-    })),
-      this.getStates();
+    });
+
+    this.getStates();
     this.getCommision();
   }
 

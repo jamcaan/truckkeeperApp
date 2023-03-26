@@ -17,6 +17,8 @@ import { AddNewDriverComponent } from './driver-list/add-new-driver/add-new-driv
 import { ModalComponent } from '../shared/modal/modal.component';
 import { AddLoadComponent } from './loads-list/add-load/add-load.component';
 import { LoadDetailComponent } from './loads-list/load-detail/load-detail.component';
+import { AddExpensesComponent } from './expenses-list/add-expenses/add-expenses.component';
+import { ExpensesListComponent } from './expenses-list/expenses-list.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { LoadDetailComponent } from './loads-list/load-detail/load-detail.compon
     AddNewDriverComponent,
     AddLoadComponent,
     LoadDetailComponent,
+    AddExpensesComponent,
+    ExpensesListComponent,
   ],
   imports: [
     CommonModule,

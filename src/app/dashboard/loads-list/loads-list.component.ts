@@ -5,12 +5,20 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
 import { Loads } from '../models/loads.model';
+import { ExpensesService } from '../services/expenses.service';
 import { LoadsService } from '../services/loads.service';
 
 @Component({
@@ -30,10 +38,14 @@ import { LoadsService } from '../services/loads.service';
 })
 export class LoadsListComponent implements OnInit {
   @Input() driver!: Drivers;
+  selectedLoad!: HttpResponseObject<Loads>;
+  @ViewChild('addExpenseModal') addExpenseModal!: TemplateRef<any>;
 
   constructor(
     public loadsService: LoadsService,
-    private route: ActivatedRoute
+    private expensesService: ExpensesService,
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
   displayedColumns: string[] = [
@@ -49,20 +61,29 @@ export class LoadsListComponent implements OnInit {
   expandedElement: Loads | null | undefined;
 
   loadsList$!: Observable<HttpResponseObject<Loads>[]>;
-  driverIdTest!: string;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const driverId = params.get('id');
-      this.driverIdTest = String(driverId);
       console.log('driverId: ', driverId);
       if (driverId) {
         this.loadsList$ = this.loadsService.getLoadsByDriver(driverId);
       }
     });
   }
-  onLoadSelected(load: Loads) {
-    // this.selectedLoad = load
-    console.log('onloadsSelected:', load);
+
+  openDialog(): void {
+    this.dialog.open(this.addExpenseModal, {
+      width: '800px',
+      height: '460px',
+    });
+  }
+
+  onModalClose(): void {
+    this.dialog.closeAll();
+  }
+  onLoadSelected(load: HttpResponseObject<Loads>) {
+    this.selectedLoad = load;
+    console.log('onloadsSelected:', this.selectedLoad.data?.id);
   }
 }

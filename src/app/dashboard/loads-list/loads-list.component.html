@@ -59,7 +59,11 @@
         Actions
       </mat-header-cell>
       <mat-cell *matCellDef="let element" class="my-cell-actions">
-        <button mat-icon-button class="my-button">
+        <button
+          mat-icon-button
+          class="my-button"
+          (click)="openDialog(); onLoadSelected(element)"
+        >
           <mat-icon>add</mat-icon>
         </button>
         <button mat-icon-button class="my-button">
@@ -127,3 +131,9 @@
     ></mat-row>
   </mat-table>
 </div>
+
+<ng-template #addExpenseModal let modal>
+  <div cu-m-content class="modal-body">
+    <app-add-expenses [loads]="selectedLoad"></app-add-expenses>
+  </div>
+</ng-template>

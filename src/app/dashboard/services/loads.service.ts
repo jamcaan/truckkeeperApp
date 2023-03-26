@@ -29,7 +29,7 @@ export class LoadsService {
         map((data: Loads) => {
           const responseObject: HttpResponseObject<Loads> = {
             success: true,
-            message: 'New Driver added successfuly',
+            message: 'New Load added successfuly',
             data: data,
             status: 200,
           };
@@ -43,7 +43,7 @@ export class LoadsService {
         catchError((error) => {
           const responseObject: HttpResponseObject<Loads> = {
             success: false,
-            message: `Unable to add new driver. Error occurred ${error}`,
+            message: `Unable to add new load. Error occurred ${error}`,
             data: undefined,
             status: error.status,
           };
