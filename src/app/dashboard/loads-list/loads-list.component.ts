@@ -17,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
+import { Expenses } from '../models/expenses.model';
 import { Loads } from '../models/loads.model';
 import { ExpensesService } from '../services/expenses.service';
 import { LoadsService } from '../services/loads.service';

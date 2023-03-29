@@ -19,6 +19,7 @@ import { AddLoadComponent } from './loads-list/add-load/add-load.component';
 import { LoadDetailComponent } from './loads-list/load-detail/load-detail.component';
 import { AddExpensesComponent } from './expenses-list/add-expenses/add-expenses.component';
 import { ExpensesListComponent } from './expenses-list/expenses-list.component';
+import { ExpenseListItemComponent } from './expenses-list/expense-list-item/expense-list-item.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ExpensesListComponent } from './expenses-list/expenses-list.component';
     LoadDetailComponent,
     AddExpensesComponent,
     ExpensesListComponent,
+    ExpenseListItemComponent,
   ],
   imports: [
     CommonModule,

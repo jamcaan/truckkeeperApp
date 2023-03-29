@@ -1,0 +1,51 @@
+/* list items */
+.expandable-row {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.expenses-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+  border-bottom: 1px solid #ccc;
+}
+
+.cell {
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.actions button {
+  font-size: 14px; /* Change font size */
+  padding: 2px; /* Reduce padding */
+  height: auto;
+  padding: 0;
+}
+
+.actions button mat-icon {
+  font-size: 18px;
+}
+
+.expense-amount {
+  font-weight: bold;
+}
+
+.expense-type {
+  color: #666;
+}
+
+.expense-description {
+  color: #999;
+}

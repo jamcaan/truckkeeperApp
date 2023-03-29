@@ -19,23 +19,13 @@ export class ExpensesService {
     return headers;
   }
 
-  // addNewExpense(expense: Expenses): Observable<Expenses> {
-  //   const headers = this.getHeaders();
-  //   return this.http.post<Expenses>(
-  //     `${environment.baseUrl}/expenses`,
-  //     expense,
-  //     { headers: headers }
-  //   );
-  // }
-
-
   addNewExpense(expense: Expenses): Observable<HttpResponseObject<Expenses>> {
     const headers = this.getHeaders();
-    return this.http.post<Expenses>(
-      `${environment.baseUrl}/expenses`,
-      expense,
-      { headers: headers }
-    ).pipe(
+    return this.http
+      .post<Expenses>(`${environment.baseUrl}/expenses`, expense, {
+        headers: headers,
+      })
+      .pipe(
         map((data: Expenses) => {
           const responseObject: HttpResponseObject<Expenses> = {
             success: true,
@@ -62,4 +52,41 @@ export class ExpensesService {
       );
   }
 
+  getExpensesByLoad(
+    loadId?: string
+  ): Observable<HttpResponseObject<Expenses>[]> {
+    this.http
+      .get<Expenses[]>(`${environment.baseUrl}/expenses?loadId=${loadId}`)
+      .subscribe({
+        next: (data: Expenses[]) => {
+          this.expensesList$.next(data);
+        },
+        complete: () => {},
+      });
+    return this.expensesList$.asObservable().pipe(
+      map((data: Expenses[]) => {
+        const responseObject: HttpResponseObject<Expenses>[] = data.map(
+          (d) => ({
+            success: true,
+            message: 'Expenses retrieved successfully',
+            data: d,
+            status: 200,
+          })
+        );
+        return responseObject;
+      }),
+      catchError((error) => {
+        console.log('Error occurred while getting expenses list:', error);
+        const responseObject: HttpResponseObject<Expenses>[] = [
+          {
+            success: false,
+            message: `Unable to retrieve expenses. Error occurred ${error}`,
+            data: undefined,
+            status: error.status,
+          },
+        ];
+        return of(responseObject);
+      })
+    );
+  }
 }
