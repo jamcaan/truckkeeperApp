@@ -16,7 +16,12 @@
       >
         <mat-icon class="coral">add</mat-icon>
       </button>
-      <button mat-icon-button mat-list-icon aria-label="Edit">
+      <button
+        mat-icon-button
+        mat-list-icon
+        aria-label="Edit"
+        (click)="openEditDriverDialog()"
+      >
         <mat-icon class="coral">edit</mat-icon>
       </button>
       <button mat-icon-button mat-list-icon aria-label="Delete">
@@ -33,4 +38,8 @@
   <!-- <div cu-m-content class="modal-body"> -->
   <app-add-load [driver]="driver"></app-add-load>
   <!-- </div> -->
+</ng-template>
+
+<ng-template #editDriverModal let-modal>
+  <app-edit-driver [driver]="driver"></app-edit-driver>
 </ng-template>
