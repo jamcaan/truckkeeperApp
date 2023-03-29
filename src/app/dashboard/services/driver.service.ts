@@ -51,39 +51,6 @@ export class DriverService {
       );
   }
 
-  // editDriver(driver: Drivers, driverId?: string): Observable<HttpResponseObject<Drivers>> {
-  //   const headers = this.getHeaders();
-  //   return this.http
-  //     .patch<Drivers>(`${environment.baseUrl}/drivers/${driverId}`, driver, {
-  //       headers: headers,
-  //     })
-  //     .pipe(
-  //       map((data: Drivers) => {
-  //         const responseObject: HttpResponseObject<Drivers> = {
-  //           success: true,
-  //           message: 'Driver edited successfuly',
-  //           data: data,
-  //           status: 200,
-  //         };
-  //         if (responseObject.data)
-  //           this.driversList$.next([
-  //             ...this.driversList$.getValue(),
-  //             responseObject.data,
-  //           ]);
-  //         return responseObject;
-  //       }),
-  //       catchError((error) => {
-  //         const responseObject: HttpResponseObject<Drivers> = {
-  //           success: false,
-  //           message: `Unable to edit driver. Error occurred ${error}`,
-  //           data: undefined,
-  //           status: error.status,
-  //         };
-  //         return of(responseObject);
-  //       })
-  //     );
-  // }
-
   editDriver(
     driver: Drivers,
     driverId?: string
