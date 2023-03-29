@@ -14,9 +14,10 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
+import { Expenses } from '../models/expenses.model';
 import { Loads } from '../models/loads.model';
 import { ExpensesService } from '../services/expenses.service';
 import { LoadsService } from '../services/loads.service';
@@ -61,6 +62,21 @@ export class LoadsListComponent implements OnInit {
   expandedElement: Loads | null | undefined;
 
   loadsList$!: Observable<HttpResponseObject<Loads>[]>;
+  expensesList$!: Observable<HttpResponseObject<Expenses>[]>;
+
+  expensesByLoad$: Observable<{ [loadId: string]: Expenses[] }> = combineLatest(
+    [this.loadsList$, this.expensesList$]
+  ).pipe(
+    map(([loads, expenses]) => {
+      const expensesByLoad: { [loadId: string]: Expenses[] } = {};
+      for (const load of loads) {
+        expensesByLoad[load.data!.id] = expenses
+          .map((expenseObj) => expenseObj.data!)
+          .filter((expense) => expense.loadId === load.data!.id);
+      }
+      return expensesByLoad;
+    })
+  );
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {

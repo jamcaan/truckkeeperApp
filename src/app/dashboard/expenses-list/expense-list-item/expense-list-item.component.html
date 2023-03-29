@@ -1,0 +1,24 @@
+
+<div class="expandable-row">
+<mat-list class="expenses-list" *ngFor="let expense of expensesList$ | async">
+            <div class="row">
+              <div class="cell">
+                <div class="expense-amount" matLine>{{expense?.data?.amount | currency }}</div>
+              </div>
+              <div class="cell">
+                <div class="expense-type" matLine>{{expense?.data?.type }}</div>
+              </div>
+              <div class="cell">
+                <div class="expense-description" matLine>{{expense?.data?.description }}</div>
+              </div>
+              <div class="cell actions">
+                <button mat-icon-button color="primary">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-list>
+</div>

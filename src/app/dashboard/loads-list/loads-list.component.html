@@ -78,7 +78,8 @@
           (click)="
             expandedElement === element
               ? (expandedElement = null)
-              : (expandedElement = element)
+              : (expandedElement = element);
+            onLoadSelected(element)
           "
         >
           <mat-icon
@@ -97,22 +98,8 @@
         [attr.colspan]="displayedColumns.length"
         class="cell"
       >
-        <!-- <div class="expandable-row" *ngIf="expandedElement === element">
-          Hello
-        </div> -->
-
         <div class="expandable-row" *ngIf="expandedElement === element">
-          <mat-list>
-            <mat-list-item>
-              <div matLine>test</div>
-            </mat-list-item>
-            <mat-list-item>
-              <div matLine>tsfsf</div>
-            </mat-list-item>
-            <mat-list-item>
-              <div matLine>5678</div>
-            </mat-list-item>
-          </mat-list>
+          <app-expenses-list [loads]="selectedLoad"></app-expenses-list>
         </div>
       </mat-cell>
     </ng-container>

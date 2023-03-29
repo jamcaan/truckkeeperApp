@@ -264,6 +264,26 @@
       "commPercentage": 0.1,
       "amount": "9080",
       "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "a0926f29-c56d-4c80-a062-47b2924e9bfa",
+      "loadnumber": "234355",
+      "date": "2023-03-28T16:02:34.643Z",
+      "from": "AR",
+      "destination": "CA",
+      "commPercentage": 0.1,
+      "amount": "3500",
+      "driverId": "f524a17f-156f-47e3-935e-32f564230749"
+    },
+    {
+      "id": "1c6ac09b-5a19-4b0a-8073-714369d7051f",
+      "loadnumber": "5684555",
+      "date": "2023-03-29T16:24:33.688Z",
+      "from": "AK",
+      "destination": "CA",
+      "commPercentage": 0.1,
+      "amount": "5000",
+      "driverId": "142b64ed-2e3f-425b-9a77-597a82f5dbc7"
     }
   ],
   "expenses": [
@@ -306,6 +326,22 @@
       "description": "Cash taken for personal use",
       "loadId": "f6a1fe2b-d87f-4476-836f-d5b6e45cc2d4",
       "loadNo": "5765451"
+    },
+    {
+      "id": "5fb4512b-dcfd-459d-8ea3-abd089b01b47",
+      "amount": "400",
+      "type": "Gas",
+      "description": "",
+      "loadId": "a0926f29-c56d-4c80-a062-47b2924e9bfa",
+      "loadNo": "234355"
+    },
+    {
+      "id": "79dc5b1b-be7c-4c58-a99f-0f304537796c",
+      "amount": "500",
+      "type": "Other",
+      "description": "Personal",
+      "loadId": "1c6ac09b-5a19-4b0a-8073-714369d7051f",
+      "loadNo": "5684555"
     }
   ]
 }
