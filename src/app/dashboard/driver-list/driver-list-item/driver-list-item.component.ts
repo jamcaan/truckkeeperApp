@@ -25,8 +25,9 @@ export class DriverListItemComponent implements OnInit {
 
   @ViewChild('loadModal') loadModal!: TemplateRef<any>;
 
-  constructor(private dialog: MatDialog) {}
+  @ViewChild('editDriverModal') editDriverModal!: TemplateRef<any>;
 
+  constructor(private dialog: MatDialog) {}
 
   selectDriver() {
     this.driverSelected.emit(this.driver);
@@ -39,6 +40,12 @@ export class DriverListItemComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  openEditDriverDialog() {
+    this.dialog.open(this.editDriverModal, {
+      width: '800px',
+      height: '600px',
+    });
   }
+
+  ngOnInit(): void {}
 }
