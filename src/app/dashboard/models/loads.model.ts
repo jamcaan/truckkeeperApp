@@ -1,5 +1,5 @@
 export interface Loads {
-  id: string;
+  id?: string;
   loadnumber: string;
   date: string;
   from: string;

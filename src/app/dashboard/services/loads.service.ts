@@ -52,6 +52,49 @@ export class LoadsService {
       );
   }
 
+  editLoad(
+    load: Loads,
+    loadId?: string
+  ): Observable<HttpResponseObject<Loads>> {
+    const headers = this.getHeaders();
+    return this.http
+      .patch<Loads>(`${environment.baseUrl}/loads/${loadId}`, load, {
+        headers: headers,
+      })
+      .pipe(
+        map((data: Loads) => {
+          const responseObject: HttpResponseObject<Loads> = {
+            success: true,
+            message: 'Load edited successfuly',
+            data: data,
+            status: 200,
+          };
+
+          //updating the driversList$ with the new values
+          if (responseObject.data) {
+            const updatedList = this.loadsList$.getValue().map((d) => {
+              if (d.id === responseObject.data?.id) {
+                return responseObject.data;
+              }
+              return d;
+            });
+            this.loadsList$.next(updatedList as Loads[]);
+          }
+          return responseObject;
+        }),
+        catchError((error) => {
+          const responseObject: HttpResponseObject<Loads> = {
+            success: false,
+            message: `Unable to edit load. Error occurred ${error}`,
+            data: undefined,
+            status: error.status,
+          };
+          return of(responseObject);
+        })
+      );
+  }
+
+  //revise the url for this method could be baseUrl}/loads?driverId=${driverId}
   getLoadsByDriver(driverId: string): Observable<HttpResponseObject<Loads>[]> {
     this.http
       .get<Loads[]>(`${environment.baseUrl}/drivers/${driverId}/loads`)
@@ -60,7 +103,7 @@ export class LoadsService {
           this.loadsList$.next(data);
         },
         error: (err) => {
-          console.log('Error occurred while getting drivers list:', err);
+          console.log('Error occurred while getting loads list:', err);
         },
         complete: () => {},
       });
@@ -68,18 +111,18 @@ export class LoadsService {
       map((data: Loads[]) => {
         const responseObject: HttpResponseObject<Loads>[] = data.map((d) => ({
           success: true,
-          message: 'Driver retrieved successfully',
+          message: 'Loads retrieved successfully',
           data: d,
           status: 200,
         }));
         return responseObject;
       }),
       catchError((error) => {
-        console.log('Error occurred while getting drivers list:', error);
+        console.log('Error occurred while getting loads list:', error);
         const responseObject: HttpResponseObject<Loads>[] = [
           {
             success: false,
-            message: `Unable to retrieve drivers. Error occurred ${error}`,
+            message: `Unable to retrieve loads. Error occurred ${error}`,
             data: undefined,
             status: error.status,
           },
