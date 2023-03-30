@@ -1,0 +1,105 @@
+<app-modal [headerText]="'Edit Load'">
+  <div cu-m-content class="modal-body">
+    <form [formGroup]="editLoadForm">
+      <div class="row">
+        <mat-form-field class="form-field-width">
+          <mat-label>Load Number</mat-label>
+          <input matInput formControlName="loadnumber" />
+          <mat-error>{{
+            customFormatterService.validateFormWithoutStep(
+              editLoadForm,
+              "loadnumber"
+            )
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="form-field-width" appearance="fill">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>{{
+            customFormatterService.validateFormWithoutStep(editLoadForm, "date")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="form-field-width" appearance="fill">
+          <mat-label>From</mat-label>
+          <mat-select formControlName="from">
+            <mat-option *ngFor="let state of states" [value]="state.shortname">
+              {{ state.shortname }}
+            </mat-option>
+          </mat-select>
+          <mat-error>{{
+            customFormatterService.validateFormWithoutStep(editLoadForm, "from")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field class="form-field-width" appearance="fill">
+          <mat-label>Destination</mat-label>
+          <mat-select formControlName="destination">
+            <mat-option *ngFor="let state of states" [value]="state.shortname">
+              {{ state.shortname }}
+            </mat-option>
+          </mat-select>
+          <mat-error>{{
+            customFormatterService.validateFormWithoutStep(
+              editLoadForm,
+              "destination"
+            )
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="form-field-width" appearance="fill">
+          <mat-label>Commission</mat-label>
+          <mat-select formControlName="commPercentage">
+            <mat-option
+              *ngFor="let percent of commision"
+              [value]="percent.value"
+            >
+              {{ percent.percentage }}
+            </mat-option>
+          </mat-select>
+          <mat-error>{{
+            customFormatterService.validateFormWithoutStep(
+              editLoadForm,
+              "commPercentage"
+            )
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="form-field-width" appearance="fill">
+          <mat-label>Amount</mat-label>
+          <input matInput formControlName="amount" />
+          <mat-error>
+            {{
+              customFormatterService.validateFormWithoutStep(
+                editLoadForm,
+                "amount"
+              )
+            }}
+          </mat-error>
+          <mat-hint>.00</mat-hint>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <button mat-button cu-modal-footer (click)="onModalClose()">Cancel</button>
+  <button
+    mat-raised-button
+    cu-modal-footer
+    [disabled]="editLoadForm.invalid"
+    (click)="onSubmit()"
+  >
+    Submit
+  </button>
+</app-modal>

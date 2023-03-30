@@ -66,7 +66,11 @@
         >
           <mat-icon>add</mat-icon>
         </button>
-        <button mat-icon-button class="my-button">
+        <button
+          mat-icon-button
+          class="my-button"
+          (click)="openEditLoadDialog(); onLoadSelected(element)"
+        >
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button class="my-button">
@@ -122,5 +126,11 @@
 <ng-template #addExpenseModal let modal>
   <div cu-m-content class="modal-body">
     <app-add-expenses [loads]="selectedLoad"></app-add-expenses>
+  </div>
+</ng-template>
+
+<ng-template #editLoadModal let-model *ngIf="loadsList$ | async as loadsList">
+  <div cu-m-content>
+    <app-edit-load [loads]="selectedLoad"></app-edit-load>
   </div>
 </ng-template>

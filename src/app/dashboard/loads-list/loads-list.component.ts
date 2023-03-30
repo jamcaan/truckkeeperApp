@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
 import { Expenses } from '../models/expenses.model';
@@ -40,7 +40,9 @@ import { LoadsService } from '../services/loads.service';
 export class LoadsListComponent implements OnInit {
   @Input() driver!: Drivers;
   selectedLoad!: HttpResponseObject<Loads>;
+
   @ViewChild('addExpenseModal') addExpenseModal!: TemplateRef<any>;
+  @ViewChild('editLoadModal') editLoadModal!: TemplateRef<any>;
 
   constructor(
     public loadsService: LoadsService,
@@ -77,6 +79,13 @@ export class LoadsListComponent implements OnInit {
     this.dialog.open(this.addExpenseModal, {
       width: '800px',
       height: '460px',
+    });
+  }
+
+  openEditLoadDialog(): void {
+    this.dialog.open(this.editLoadModal, {
+      width: '800px',
+      height: '628px',
     });
   }
 

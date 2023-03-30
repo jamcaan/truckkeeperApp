@@ -20,6 +20,7 @@ export class AddLoadComponent implements OnInit {
   commision: Commission[] = [];
 
   @Input() driver!: Drivers;
+
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
