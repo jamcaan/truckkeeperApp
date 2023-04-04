@@ -52,6 +52,50 @@ export class ExpensesService {
       );
   }
 
+  editExpense(
+    expense: Expenses,
+    expenseId?: string | undefined
+  ): Observable<HttpResponseObject<Expenses>> {
+    const headers = this.getHeaders();
+    return this.http
+      .patch<Expenses>(
+        `${environment.baseUrl}/expenses/${expenseId}`,
+        expense,
+        {
+          headers: headers,
+        }
+      )
+      .pipe(
+        map((data: Expenses) => {
+          const responseObject: HttpResponseObject<Expenses> = {
+            success: true,
+            message: 'Expense edited successfuly',
+            data: data,
+            status: 200,
+          };
+          if (responseObject.data) {
+            const updatedList = this.expensesList$.getValue().map((d) => {
+              if (d.id === responseObject.data?.id) {
+                return responseObject.data;
+              }
+              return d;
+            });
+            this.expensesList$.next(updatedList as Expenses[]);
+          }
+          return responseObject;
+        }),
+        catchError((error) => {
+          const responseObject: HttpResponseObject<Expenses> = {
+            success: false,
+            message: `Unable to edit expenses. Error occurred ${error}`,
+            data: undefined,
+            status: error.status,
+          };
+          return of(responseObject);
+        })
+      );
+  }
+
   getExpensesByLoad(
     loadId?: string
   ): Observable<HttpResponseObject<Expenses>[]> {

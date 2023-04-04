@@ -1,15 +1,16 @@
-<app-modal [headerText]="'Add Expense'">
+<app-modal [headerText]="'Edit Expense'">
   <div cu-m-content class="modal-body">
-    <form [formGroup]="addExpenseForm">
+    <form [formGroup]="editExpenseForm">
       <div class="row">
         <mat-form-field class="form-field-width">
           <mat-label>Amount</mat-label>
           <mat-icon matSuffix>money</mat-icon>
+
           <input matInput formControlName="amount" />
           <mat-error
             >{{
               customFormatterService.validateFormWithoutStep(
-                addExpenseForm,
+                editExpenseForm,
                 "amount"
               )
             }}
@@ -20,6 +21,7 @@
       <div class="row">
         <mat-form-field class="form-field-width">
           <mat-label>Type</mat-label>
+          <!-- <mat-icon matTextSuffix>data_usage</mat-icon> -->
           <mat-select formControlName="type">
             <span *ngFor="let category of expensesCategory">
               <mat-option
@@ -33,7 +35,7 @@
           <mat-error
             >{{
               customFormatterService.validateFormWithoutStep(
-                addExpenseForm,
+                editExpenseForm,
                 "type"
               )
             }}
@@ -45,13 +47,12 @@
         <mat-form-field class="form-field-width">
           <mat-label>Description</mat-label>
           <mat-icon matSuffix>description</mat-icon>
-
           <textarea matInput formControlName="description"></textarea>
 
           <mat-error>
             {{
               customFormatterService.validateFormWithoutStep(
-                addExpenseForm,
+                editExpenseForm,
                 "description"
               )
             }}
@@ -63,10 +64,10 @@
 
   <button mat-button cu-modal-footer (click)="onModalClose()">Cancel</button>
   <button
+    [disabled]="editExpenseForm.invalid"
     mat-button
     cu-modal-footer
-    (click)="newExpensesAdded()"
-    [disabled]="addExpenseForm.invalid"
+    (click)="onSubmit()"
   >
     Submit
   </button>
