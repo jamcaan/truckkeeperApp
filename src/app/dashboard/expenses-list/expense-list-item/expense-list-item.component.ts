@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Expenses } from '../../models/expenses.model';
@@ -10,8 +17,26 @@ import { Expenses } from '../../models/expenses.model';
 })
 export class ExpenseListItemComponent implements OnInit {
   @Input() expensesList$!: Observable<HttpResponseObject<Expenses>[]>;
+  selectedExpense!: HttpResponseObject<Expenses>;
 
-  constructor() {}
+  @ViewChild('expenseEditModal') expenseEditModal!: TemplateRef<any>;
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  editExpense(expense: HttpResponseObject<Expenses>) {
+    this.selectedExpense = expense;
+  }
+
+  openDialog(): void {
+    this.dialog.open(this.expenseEditModal, {
+      width: '800px',
+      height: '460px',
+    });
+  }
+
+  onModalClose(): void {
+    this.dialog.closeAll();
+  }
 }
