@@ -8,7 +8,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { Drivers } from '../../models/driver.model';
 
 @Component({
@@ -27,6 +26,8 @@ export class DriverListItemComponent implements OnInit {
 
   @ViewChild('editDriverModal') editDriverModal!: TemplateRef<any>;
 
+  @ViewChild('driverDetails') driverDetails!: TemplateRef<any>;
+
   constructor(private dialog: MatDialog) {}
 
   selectDriver() {
@@ -44,6 +45,13 @@ export class DriverListItemComponent implements OnInit {
     this.dialog.open(this.editDriverModal, {
       width: '800px',
       height: '600px',
+    });
+  }
+
+  openDriverDetailsDialog() {
+    this.dialog.open(this.driverDetails, {
+      width: '800px',
+      height: '450px',
     });
   }
 
