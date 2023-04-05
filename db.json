@@ -126,10 +126,10 @@
       "phoneNumber": "(334) 555-5555",
       "email": "sfsdf@gmail.com",
       "address": {
-        "street": "23434",
+        "street": "2343 Smithwood Dr Ln East",
         "state": "OH",
-        "city": "3555",
-        "zipCode": "34444"
+        "city": "Columbus",
+        "zipCode": "43229"
       },
       "active": true,
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
