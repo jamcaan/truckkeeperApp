@@ -22,7 +22,7 @@ export class DriverListComponent implements OnInit {
 
   ngOnInit(): void {
     this.driversList$ = this.driverService.getDriversList();
-    this.driverService.getAllDriversList().subscribe({
+    this.driverService.getActiveDriversList().subscribe({
       next: () => {},
       error: (error) => {
         console.log(error);

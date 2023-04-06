@@ -1,4 +1,15 @@
-<app-modal [headerText]="'Driver Contact Information'">
+<app-modal
+  [headerText]="'Driver Contact Information'"
+  [headerStyle]="{
+    backgroundColor: 'coral',
+    color: 'white',
+    borderRadius: '4px',
+    boxShadow: '0px 0px 6px 1px rgba(0, 0, 0, 0.1)'
+  }"
+  [headerTitleStyle]="{
+    color: 'white'
+  }"
+>
   <div cu-m-content class="content">
     <mat-card>
       <mat-card-header>
@@ -13,23 +24,23 @@
             <div class="card-label">
               <mat-icon class="coral">smartphone</mat-icon>
             </div>
-            <div class="card-value">{{ driver?.phoneNumber }}</div>
+            <div class="card-value">{{ driver.phoneNumber }}</div>
           </div>
           <div class="card-row">
             <div class="card-label">
               <mat-icon class="coral">email</mat-icon>
             </div>
-            <div class="card-value">{{ driver?.email }}</div>
+            <div class="card-value">{{ driver.email }}</div>
           </div>
           <div class="card-row">
             <div class="card-label">
               <mat-icon class="coral">home</mat-icon>
             </div>
             <div class="card-value">
-              {{ driver?.address?.street }}
-              {{ driver?.address?.city }}
-              {{ driver?.address?.state }}
-              {{ driver?.address?.zipCode }}
+              {{ driver.address.street }}
+              {{ driver.address.city }}
+              {{ driver.address.state }}
+              {{ driver.address.zipCode }}
             </div>
           </div>
         </div>

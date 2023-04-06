@@ -8,7 +8,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ModalComponent {
   @Input() headerText!: string;
-  @Input() size: 'sm' | 'md' | 'lg' = 'md'; // TODO: I don't need I will need this check later.
+  @Input() headerStyle!: {};
+  @Input() headerTitleStyle!: {};
+
 
   @Output() modalClosed = new EventEmitter<boolean>();
 

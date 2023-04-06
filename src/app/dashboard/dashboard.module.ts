@@ -23,6 +23,7 @@ import { ExpenseListItemComponent } from './expenses-list/expense-list-item/expe
 import { EditDriverComponent } from './driver-list/edit-driver/edit-driver.component';
 import { EditLoadComponent } from './loads-list/edit-load/edit-load.component';
 import { EditExpenseComponent } from './expenses-list/edit-expense/edit-expense.component';
+import { DeactivateDriverComponent } from './driver-list/deactivate-driver/deactivate-driver.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { EditExpenseComponent } from './expenses-list/edit-expense/edit-expense.
     EditDriverComponent,
     EditLoadComponent,
     EditExpenseComponent,
+    DeactivateDriverComponent,
   ],
   imports: [
     CommonModule,

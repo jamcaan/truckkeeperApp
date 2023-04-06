@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../../models/driver.model';
 
 @Component({
@@ -8,7 +9,7 @@ import { Drivers } from '../../models/driver.model';
   styleUrls: ['./driver-details.component.scss'],
 })
 export class DriverDetailsComponent implements OnInit {
-  @Input() driver!: Drivers | undefined;
+  @Input() driver!: Drivers;
 
   constructor(private dialog: MatDialog) {}
 

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { CustomFormatterService } from 'src/app/shared/customFormatter.service';
 import { getStates } from 'src/app/shared/shared.data';
 import { States } from 'src/app/shared/shared.model';

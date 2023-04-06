@@ -93,16 +93,95 @@ export class DriverService {
       );
   }
 
-  getAllDriversList(): Observable<HttpResponseObject<Drivers>[]> {
-    return this.http.get<Drivers[]>(`${environment.baseUrl}/drivers`).pipe(
+  deactivateDriver(driver: Drivers, driverId?: string): Observable<HttpResponseObject<Drivers>>{
+    const headers = this.getHeaders();
+    return this.http
+      .patch<Drivers>(`${environment.baseUrl}/drivers/${driverId}`, driver, {
+        headers: headers,
+      })
+      .pipe(
+        map((data: Drivers) => {
+          const responseObject: HttpResponseObject<Drivers> = {
+            success: true,
+            message: 'Driver deactivated successfuly',
+            data: data,
+            status: 200,
+          };
+          if (responseObject.data) {
+            const updatedList = this.driversList$.getValue().map((d) => {
+              if (d.id === responseObject.data?.id) {
+                return responseObject.data;
+              }
+              return d;
+            });
+            this.driversList$.next(updatedList as Drivers[]);
+          }
+          return responseObject;
+        }),
+        catchError((error) => {
+          const responseObject: HttpResponseObject<Drivers> = {
+            success: false,
+            message: `Unable to deactivate driver. Error occurred ${error}`,
+            data: undefined,
+            status: error.status,
+          };
+          return of(responseObject);
+        })
+      );
+
+  }
+
+      // return this.http.get<Drivers[]>(`${environment.baseUrl}/drivers`)
+
+  // getActiveDriversList(): Observable<HttpResponseObject<Drivers>[]> {
+  //   return this.http
+  //     .get<Drivers[]>(`${environment.baseUrl}/drivers?active=true`)
+  //   .pipe(
+  //     map((data: Drivers[]) => {
+  //       const responseObject: HttpResponseObject<Drivers>[] = data.map((d) => ({
+  //         success: true,
+  //         message: 'Driver retrieved successfully',
+  //         data: d,
+  //         status: 200,
+  //       }));
+  //       this.driversList$.next(data);
+  //       return responseObject;
+  //     }),
+  //     catchError((error) => {
+  //       console.log('Error occurred while getting drivers list:', error);
+  //       const responseObject: HttpResponseObject<Drivers>[] = [
+  //         {
+  //           success: false,
+  //           message: `Unable to retrieve drivers. Error occurred ${error}`,
+  //           data: undefined,
+  //           status: error.status,
+  //         },
+  //       ];
+  //       return of(responseObject);
+  //     })
+  //   );
+  // }
+
+  getActiveDriversList(): Observable<HttpResponseObject<Drivers>[]> {
+    this.http
+      .get<Drivers[]>(`${environment.baseUrl}/drivers?active=true`)
+      .subscribe({
+        next: (data: Drivers[]) => {
+          this.driversList$.next(data);
+        },
+        error: (err) => {
+          console.log('Error occurred while getting drivers list:', err);
+        },
+        complete: () => {},
+      });
+    return this.driversList$.asObservable().pipe(
       map((data: Drivers[]) => {
         const responseObject: HttpResponseObject<Drivers>[] = data.map((d) => ({
           success: true,
-          message: 'Driver retrieved successfully',
+          message: 'Drivers retrieved successfully',
           data: d,
           status: 200,
         }));
-        this.driversList$.next(data);
         return responseObject;
       }),
       catchError((error) => {

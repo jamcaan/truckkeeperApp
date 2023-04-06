@@ -1,0 +1,11 @@
+<app-modal
+  [headerText]="'Confirmation!'"
+  [headerStyle]="{ borderBottom: '1px solid  rgb(233, 232, 232)' }"
+>
+  <div cu-m-content>
+    Are you sure you want to deactivate the {{ driver.firstName }}?
+  </div>
+
+  <button cu-modal-footer mat-button (click)="deactivateDriver(); onClose()">Yes</button>
+  <button cu-modal-footer mat-button (click)="onClose()">No</button>
+</app-modal>

@@ -28,6 +28,8 @@ export class DriverListItemComponent implements OnInit {
 
   @ViewChild('driverDetails') driverDetails!: TemplateRef<any>;
 
+  @ViewChild('deactivate') deactivate!: TemplateRef<any>
+
   constructor(private dialog: MatDialog) {}
 
   selectDriver() {
@@ -52,6 +54,13 @@ export class DriverListItemComponent implements OnInit {
     this.dialog.open(this.driverDetails, {
       width: '800px',
       height: '450px',
+    });
+  }
+
+  openDriverDeactivateDialog() {
+    this.dialog.open(this.deactivate, {
+      width: '600px',
+      height: '250px',
     });
   }
 
