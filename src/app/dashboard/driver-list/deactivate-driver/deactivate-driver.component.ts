@@ -39,13 +39,6 @@ export class DeactivateDriverComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  openDialog() {
-    this.dialog.open(this.checkLoads, {
-      width: '500px',
-      height: '250px',
-    });
-  }
-
   deactivateDriver() {
     const payload: Partial<Drivers> = {
       active: false,
