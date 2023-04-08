@@ -35,7 +35,7 @@
       <button mat-icon-button mat-list-icon aria-label="Delete">
         <mat-icon class="coral">delete</mat-icon>
       </button>
-      <button mat-icon-button mat-list-icon aria-label="Deactivate">
+      <button mat-icon-button mat-list-icon aria-label="Deactivate" (click)="openDriverDeactivateDialog()">
         <mat-icon class="coral">person</mat-icon>
       </button>
     </div>
@@ -54,4 +54,8 @@
 
 <ng-template #driverDetails let-modal>
   <app-driver-details [driver]="driver"></app-driver-details>
+</ng-template>
+
+<ng-template #deactivate let-modal>
+  <app-deactivate-driver [driver]="driver"></app-deactivate-driver>
 </ng-template>

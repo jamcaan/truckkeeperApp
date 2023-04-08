@@ -182,7 +182,7 @@
         "city": "ASFDAF",
         "zipCode": "45677"
       },
-      "active": true,
+      "active": false,
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
     },
     {
@@ -199,7 +199,7 @@
         "city": "adfd",
         "zipCode": "34344"
       },
-      "active": true,
+      "active": false,
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
     },
     {
@@ -216,7 +216,7 @@
         "city": "adfaf",
         "zipCode": "43245"
       },
-      "active": true,
+      "active": false,
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
     },
     {
@@ -233,7 +233,7 @@
         "city": "fadsfd",
         "zipCode": "67655"
       },
-      "active": true,
+      "active": false,
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
     },
     {

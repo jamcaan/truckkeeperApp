@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
 import { DriverService } from '../services/driver.service';
@@ -22,7 +22,7 @@ export class DriverListComponent implements OnInit {
 
   ngOnInit(): void {
     this.driversList$ = this.driverService.getDriversList();
-    this.driverService.getAllDriversList().subscribe({
+    this.driverService.getActiveDriversList().subscribe({
       next: () => {},
       error: (error) => {
         console.log(error);

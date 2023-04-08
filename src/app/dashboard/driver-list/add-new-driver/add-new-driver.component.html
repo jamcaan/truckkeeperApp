@@ -1,4 +1,15 @@
-<app-modal [headerText]="'Add New Driver'">
+<app-modal
+  [headerText]="'Add New Driver'"
+  [headerStyle]="{
+    backgroundColor: 'coral',
+    color: 'white',
+    borderRadius: '4px',
+    boxShadow: '0px 0px 6px 1px rgba(0, 0, 0, 0.1)'
+  }"
+  [headerTitleStyle]="{
+    color: 'white'
+  }"
+>
   <div cu-m-content class="modal-body">
     <div class="form-fields-container">
       <form [formGroup]="$any(addDriverForm)">
