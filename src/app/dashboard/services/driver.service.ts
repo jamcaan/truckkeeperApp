@@ -93,7 +93,10 @@ export class DriverService {
       );
   }
 
-  deactivateDriver(driver: Drivers, driverId?: string): Observable<HttpResponseObject<Drivers>>{
+  deactivateDriver(
+    driver: Drivers,
+    driverId?: string
+  ): Observable<HttpResponseObject<Drivers>> {
     const headers = this.getHeaders();
     return this.http
       .patch<Drivers>(`${environment.baseUrl}/drivers/${driverId}`, driver, {
@@ -128,60 +131,18 @@ export class DriverService {
           return of(responseObject);
         })
       );
-
   }
 
-      // return this.http.get<Drivers[]>(`${environment.baseUrl}/drivers`)
-
-  // getActiveDriversList(): Observable<HttpResponseObject<Drivers>[]> {
-  //   return this.http
-  //     .get<Drivers[]>(`${environment.baseUrl}/drivers?active=true`)
-  //   .pipe(
-  //     map((data: Drivers[]) => {
-  //       const responseObject: HttpResponseObject<Drivers>[] = data.map((d) => ({
-  //         success: true,
-  //         message: 'Driver retrieved successfully',
-  //         data: d,
-  //         status: 200,
-  //       }));
-  //       this.driversList$.next(data);
-  //       return responseObject;
-  //     }),
-  //     catchError((error) => {
-  //       console.log('Error occurred while getting drivers list:', error);
-  //       const responseObject: HttpResponseObject<Drivers>[] = [
-  //         {
-  //           success: false,
-  //           message: `Unable to retrieve drivers. Error occurred ${error}`,
-  //           data: undefined,
-  //           status: error.status,
-  //         },
-  //       ];
-  //       return of(responseObject);
-  //     })
-  //   );
-  // }
-
   getActiveDriversList(): Observable<HttpResponseObject<Drivers>[]> {
-    this.http
-      .get<Drivers[]>(`${environment.baseUrl}/drivers?active=true`)
-      .subscribe({
-        next: (data: Drivers[]) => {
-          this.driversList$.next(data);
-        },
-        error: (err) => {
-          console.log('Error occurred while getting drivers list:', err);
-        },
-        complete: () => {},
-      });
-    return this.driversList$.asObservable().pipe(
+    return this.http.get<Drivers[]>(`${environment.baseUrl}/drivers`).pipe(
       map((data: Drivers[]) => {
         const responseObject: HttpResponseObject<Drivers>[] = data.map((d) => ({
           success: true,
-          message: 'Drivers retrieved successfully',
+          message: 'Driver retrieved successfully',
           data: d,
           status: 200,
         }));
+        this.driversList$.next(data);
         return responseObject;
       }),
       catchError((error) => {
@@ -205,7 +166,7 @@ export class DriverService {
         return {
           success: true,
           message: 'Drivers retrieved successfully',
-          data: drivers,
+          data: drivers.filter((s) => s.active === true),
           status: 200,
         };
       })

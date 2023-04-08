@@ -137,7 +137,7 @@ export class LoadsService {
       map((drivers: Loads[]) => {
         return {
           success: true,
-          message: 'Drivers retrieved successfully',
+          message: 'Loads retrieved successfully',
           data: drivers,
           status: 200,
         };
