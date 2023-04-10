@@ -1,0 +1,13 @@
+<!-- <div *ngIf="(loads$ | async)?.length; else checkLoads"> -->
+  <app-modal
+    [headerText]="'Warning!'"
+    [headerStyle]="{ borderBottom: '1px solid  rgb(233, 232, 232)' }"
+  >
+    <div cu-m-content class="content-modal">
+      Are you sure you want to reset or delete all the loads?.
+    </div>
+
+    <button cu-modal-footer mat-button (click)="onClose()">No</button>
+    <button cu-modal-footer mat-button (click)="onClose()">Yes</button>
+
+  </app-modal>

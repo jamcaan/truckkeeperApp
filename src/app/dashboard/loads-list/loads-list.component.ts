@@ -43,6 +43,8 @@ export class LoadsListComponent implements OnInit {
 
   @ViewChild('addExpenseModal') addExpenseModal!: TemplateRef<any>;
   @ViewChild('editLoadModal') editLoadModal!: TemplateRef<any>;
+  @ViewChild('completeModal') completeModal!: TemplateRef<any>
+  @ViewChild('resetModal') resetModal!: TemplateRef<any>
 
   constructor(
     public loadsService: LoadsService,
@@ -88,6 +90,23 @@ export class LoadsListComponent implements OnInit {
       height: '628px',
     });
   }
+
+  openCompleteDialog(): void {
+    this.dialog.open(this.completeModal, {
+      width: '100%',
+      height: '600px',
+    });
+  }
+
+  openResetDialog(): void {
+     this.dialog.open(this.resetModal, {
+      width: '600px',
+      height: '250px',
+    });
+  }
+
+
+
 
   onModalClose(): void {
     this.dialog.closeAll();

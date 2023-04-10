@@ -95,6 +95,16 @@
   width: 100%;
 }
 
+.complete-buttons {
+  margin-right: 4px;
+}
+
+.main-complete-buttons-style {
+  display: flex;
+  justify-content: flex-end;
+  margin: 4px;
+}
+
 /* Media Query for Smaller Devices */
 @media (max-width: 768px) {
   .container {

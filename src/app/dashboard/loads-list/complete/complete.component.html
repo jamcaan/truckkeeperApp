@@ -1,0 +1,24 @@
+<app-modal
+  [headerText]="'Complete Load'"
+  [headerStyle]="{
+    backgroundColor: 'coral',
+    color: 'white',
+    borderRadius: '4px',
+    boxShadow: '0px 0px 6px 1px rgba(0, 0, 0, 0.1)'
+  }"
+  [headerTitleStyle]="{
+    color: 'white'
+  }"
+>
+  <div cu-m-content class="modal-body">
+    {{driver | json }}
+</div>
+  <button mat-button cu-modal-footer (click)="onModalClose()">Cancel</button>
+  <button
+    mat-raised-button
+    cu-modal-footer
+    (click)="onSubmit()"
+  >
+    Submit
+  </button>
+</app-modal>
