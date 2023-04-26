@@ -256,126 +256,53 @@
   ],
   "loads": [
     {
-      "id": "f6a1fe2b-d87f-4476-836f-d5b6e45cc2d4",
-      "loadnumber": "5765451",
-      "date": "2023-03-12T16:09:37.109Z",
-      "from": "NM",
-      "destination": "GA",
+      "id": "8b949ecc-8d73-4350-a6f0-5fd105ff5a57",
+      "loadnumber": "2345678",
+      "date": "2023-04-26T19:51:52.328Z",
+      "from": "GA",
+      "destination": "AR",
       "commPercentage": 0.1,
-      "amount": "9080",
+      "amount": "5600",
       "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
     },
     {
-      "id": "a0926f29-c56d-4c80-a062-47b2924e9bfa",
-      "loadnumber": "234355",
-      "date": "2023-03-28T16:02:34.643Z",
-      "from": "AR",
+      "id": "d88b7e24-5460-4843-898d-c668d7896434",
+      "loadnumber": "45678731",
+      "date": "2023-04-26T19:53:34.861Z",
+      "from": "CT",
       "destination": "CA",
       "commPercentage": 0.1,
-      "amount": "3500",
-      "driverId": "f524a17f-156f-47e3-935e-32f564230749"
-    },
-    {
-      "id": "1c6ac09b-5a19-4b0a-8073-714369d7051f",
-      "loadnumber": "5684555",
-      "date": "2023-03-29T16:24:33.688Z",
-      "from": "AK",
-      "destination": "CA",
-      "commPercentage": 0.1,
-      "amount": "5000",
-      "driverId": "142b64ed-2e3f-425b-9a77-597a82f5dbc7"
-    },
-    {
-      "id": "2b8b7d6a-bb05-4dc9-b69d-9ab26c98988f",
-      "loadnumber": "7663334",
-      "date": "2023-03-30T04:13:55.102Z",
-      "from": "DC",
-      "destination": "FL",
-      "commPercentage": 0.09,
-      "amount": "7500",
+      "amount": "7800",
       "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
     }
   ],
   "expenses": [
     {
-      "id": "42981b12-82e2-4804-8032-87743a3855cd",
-      "amount": "500",
+      "id": "5f63188b-71ba-455e-a401-a9d9de1e482b",
+      "amount": "1000",
       "type": "Gas",
-      "description": "Test",
-      "loadId": "f6a1fe2b-d87f-4476-836f-d5b6e45cc2d4",
-      "loadNo": "5765451"
+      "description": "",
+      "loadId": "8b949ecc-8d73-4350-a6f0-5fd105ff5a57",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5",
+      "loadNo": "2345678"
     },
     {
-      "id": "5175c329-e17e-4617-b6e6-1b294ed27d74",
-      "amount": "1000",
+      "id": "3870fe62-262c-4049-9c3d-75698b322ff5",
+      "amount": "1200",
       "type": "Insurance",
       "description": "",
-      "loadId": "f6a1fe2b-d87f-4476-836f-d5b6e45cc2d4",
-      "loadNo": "5765451"
+      "loadId": "d88b7e24-5460-4843-898d-c668d7896434",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5",
+      "loadNo": "45678731"
     },
     {
-      "id": "0f55dbf8-2016-4335-9cfa-6ee08ee41fb5",
-      "amount": "700",
-      "type": "Other",
-      "description": "Personal cash",
-      "loadId": "f6a1fe2b-d87f-4476-836f-d5b6e45cc2d4",
-      "loadNo": "5765451"
-    },
-    {
-      "id": "79e6601f-a5d8-43e1-b4ea-bf1d2e4b9d31",
-      "amount": "800",
-      "type": "Other",
-      "description": "Cash for his electric bill",
-      "loadId": "f6a1fe2b-d87f-4476-836f-d5b6e45cc2d4",
-      "loadNo": "5765451"
-    },
-    {
-      "id": "d24aa54d-1aef-4d92-8a9e-9117c5d186f1",
-      "amount": "200",
-      "type": "Other",
-      "description": "Cash taken for personal use",
-      "loadId": "f6a1fe2b-d87f-4476-836f-d5b6e45cc2d4",
-      "loadNo": "5765451"
-    },
-    {
-      "id": "5fb4512b-dcfd-459d-8ea3-abd089b01b47",
-      "amount": "400",
-      "type": "Gas",
-      "description": "",
-      "loadId": "a0926f29-c56d-4c80-a062-47b2924e9bfa",
-      "loadNo": "234355"
-    },
-    {
-      "id": "79dc5b1b-be7c-4c58-a99f-0f304537796c",
+      "id": "bc38667c-91fa-42a1-aa4c-5f911d143491",
       "amount": "500",
-      "type": "Other",
-      "description": "Personal",
-      "loadId": "1c6ac09b-5a19-4b0a-8073-714369d7051f",
-      "loadNo": "5684555"
-    },
-    {
-      "id": "054cb221-0ef4-40dd-8575-06e077e38a56",
-      "amount": "600",
-      "type": "Gas",
-      "description": "",
-      "loadId": "2b8b7d6a-bb05-4dc9-b69d-9ab26c98988f",
-      "loadNo": "7663334"
-    },
-    {
-      "id": "d9e6b664-2bad-4e21-8ddf-287eec08da8a",
-      "amount": "1000",
-      "type": "Insurance",
-      "description": "",
-      "loadId": "2b8b7d6a-bb05-4dc9-b69d-9ab26c98988f",
-      "loadNo": "7663334"
-    },
-    {
-      "id": "6e99c0e3-e843-4414-88f9-3b420002e462",
-      "amount": "300",
       "type": "Other",
       "description": "Personal Cash",
-      "loadId": "2b8b7d6a-bb05-4dc9-b69d-9ab26c98988f",
-      "loadNo": "7663334"
+      "loadId": "d88b7e24-5460-4843-898d-c668d7896434",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5",
+      "loadNo": "45678731"
     }
   ]
 }

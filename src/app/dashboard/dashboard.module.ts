@@ -24,6 +24,9 @@ import { EditDriverComponent } from './driver-list/edit-driver/edit-driver.compo
 import { EditLoadComponent } from './loads-list/edit-load/edit-load.component';
 import { EditExpenseComponent } from './expenses-list/edit-expense/edit-expense.component';
 import { DeactivateDriverComponent } from './driver-list/deactivate-driver/deactivate-driver.component';
+import { CompleteButtonComponent } from './loads-list/complete-button/complete-button.component';
+import { CompleteComponent } from './loads-list/complete/complete.component';
+import { ResetComponent } from './loads-list/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { DeactivateDriverComponent } from './driver-list/deactivate-driver/deact
     EditLoadComponent,
     EditExpenseComponent,
     DeactivateDriverComponent,
+    CompleteButtonComponent,
+    CompleteComponent,
+    ResetComponent,
   ],
   imports: [
     CommonModule,

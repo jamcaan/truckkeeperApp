@@ -1,0 +1,167 @@
+<app-modal
+  [headerText]="'Complete Load'"
+  [headerStyle]="{
+    backgroundColor: 'coral',
+    color: 'white',
+    borderRadius: '4px',
+    boxShadow: '0px 0px 6px 1px rgba(0, 0, 0, 0.1)'
+  }"
+  [headerTitleStyle]="{
+    color: 'white'
+  }"
+>
+  <div cu-m-content class="modal-body">
+    <div class="left-side">
+      <mat-card class="expenses-card">
+        <mat-card-header>
+          <mat-card-title> Expenses Details </mat-card-title>
+        </mat-card-header>
+        <div *ngIf="expenses$ | async as expenses">
+          <table
+            mat-table
+            [dataSource]="expenses"
+            class="expenses-table mat-elevation-z8"
+          >
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef>Amount</th>
+              <td mat-cell *matCellDef="let item">
+                {{ item.data?.amount | currency }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef>Type</th>
+              <td mat-cell *matCellDef="let item">{{ item.data?.type }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef>Description</th>
+              <td mat-cell *matCellDef="let item">
+                {{ item.data?.description }}
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="['amount', 'type', 'description']"
+            ></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: ['amount', 'type', 'description']"
+            ></tr>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="right-side">
+      <mat-card class="expenses-card">
+        <mat-card-header>
+          <mat-card-title> Loads Details </mat-card-title>
+        </mat-card-header>
+        <table
+          mat-table
+          [dataSource]="loadsAndDrivers$"
+          class="table-container mat-elevation-z8"
+        >
+          <!-- <ng-container matColumnDef="driverName">
+            <th mat-header-cell *matHeaderCellDef>Driver Name</th>
+            <td mat-cell *matCellDef="let item">{{ testDrivers[0] }}</td>
+          </ng-container> -->
+
+          <ng-container matColumnDef="loadnumber">
+            <th mat-header-cell *matHeaderCellDef>Load#</th>
+            <td mat-cell *matCellDef="let item">{{ item.data?.loadnumber }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Pickup Date</th>
+            <td mat-cell *matCellDef="let item">
+              {{ item.data?.date | date }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="from">
+            <th mat-header-cell *matHeaderCellDef>Origin</th>
+            <td mat-cell *matCellDef="let item">{{ item.data?.from }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="destination">
+            <th mat-header-cell *matHeaderCellDef>Destination</th>
+            <td mat-cell *matCellDef="let item">
+              {{ item.data?.destination }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="commPercentage">
+            <th mat-header-cell *matHeaderCellDef>Charges</th>
+            <td mat-cell *matCellDef="let item">
+              {{ item.data?.commPercentage | percent }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef>Amount</th>
+            <td mat-cell *matCellDef="let item">
+              {{ item.data?.amount | currency }}
+            </td>
+          </ng-container>
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="[
+              'loadnumber',
+              'date',
+              'from',
+              'destination',
+              'commPercentage',
+              'amount'
+            ]"
+          ></tr>
+          <tr
+            mat-row
+            *matRowDef="
+              let row;
+              columns: [
+                'loadnumber',
+                'date',
+                'from',
+                'destination',
+                'commPercentage',
+                'amount'
+              ]
+            "
+          ></tr>
+        </table>
+        <div class="footer">
+          <p style="display: flex; margin-left: 250px">Total:</p>
+          <p>{{ total | currency }}</p>
+        </div>
+        <div class="footer">
+          <p style="display: flex; margin-left: 250px">Total Charges:</p>
+          <p>{{ totalCharges | currency }}</p>
+        </div>
+        <div class="footer">
+          <p style="display: flex; margin-left: 250px">Total Expenses:</p>
+          <p>{{ totalExpenses | currency }}</p>
+        </div>
+        <div class="footer">
+          <p style="display: flex; margin-left: 250px">Net:</p>
+          <p>{{ total - (totalCharges + totalExpenses) | currency }}</p>
+        </div>
+
+        <div class="footer">
+          <p style="display: flex; margin-left: 250px">YTD Gross:</p>
+          <p>{{ total | currency }}</p>
+        </div>
+        <div class="footer">
+          <p style="display: flex; margin-left: 250px">YTD Net:</p>
+          <p>{{ total - (totalCharges + totalExpenses) | currency }}</p>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <button mat-button cu-modal-footer (click)="onModalClose()">Cancel</button>
+  <button mat-raised-button cu-modal-footer (click)="onSubmit()">Send</button>
+</app-modal>

@@ -11,7 +11,6 @@ export class ModalComponent {
   @Input() headerStyle!: {};
   @Input() headerTitleStyle!: {};
 
-
   @Output() modalClosed = new EventEmitter<boolean>();
 
   constructor(public dialogRef: MatDialogRef<ModalComponent>) {}

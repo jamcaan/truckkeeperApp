@@ -32,7 +32,7 @@ export class ExpenseListItemComponent implements OnInit {
   openDialog(): void {
     this.dialog.open(this.expenseEditModal, {
       width: '800px',
-      height: '460px',
+      height: '440px',
     });
   }
 

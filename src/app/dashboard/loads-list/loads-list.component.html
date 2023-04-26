@@ -122,7 +122,18 @@
     ></mat-row>
   </mat-table>
 </div>
+<div class="main-complete-buttons-style"
+  *ngIf="(loadsList$ | async)?.length"
+>
+  <div class="complete-buttons">
+    <app-complete-button [title]="'Reset'" (clickButton)="openResetDialog()"></app-complete-button>
+  </div>
 
+  <div class="div">
+    <app-complete-button [title]="'Complete'" (clickButton)="openCompleteDialog()"></app-complete-button>
+  </div>
+</div>
+<!-- <button mat-raised-button (click)="openCompleteDialog()">Test</button> -->
 <ng-template #addExpenseModal let modal>
   <div cu-m-content class="modal-body">
     <app-add-expenses [loads]="selectedLoad"></app-add-expenses>
@@ -132,5 +143,17 @@
 <ng-template #editLoadModal let-model *ngIf="loadsList$ | async as loadsList">
   <div cu-m-content>
     <app-edit-load [loads]="selectedLoad"></app-edit-load>
+  </div>
+</ng-template>
+
+<ng-template #completeModal let modal>
+  <div cu-m-content>
+    <app-complete [loads$]="loadsList$"></app-complete>
+  </div>
+</ng-template>
+
+<ng-template #resetModal let modal>
+  <div cu-m-content>
+    <app-reset></app-reset>
   </div>
 </ng-template>

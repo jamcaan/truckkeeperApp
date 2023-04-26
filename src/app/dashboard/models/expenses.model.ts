@@ -3,7 +3,7 @@ export interface Expenses {
   amount: number;
   type: string;
   description?: string;
-  driverId?: number;
+  driverId?: string;
   loadNo?: string;
   loadId?: string;
 }
