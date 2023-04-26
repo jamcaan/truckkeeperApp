@@ -9,8 +9,6 @@ import { ExpensesService } from '../../services/expenses.service';
 
 export interface LoadsWithDriver extends HttpResponseObject<Loads> {
   driverName: string;
-  expenses: Expenses;
-  test: (number | undefined)[];
 }
 
 @Component({
@@ -28,8 +26,6 @@ export class CompleteComponent implements OnInit, AfterContentInit {
   total!: number;
   totalCharges!: number;
   totalExpenses!: number;
-
-  driverId!: string | undefined;
 
   constructor(
     private driverService: DriverService,
