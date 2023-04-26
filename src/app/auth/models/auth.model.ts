@@ -41,6 +41,6 @@ export interface User {
 export interface HttpResponseObject<T> {
   success: boolean;
   message?: string;
-  data?: T | undefined;
+  data: T | undefined;
   status: number;
 }

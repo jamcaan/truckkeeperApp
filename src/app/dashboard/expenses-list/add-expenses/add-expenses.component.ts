@@ -61,6 +61,7 @@ export class AddExpensesComponent implements OnInit {
       type: this.addExpenseForm.get('type')?.value,
       description: this.addExpenseForm.get('description')?.value,
       loadId: this.loads.data?.id,
+      driverId: this.loads.data?.driverId,
       loadNo: this.loads.data?.loadnumber,
     };
 
@@ -70,12 +71,11 @@ export class AddExpensesComponent implements OnInit {
         this.addExpenseForm.reset();
         this.dialog.closeAll();
       },
-      error: (err)=> {
-        console.log('Un able to add new expense record. ', err)
+      error: (err) => {
+        console.log('Un able to add new expense record. ', err);
       },
-      complete: ()=> {}
+      complete: () => {},
     });
-
   }
 
   getExpensesCategorty() {

@@ -17,7 +17,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
-import { Expenses } from '../models/expenses.model';
 import { Loads } from '../models/loads.model';
 import { ExpensesService } from '../services/expenses.service';
 import { LoadsService } from '../services/loads.service';
@@ -43,8 +42,8 @@ export class LoadsListComponent implements OnInit {
 
   @ViewChild('addExpenseModal') addExpenseModal!: TemplateRef<any>;
   @ViewChild('editLoadModal') editLoadModal!: TemplateRef<any>;
-  @ViewChild('completeModal') completeModal!: TemplateRef<any>
-  @ViewChild('resetModal') resetModal!: TemplateRef<any>
+  @ViewChild('completeModal') completeModal!: TemplateRef<any>;
+  @ViewChild('resetModal') resetModal!: TemplateRef<any>;
 
   constructor(
     public loadsService: LoadsService,
@@ -80,14 +79,14 @@ export class LoadsListComponent implements OnInit {
   openDialog(): void {
     this.dialog.open(this.addExpenseModal, {
       width: '800px',
-      height: '460px',
+      height: '440px',
     });
   }
 
   openEditLoadDialog(): void {
     this.dialog.open(this.editLoadModal, {
       width: '800px',
-      height: '628px',
+      height: '610px',
     });
   }
 
@@ -99,14 +98,11 @@ export class LoadsListComponent implements OnInit {
   }
 
   openResetDialog(): void {
-     this.dialog.open(this.resetModal, {
+    this.dialog.open(this.resetModal, {
       width: '600px',
       height: '250px',
     });
   }
-
-
-
 
   onModalClose(): void {
     this.dialog.closeAll();

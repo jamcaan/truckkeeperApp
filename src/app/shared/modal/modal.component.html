@@ -1,18 +1,27 @@
 <div class="cu-modal">
-  <div [ngStyle]="headerStyle">
-    <h2 [ngStyle]="headerTitleStyle" mat-dialog-title>{{ headerText }}</h2>
-    <!-- <mat-divider></mat-divider> -->
-
-    <button mat-icon-button class="modal-close-button" (click)="onClose()">
+  <div class="cu-modal-header" [ngStyle]="headerStyle">
+    <h2 class="cu-modal-title" [ngStyle]="headerTitleStyle" mat-dialog-title>
+      {{ headerText }}
+    </h2>
+    <button mat-icon-button class="cu-modal-close-button" (click)="onClose()">
       <mat-icon aria-label="Close dialog">close</mat-icon>
     </button>
   </div>
-  <mat-dialog-content class="cu-m-content">
-    <ng-content select="[cu-m-content]"></ng-content>
+
+  <mat-dialog-content class="cu-modal-content">
+    <div class="cu-modal-body">
+      <ng-content select="[cu-m-content]"></ng-content>
+    </div>
   </mat-dialog-content>
 
-  <mat-divider class="divider-style"></mat-divider>
-  <mat-dialog-actions class="cu-footer">
-    <ng-content select="[cu-modal-footer]" class="cu-f-footer"> </ng-content>
-  </mat-dialog-actions>
+  <mat-divider class="cu-modal-divider"></mat-divider>
+
+  <div class="cu-modal-footer">
+    <mat-dialog-actions class="cu-modal-actions">
+      <ng-content
+        select="[cu-modal-footer]"
+        class="cu-modal-footer-content"
+      ></ng-content>
+    </mat-dialog-actions>
+  </div>
 </div>

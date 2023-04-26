@@ -105,31 +105,29 @@
   margin: 4px;
 }
 
-/* Media Query for Smaller Devices */
-@media (max-width: 768px) {
-  .container {
-    margin-top: 10px;
-  }
+.container--menu-open {
+  padding-right: 250px; /* adjust this value based on the width of your side menu */
+}
 
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
   .my-table {
     font-size: 12px;
   }
-
   .my-header-cell,
   .my-cell {
     max-width: 80px;
     padding: 6px;
+    font-size: 12px;
   }
-
+  .my-header-cell {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
   .amount-cell {
     max-width: 80px;
   }
-
   .my-cell-date {
     max-width: 84px;
-  }
-
-  .my-actions-column {
-    width: 120px;
   }
 }
