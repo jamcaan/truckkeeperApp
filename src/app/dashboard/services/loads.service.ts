@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { environment } from 'src/environments/environment';
-import { Loads } from '../models/loads.model';
+import { Loads, PayStubSummary } from '../models/loads.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoadsService {
   public loadsList$ = new BehaviorSubject<Loads[]>([]);
+  private payStub$ = new BehaviorSubject<PayStubSummary[]>([])
 
   constructor(private http: HttpClient) {}
 
@@ -143,5 +144,69 @@ export class LoadsService {
         };
       })
     );
+  }
+
+
+  addLoadSummary(loadSummary: PayStubSummary): Observable<HttpResponseObject<PayStubSummary>>{
+    const headers = this.getHeaders()
+    return this.http
+    .post<PayStubSummary>(`${environment.baseUrl}/payStubSummary`, loadSummary, {
+      headers: headers,
+    }).pipe(
+      map((data: PayStubSummary)=> {
+        const responseObject: HttpResponseObject<PayStubSummary> = {
+          success: true,
+          message: 'New Load Summary added successfully.',
+          data: data,
+          status: 200
+        }
+        if(responseObject.data){
+          this.payStub$.next([...this.payStub$.getValue(), responseObject.data])
+        }
+        return responseObject
+      }),
+      catchError((error)=> {
+        const responseErrorObject: HttpResponseObject<PayStubSummary> = {
+          success: false,
+          message: `Unable to save new Load Summary record. Error occured. ${error}`,
+          data: undefined,
+          status: error.status,
+        }
+        return of(responseErrorObject)
+      })
+    )
+  }
+
+  getPayStubYtdCalc(
+    driverId?: string
+  ): Observable<HttpResponseObject<PayStubSummary>[]> {
+    return this.http
+      .get<PayStubSummary[]>(`${environment.baseUrl}/payStubSummary?driverId=${driverId}`)
+      .pipe(
+        map((data: PayStubSummary[]) => {
+          const responseObject: HttpResponseObject<PayStubSummary>[] = data.map(
+            (d) => ({
+              success: true,
+              message: 'Load Summary retrieved successfully',
+              data: d,
+              status: 200,
+            })
+          );
+          this.payStub$.next(data); // update the BehaviorSubject with the HTTP response
+          return responseObject;
+        }),
+        catchError((error) => {
+          console.log('Error occurred while getting Load Summary list:', error);
+          const responseObject: HttpResponseObject<PayStubSummary>[] = [
+            {
+              success: false,
+              message: `Unable to retrieve Load Summary data. Error occurred ${error}`,
+              data: undefined,
+              status: error.status,
+            },
+          ];
+          return of(responseObject);
+        })
+      );
   }
 }

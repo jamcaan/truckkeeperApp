@@ -152,103 +152,35 @@
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
     },
     {
-      "id": "142b64ed-2e3f-425b-9a77-597a82f5dbc7",
-      "firstName": "Hebel",
-      "lastName": "Hebel",
-      "truckNumber": "adfdwr3r",
-      "licenseNo": "3434444",
-      "phoneNumber": "(233) 434-4444",
-      "email": "afadf@gmai.com",
+      "id": "48062e49-03ba-4e27-becb-7b0c92a7da4f",
+      "firstName": "Diiriye",
+      "lastName": "Afrax",
+      "truckNumber": "455575642",
+      "licenseNo": "LYU87635",
+      "phoneNumber": "(576) 652-2344",
+      "email": "afraxyare@gmail.com",
       "address": {
-        "street": "2344",
+        "street": "4576 White Village Green",
         "state": "OH",
         "city": "Columbus",
-        "zipCode": "34433"
+        "zipCode": "43230"
       },
       "active": true,
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
     },
     {
-      "id": "c23e68ad-5ab7-4859-8df5-1ae2c19670c7",
-      "firstName": "yafad",
-      "lastName": "adf",
-      "truckNumber": "asdf",
-      "licenseNo": "adf",
-      "phoneNumber": "(234) 344-4344",
-      "email": "SF@GMAIL.COM",
+      "id": "4f05c1ef-7b79-44d8-b128-4180a5037f0c",
+      "firstName": "Jerry",
+      "lastName": "Smith",
+      "truckNumber": "4567893",
+      "licenseNo": "KY78634",
+      "phoneNumber": "(324) 555-5555",
+      "email": "jerry@gmail.com",
       "address": {
-        "street": "23434",
-        "state": "OH",
-        "city": "ASFDAF",
-        "zipCode": "45677"
-      },
-      "active": false,
-      "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
-    },
-    {
-      "id": "8a5db3f9-bceb-49d2-a536-6f20dc41a1f3",
-      "firstName": "Final Test",
-      "lastName": "sfsdfdf",
-      "truckNumber": "asdfasdf",
-      "licenseNo": "sdfdsaf",
-      "phoneNumber": "(233) 433-4333",
-      "email": "FFF@Gmail.com",
-      "address": {
-        "street": "2334",
-        "state": "OH",
-        "city": "adfd",
-        "zipCode": "34344"
-      },
-      "active": false,
-      "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
-    },
-    {
-      "id": "fdcf013d-62fb-42af-b49e-7e90692a4698",
-      "firstName": "Yacquub",
-      "lastName": "Farah",
-      "truckNumber": "35454",
-      "licenseNo": "23344",
-      "phoneNumber": "(234) 344-3434",
-      "email": "adfadf@gmail.com",
-      "address": {
-        "street": "34555",
-        "state": "HI",
-        "city": "adfaf",
-        "zipCode": "43245"
-      },
-      "active": false,
-      "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
-    },
-    {
-      "id": "177e9578-c4ab-4d0a-919c-70536c2a5254",
-      "firstName": "Last test",
-      "lastName": "adfdf",
-      "truckNumber": "34355",
-      "licenseNo": "asefasf",
-      "phoneNumber": "(353) 455-6666",
-      "email": "aeg@gmail.com",
-      "address": {
-        "street": "235455",
-        "state": "OH",
-        "city": "fadsfd",
-        "zipCode": "67655"
-      },
-      "active": false,
-      "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
-    },
-    {
-      "id": "0e685981-aa69-451e-beb4-175d8d872301",
-      "firstName": "Baaruud",
-      "lastName": "baaruud",
-      "truckNumber": "345435451",
-      "licenseNo": "3454354",
-      "phoneNumber": "(234) 344-4454",
-      "email": "baaruud@gmail.com",
-      "address": {
-        "street": "3454",
-        "state": "OH",
-        "city": "adf",
-        "zipCode": "45455"
+        "street": "1230 Smith Rd",
+        "state": "NY",
+        "city": "Columbus",
+        "zipCode": "76544"
       },
       "active": true,
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
@@ -256,53 +188,180 @@
   ],
   "loads": [
     {
-      "id": "8b949ecc-8d73-4350-a6f0-5fd105ff5a57",
-      "loadnumber": "2345678",
-      "date": "2023-04-26T19:51:52.328Z",
-      "from": "GA",
-      "destination": "AR",
+      "id": "5d209bc8-4495-4559-aeb3-a5903698e917",
+      "loadnumber": "34657589",
+      "date": "2023-05-17T20:21:36.766Z",
+      "from": "DE",
+      "destination": "AK",
       "commPercentage": 0.1,
-      "amount": "5600",
+      "amount": "6700",
+      "driverId": "f524a17f-156f-47e3-935e-32f564230749"
+    },
+    {
+      "id": "21f0fbcf-4eed-474a-a7f7-cb6540deafe8",
+      "loadnumber": "56787654",
+      "date": "2023-05-21T16:04:22.559Z",
+      "from": "GA",
+      "destination": "ID",
+      "commPercentage": 0.1,
+      "amount": "7790.75",
+      "driverId": "48062e49-03ba-4e27-becb-7b0c92a7da4f"
+    },
+    {
+      "id": "55d3bb66-afee-4947-8b7d-7fa1b8171dde",
+      "loadnumber": "57668",
+      "date": "2023-05-21T17:33:58.436Z",
+      "from": "AR",
+      "destination": "CA",
+      "commPercentage": 0.1,
+      "amount": "6900",
       "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
     },
     {
-      "id": "d88b7e24-5460-4843-898d-c668d7896434",
-      "loadnumber": "45678731",
-      "date": "2023-04-26T19:53:34.861Z",
-      "from": "CT",
-      "destination": "CA",
+      "id": "dde18c42-3ba7-41cd-8e47-cd1d2b0bac30",
+      "loadnumber": "34567888",
+      "date": "2023-05-22T15:27:51.786Z",
+      "from": "DC",
+      "destination": "FL",
       "commPercentage": 0.1,
-      "amount": "7800",
-      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+      "amount": "7100",
+      "driverId": "4f05c1ef-7b79-44d8-b128-4180a5037f0c"
     }
   ],
   "expenses": [
     {
-      "id": "5f63188b-71ba-455e-a401-a9d9de1e482b",
-      "amount": "1000",
+      "id": "793eb6dc-c67f-4a16-94a4-b86e058d4bc9",
+      "amount": "600",
       "type": "Gas",
       "description": "",
-      "loadId": "8b949ecc-8d73-4350-a6f0-5fd105ff5a57",
-      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5",
-      "loadNo": "2345678"
+      "loadId": "5d209bc8-4495-4559-aeb3-a5903698e917",
+      "driverId": "f524a17f-156f-47e3-935e-32f564230749",
+      "loadNo": "34657589"
     },
     {
-      "id": "3870fe62-262c-4049-9c3d-75698b322ff5",
+      "id": "71fef851-4109-4ce8-b2ea-8f5e3d3f7665",
+      "amount": "500",
+      "type": "Other",
+      "description": "Personal",
+      "loadId": "21f0fbcf-4eed-474a-a7f7-cb6540deafe8",
+      "driverId": "48062e49-03ba-4e27-becb-7b0c92a7da4f",
+      "loadNo": "56787654"
+    },
+    {
+      "id": "ed47cefe-43cf-45ab-bac4-a06b50b8ec22",
       "amount": "1200",
       "type": "Insurance",
       "description": "",
-      "loadId": "d88b7e24-5460-4843-898d-c668d7896434",
-      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5",
-      "loadNo": "45678731"
+      "loadId": "21f0fbcf-4eed-474a-a7f7-cb6540deafe8",
+      "driverId": "48062e49-03ba-4e27-becb-7b0c92a7da4f",
+      "loadNo": "56787654"
     },
     {
-      "id": "bc38667c-91fa-42a1-aa4c-5f911d143491",
-      "amount": "500",
-      "type": "Other",
-      "description": "Personal Cash",
-      "loadId": "d88b7e24-5460-4843-898d-c668d7896434",
+      "id": "7d637517-68f8-4d22-9ee7-424d44c6389d",
+      "amount": "700",
+      "type": "Gas",
+      "description": "",
+      "loadId": "55d3bb66-afee-4947-8b7d-7fa1b8171dde",
       "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5",
-      "loadNo": "45678731"
+      "loadNo": "57668"
+    },
+    {
+      "id": "f4aa3812-b0fd-4a66-94bf-da996e72abf7",
+      "amount": "700",
+      "type": "Other",
+      "description": "Personal",
+      "loadId": "dde18c42-3ba7-41cd-8e47-cd1d2b0bac30",
+      "driverId": "4f05c1ef-7b79-44d8-b128-4180a5037f0c",
+      "loadNo": "34567888"
+    }
+  ],
+  "payStubSummary": [
+    {
+      "id": "ca9d73f8-3b82-4cbf-af0e-25b28192f734",
+      "paystubDate": "2023-05-21T17:32:09.906Z",
+      "loadnumbers": [
+        "2345678",
+        "45678731"
+      ],
+      "dates": [
+        "2023-04-26T19:51:52.328Z",
+        "2023-04-26T19:53:34.861Z"
+      ],
+      "from": [
+        "GA",
+        "CT"
+      ],
+      "destination": [
+        "AR",
+        "CA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "5600",
+        "7800"
+      ],
+      "totalAmount": 13400,
+      "totalCommission": 1340,
+      "totalExpense": 2700,
+      "netAmount": 9360,
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "b08c0513-7f24-4a56-be2b-8531b1ba1094",
+      "paystubDate": "2023-05-21T17:35:50.344Z",
+      "loadnumbers": [
+        "57668"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z"
+      ],
+      "from": [
+        "AR"
+      ],
+      "destination": [
+        "CA"
+      ],
+      "commission": [
+        0.1
+      ],
+      "amount": [
+        "6900"
+      ],
+      "totalAmount": 6900,
+      "totalCommission": 690,
+      "totalExpense": 700,
+      "netAmount": 5510,
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "dd1aaf40-a49b-4bda-bd3b-9793fc545792",
+      "paystubDate": "2023-05-22T15:21:53.378Z",
+      "loadnumbers": [
+        "56787654"
+      ],
+      "dates": [
+        "2023-05-21T16:04:22.559Z"
+      ],
+      "from": [
+        "GA"
+      ],
+      "destination": [
+        "ID"
+      ],
+      "commission": [
+        0.1
+      ],
+      "amount": [
+        "7790.75"
+      ],
+      "totalAmount": 7790.75,
+      "totalCommission": 779.075,
+      "totalExpense": 1700,
+      "netAmount": 5311.675,
+      "driverId": "48062e49-03ba-4e27-becb-7b0c92a7da4f"
     }
   ]
 }
