@@ -9,13 +9,13 @@ import { Loads } from '../../models/loads.model';
 })
 export class LoadDetailComponent implements OnInit{
 
-  @Input() driver!: Drivers
+  // @Input() driver!: Drivers
 
-  @Input() load!: Loads
+  // @Input() load!: Loads
 
 
   ngOnInit(): void {
-    console.log('Load Item', this.load)
+    // console.log('Load Item', this.load)
   }
 
 }

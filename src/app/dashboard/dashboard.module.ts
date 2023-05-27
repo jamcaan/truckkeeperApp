@@ -27,6 +27,8 @@ import { DeactivateDriverComponent } from './driver-list/deactivate-driver/deact
 import { CompleteButtonComponent } from './loads-list/complete-button/complete-button.component';
 import { CompleteComponent } from './loads-list/complete/complete.component';
 import { ResetComponent } from './loads-list/reset/reset.component';
+import { PaystubComponent } from './paystub/paystub.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { ResetComponent } from './loads-list/reset/reset.component';
     CompleteButtonComponent,
     CompleteComponent,
     ResetComponent,
+    PaystubComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,

@@ -147,7 +147,7 @@ export class LoadsService {
   }
 
 
-  addLoadSummary(loadSummary: PayStubSummary): Observable<HttpResponseObject<PayStubSummary>>{
+  addPayStub(loadSummary: PayStubSummary): Observable<HttpResponseObject<PayStubSummary>>{
     const headers = this.getHeaders()
     return this.http
     .post<PayStubSummary>(`${environment.baseUrl}/payStubSummary`, loadSummary, {

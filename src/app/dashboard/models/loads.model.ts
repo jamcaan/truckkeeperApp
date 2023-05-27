@@ -9,7 +9,6 @@ export interface Loads {
   driverId?: string;
 }
 
-
 export interface PayStubSummary {
   id: string;
   paystubDate: Date;
@@ -25,5 +24,6 @@ export interface PayStubSummary {
   netAmount: number;
   ytdGross?: number;
   ytdNet?: number;
+  status: string;
   driverId?: string;
 }
