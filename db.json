@@ -226,6 +226,16 @@
       "commPercentage": 0.1,
       "amount": "7100",
       "driverId": "4f05c1ef-7b79-44d8-b128-4180a5037f0c"
+    },
+    {
+      "id": "d1e623ec-4ff9-4df8-8d95-563486540633",
+      "loadnumber": "68766534",
+      "date": "2023-05-24T16:10:06.190Z",
+      "from": "CA",
+      "destination": "IA",
+      "commPercentage": 0.1,
+      "amount": "8900",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
     }
   ],
   "expenses": [
@@ -273,72 +283,49 @@
       "loadId": "dde18c42-3ba7-41cd-8e47-cd1d2b0bac30",
       "driverId": "4f05c1ef-7b79-44d8-b128-4180a5037f0c",
       "loadNo": "34567888"
+    },
+    {
+      "id": "8db6d85b-f6f6-453f-afca-773258f72c92",
+      "amount": "500",
+      "type": "Gas",
+      "description": "",
+      "loadId": "d1e623ec-4ff9-4df8-8d95-563486540633",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5",
+      "loadNo": "68766534"
     }
   ],
   "payStubSummary": [
     {
-      "id": "ca9d73f8-3b82-4cbf-af0e-25b28192f734",
-      "paystubDate": "2023-05-21T17:32:09.906Z",
+      "id": "874842ba-1090-4d4d-9164-e62c432bb1ea",
+      "paystubDate": "2023-05-24T15:19:17.800Z",
       "loadnumbers": [
-        "2345678",
-        "45678731"
+        "34657589"
       ],
       "dates": [
-        "2023-04-26T19:51:52.328Z",
-        "2023-04-26T19:53:34.861Z"
+        "2023-05-17T20:21:36.766Z"
       ],
       "from": [
-        "GA",
-        "CT"
+        "DE"
       ],
       "destination": [
-        "AR",
-        "CA"
-      ],
-      "commission": [
-        0.1,
-        0.1
-      ],
-      "amount": [
-        "5600",
-        "7800"
-      ],
-      "totalAmount": 13400,
-      "totalCommission": 1340,
-      "totalExpense": 2700,
-      "netAmount": 9360,
-      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
-    },
-    {
-      "id": "b08c0513-7f24-4a56-be2b-8531b1ba1094",
-      "paystubDate": "2023-05-21T17:35:50.344Z",
-      "loadnumbers": [
-        "57668"
-      ],
-      "dates": [
-        "2023-05-21T17:33:58.436Z"
-      ],
-      "from": [
-        "AR"
-      ],
-      "destination": [
-        "CA"
+        "AK"
       ],
       "commission": [
         0.1
       ],
       "amount": [
-        "6900"
+        "6700"
       ],
-      "totalAmount": 6900,
-      "totalCommission": 690,
-      "totalExpense": 700,
-      "netAmount": 5510,
-      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+      "totalAmount": 6700,
+      "totalCommission": 670,
+      "totalExpense": 600,
+      "netAmount": 5430,
+      "status": "Paid",
+      "driverId": "f524a17f-156f-47e3-935e-32f564230749"
     },
     {
-      "id": "dd1aaf40-a49b-4bda-bd3b-9793fc545792",
-      "paystubDate": "2023-05-22T15:21:53.378Z",
+      "id": "a5fd87e6-aed5-4159-bfdb-56201fc9dd45",
+      "paystubDate": "2023-05-24T15:19:26.904Z",
       "loadnumbers": [
         "56787654"
       ],
@@ -361,7 +348,70 @@
       "totalCommission": 779.075,
       "totalExpense": 1700,
       "netAmount": 5311.675,
+      "status": "Paid",
       "driverId": "48062e49-03ba-4e27-becb-7b0c92a7da4f"
+    },
+    {
+      "id": "a6e07710-883d-4627-8b1b-8b3b9f2ce46d",
+      "paystubDate": "2023-05-24T15:19:38.104Z",
+      "loadnumbers": [
+        "34567888"
+      ],
+      "dates": [
+        "2023-05-22T15:27:51.786Z"
+      ],
+      "from": [
+        "DC"
+      ],
+      "destination": [
+        "FL"
+      ],
+      "commission": [
+        0.1
+      ],
+      "amount": [
+        "7100"
+      ],
+      "totalAmount": 7100,
+      "totalCommission": 710,
+      "totalExpense": 700,
+      "netAmount": 5690,
+      "status": "Paid",
+      "driverId": "4f05c1ef-7b79-44d8-b128-4180a5037f0c"
+    },
+    {
+      "id": "ff95b8d3-78ed-4da7-a05a-b0a0a3715e6c",
+      "paystubDate": "2023-05-24T16:12:18.056Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
     }
   ]
 }

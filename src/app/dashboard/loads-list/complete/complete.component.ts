@@ -145,11 +145,12 @@ export class CompleteComponent
       totalCommission: this.totalCharges,
       totalExpense: this.totalExpenses,
       netAmount: this.total - (this.totalExpenses + this.totalCharges),
+      status: 'Paid',
       driverId: this.driverId,
     };
 
     this.loadsService
-      .addLoadSummary(payload)
+      .addPayStub(payload)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe({
         next: (res) => {
