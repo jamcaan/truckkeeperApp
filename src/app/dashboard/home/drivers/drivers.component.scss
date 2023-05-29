@@ -1,84 +1,101 @@
-.driver-list-container {
+.container {
+  margin: 15px;
+  // overflow: hidden;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  background-color: #f4f4f4;
+  padding: 5px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.filter-field {
+  margin-top: 4px;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  margin-top: 25px;
-  margin-left: 20px;
-
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  // padding: 5px;
+  margin-bottom: 10px;
 }
 
-.driver-list {
-  width: 450px;
-  margin-right: 20px;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
-}
-::ng-deep .coral {
-  color: coral;
+.search-icon {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #999;
 }
 
-.driver-list-header {
+.search-input {
+  width: 100%;
+}
+
+.row-card {
+  margin-bottom: 5px;
+  // border: 1px solid rgb(244, 242, 242);
+  // border-radius: 8px;
+  // padding: 5px;
+}
+
+.row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  background-color: coral;
-  color: white;
-  height: 60px;
-  border-radius: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.1);
-  button {
-    margin-right: 10px;
-  }
-
-  h4 {
-    margin-left: 10px;
-  }
 }
 
-.driver-list-header h2 {
-  margin: 0;
-  font-size: 24px;
+.column {
+  flex: 1;
+  text-align: center;
 }
 
-// .driver-list-item {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin-bottom: 10px;
-//   padding: 10px;
-//   background-color: #f5f5f5;
-//   border-radius: 5px;
-// }
+.subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  background-color: #fbfbfb;
+}
 
-// .driver-list-item-name {
-//   flex: 1;
-//   margin-right: 10px;
-//   font-size: 16px;
-// }
+.values {
+  margin-top: 0;
+  margin-bottom: 2px;
+  // font-size: 14px;
+  // font-weight: 500;
+}
 
-// .driver-list-item-icons {
-//   display: flex;
-//   align-items: center;
-// }
+.status-color {
+  color: green;
+}
 
-// .driver-list-item-icons button {
-//   margin-right: 10px;
-//   background-color: transparent;
-//   border: none;
-//   cursor: pointer;
-// }
+.pay-stub-color {
+  color: coral;
+}
 
-// .driver-list-item-icons button:hover {
-//   opacity: 0.7;
-// }
+p {
+  margin-bottom: 5px;
+}
 
-// .driver-list-item-icons .edit-icon {
-//   color: #3f51b5;
-// }
+.divider {
+  margin: 10px 0;
+}
 
-// .driver-list-item-icons .delete-icon {
-//   color: #f44336;
-// }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+button {
+  margin: 0 5px;
+}
+
+.status-active {
+  color: green;
+}
+
+.status-inactive {
+  color: red;
+}

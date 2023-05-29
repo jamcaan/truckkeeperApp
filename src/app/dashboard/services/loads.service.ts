@@ -10,7 +10,7 @@ import { Loads, PayStubSummary } from '../models/loads.model';
 })
 export class LoadsService {
   public loadsList$ = new BehaviorSubject<Loads[]>([]);
-  private payStub$ = new BehaviorSubject<PayStubSummary[]>([])
+  private payStub$ = new BehaviorSubject<PayStubSummary[]>([]);
 
   constructor(private http: HttpClient) {}
 
@@ -133,55 +133,101 @@ export class LoadsService {
     );
   }
 
+  getAllLoads(): Observable<HttpResponseObject<Loads>[]> {
+    this.http.get<Loads[]>(`${environment.baseUrl}/loads`).subscribe({
+      next: (data: Loads[]) => {
+        this.loadsList$.next(data);
+      },
+      error: (err) => {
+        console.log('Error occurred while getting loads list:', err);
+      },
+      complete: () => {},
+    });
+    return this.loadsList$.asObservable().pipe(
+      map((data: Loads[]) => {
+        const responseObject: HttpResponseObject<Loads>[] = data.map((d) => ({
+          success: true,
+          message: 'Loads retrieved successfully',
+          data: d,
+          status: 200,
+        }));
+        return responseObject;
+      }),
+      catchError((error) => {
+        console.log('Error occurred while getting loads list:', error);
+        const responseObject: HttpResponseObject<Loads>[] = [
+          {
+            success: false,
+            message: `Unable to retrieve loads. Error occurred ${error}`,
+            data: undefined,
+            status: error.status,
+          },
+        ];
+        return of(responseObject);
+      })
+    );
+  }
+
   getLoadsList(): Observable<HttpResponseObject<Loads[]>> {
     return this.loadsList$.asObservable().pipe(
-      map((drivers: Loads[]) => {
+      map((loads: Loads[]) => {
         return {
           success: true,
           message: 'Loads retrieved successfully',
-          data: drivers,
+          data: loads,
           status: 200,
         };
       })
     );
   }
 
-
-  addPayStub(loadSummary: PayStubSummary): Observable<HttpResponseObject<PayStubSummary>>{
-    const headers = this.getHeaders()
+  addPayStub(
+    loadSummary: PayStubSummary
+  ): Observable<HttpResponseObject<PayStubSummary>> {
+    const headers = this.getHeaders();
     return this.http
-    .post<PayStubSummary>(`${environment.baseUrl}/payStubSummary`, loadSummary, {
-      headers: headers,
-    }).pipe(
-      map((data: PayStubSummary)=> {
-        const responseObject: HttpResponseObject<PayStubSummary> = {
-          success: true,
-          message: 'New Load Summary added successfully.',
-          data: data,
-          status: 200
+      .post<PayStubSummary>(
+        `${environment.baseUrl}/payStubSummary`,
+        loadSummary,
+        {
+          headers: headers,
         }
-        if(responseObject.data){
-          this.payStub$.next([...this.payStub$.getValue(), responseObject.data])
-        }
-        return responseObject
-      }),
-      catchError((error)=> {
-        const responseErrorObject: HttpResponseObject<PayStubSummary> = {
-          success: false,
-          message: `Unable to save new Load Summary record. Error occured. ${error}`,
-          data: undefined,
-          status: error.status,
-        }
-        return of(responseErrorObject)
-      })
-    )
+      )
+      .pipe(
+        map((data: PayStubSummary) => {
+          const responseObject: HttpResponseObject<PayStubSummary> = {
+            success: true,
+            message: 'New Load Summary added successfully.',
+            data: data,
+            status: 200,
+          };
+          if (responseObject.data) {
+            this.payStub$.next([
+              ...this.payStub$.getValue(),
+              responseObject.data,
+            ]);
+          }
+          return responseObject;
+        }),
+        catchError((error) => {
+          const responseErrorObject: HttpResponseObject<PayStubSummary> = {
+            success: false,
+            message: `Unable to save new Load Summary record. Error occured. ${error}`,
+            data: undefined,
+            status: error.status,
+          };
+          return of(responseErrorObject);
+        })
+      );
   }
 
   getPayStubYtdCalc(
     driverId?: string
   ): Observable<HttpResponseObject<PayStubSummary>[]> {
     return this.http
-      .get<PayStubSummary[]>(`${environment.baseUrl}/payStubSummary?driverId=${driverId}`)
+      .get<PayStubSummary[]>(
+        `${environment.baseUrl}/payStubSummary?driverId=${driverId}`
+      )
       .pipe(
         map((data: PayStubSummary[]) => {
           const responseObject: HttpResponseObject<PayStubSummary>[] = data.map(
