@@ -9,7 +9,6 @@ import { MaterialModule } from '../material/material.module';
 import { DriverListComponent } from './driver-list/driver-list.component';
 import { DriverListItemComponent } from './driver-list/driver-list-item/driver-list-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DriverDetailsComponent } from './driver-list/driver-details/driver-details.component';
 import { LoadsListComponent } from './loads-list/loads-list.component';
 import { LoadsItemListComponent } from './loads-list/loads-item-list/loads-item-list.component';
 import { SharedModule } from '../shared/shared.module';
@@ -29,6 +28,7 @@ import { CompleteComponent } from './loads-list/complete/complete.component';
 import { ResetComponent } from './loads-list/reset/reset.component';
 import { PaystubComponent } from './paystub/paystub.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DriversDataComponent } from './driver-list/driver-details/drivers-data.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoadsComponent,
     DriverListComponent,
     DriverListItemComponent,
-    DriverDetailsComponent,
+    DriversDataComponent,
     LoadsListComponent,
     LoadsItemListComponent,
     AddNewDriverComponent,

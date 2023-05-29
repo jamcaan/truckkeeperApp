@@ -184,6 +184,23 @@
       },
       "active": true,
       "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
+    },
+    {
+      "id": "2155c20f-a84d-4c62-837c-dc43324d2b8f",
+      "firstName": "Dankovic",
+      "lastName": "Piera",
+      "truckNumber": "3456787",
+      "licenseNo": "YT65454",
+      "phoneNumber": "(544) 334-4464",
+      "email": "danko@gmail.com",
+      "address": {
+        "street": "3456 Hilliard",
+        "state": "KS",
+        "city": "Kansan City",
+        "zipCode": "65434"
+      },
+      "active": false,
+      "userId": "e3f7fd6e-d9ae-46fd-8282-272f112e08eb"
     }
   ],
   "loads": [
