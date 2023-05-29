@@ -28,7 +28,7 @@ import { CompleteComponent } from './loads-list/complete/complete.component';
 import { ResetComponent } from './loads-list/reset/reset.component';
 import { PaystubComponent } from './paystub/paystub.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DriversDataComponent } from './driver-list/driver-details/drivers-data.component';
+import { DriversDataComponent } from './driver-list/drivers-data/drivers-data.component';
 
 @NgModule({
   declarations: [
