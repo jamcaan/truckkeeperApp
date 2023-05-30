@@ -21,77 +21,94 @@
           <div class="row">
             <div class="column">
               <div class="subtitle">Driver Name</div>
-              <p class="values">{{ row.driverName }}</p>
+              <div class="values center">{{ row?.driverName }}</div>
             </div>
             <div class="column">
               <div class="subtitle">Load #</div>
-              <p class="values" *ngFor="let l of row?.data?.loadnumbers">
+              <div
+                class="values center"
+                *ngFor="let l of row?.data?.loadnumbers"
+              >
                 {{ l }}
-              </p>
+              </div>
             </div>
             <div class="column">
               <div class="subtitle">Pickup Date</div>
-              <p class="values" *ngFor="let d of row?.data?.dates">
+              <div class="values center" *ngFor="let d of row?.data?.dates">
                 {{ d | date }}
-              </p>
+              </div>
             </div>
             <div class="column">
               <div class="subtitle">From</div>
-              <p class="values" *ngFor="let f of row?.data?.from">{{ f }}</p>
+              <div class="values center" *ngFor="let f of row?.data?.from">
+                {{ f }}
+              </div>
             </div>
             <div class="column">
               <div class="subtitle">Destination</div>
-              <p class="values" *ngFor="let d of row?.data?.destination">
+              <div
+                class="values center"
+                *ngFor="let d of row?.data?.destination"
+              >
                 {{ d }}
-              </p>
+              </div>
             </div>
             <div class="column">
               <div class="subtitle">Charges</div>
-              <p class="values" *ngFor="let c of row?.data?.commission">
+              <div
+                class="values center"
+                *ngFor="let c of row?.data?.commission"
+              >
                 {{ c | percent }}
-              </p>
+              </div>
             </div>
             <div class="column">
               <div class="subtitle">Amount</div>
-              <p class="values" *ngFor="let r of row?.data?.amount">
+              <div class="values center" *ngFor="let r of row?.data?.amount">
                 {{ r | currency }}
-              </p>
+              </div>
             </div>
           </div>
 
           <div class="row">
             <div class="column">
               <div class="subtitle"></div>
-              <p class="values"></p>
+              <p class="values center"></p>
             </div>
             <div class="column">
               <div class="subtitle">Grand Total</div>
-              <p class="values">{{ row.data?.totalAmount | currency }}</p>
+              <p class="values center">
+                {{ row.data?.totalAmount | currency }}
+              </p>
             </div>
             <div class="column">
               <div class="subtitle">Total Charges</div>
-              <p class="values">{{ row.data?.totalCommission | currency }}</p>
+              <p class="values center">
+                {{ row.data?.totalCommission | currency }}
+              </p>
             </div>
             <div class="column">
               <div class="subtitle">Total Expenses</div>
 
-              <p class="values">{{ row.data?.totalExpense | currency }}</p>
+              <p class="values center">
+                {{ row.data?.totalExpense | currency }}
+              </p>
             </div>
             <div class="column">
               <div class="subtitle">Net Total</div>
 
-              <p class="values">{{ row.data?.netAmount | currency }}</p>
+              <p class="values center">{{ row.data?.netAmount | currency }}</p>
             </div>
             <div class="column">
               <div class="subtitle">Pay Date</div>
-              <p class="values pay-stub-color">
+              <p class="values pay-stub-color center">
                 {{ row.data?.paystubDate | date }}
               </p>
             </div>
 
             <div class="column">
               <div class="subtitle">Status</div>
-              <p class="values status-color">{{ row.data?.status }}</p>
+              <p class="values status-color center">{{ row.data?.status }}</p>
             </div>
           </div>
         </mat-card-content>
@@ -115,61 +132,3 @@
     </button>
   </div>
 </div>
-
-<!-- <div
-  class="container"
-
->
-  <h5>Pay Stup</h5>
-  <mat-form-field >
-    <mat-label>Filter</mat-label>
-
-    <input
-      matInput
-      type="text"
-      placeholder="Search"
-      [(ngModel)]="searchTerm"
-      (ngModelChange)="filterData()"
-    />
-  </mat-form-field>
-
-  <ng-container *ngIf="paginatedData">
-    <ng-container *ngFor="let row of paginatedData">
-      <mat-card>
-        <mat-card-content>
-          <div class="row">
-            <div class="column">
-              <h5>Driver Name</h5>
-              <p>{{ row.driverName }}</p>
-            </div>
-            <div class="column">
-              <h5>Load#</h5>
-              <p *ngFor="let l of row?.data?.loadnumbers">{{ l }}</p>
-            </div>
-            <div class="column">
-              <h5>From</h5>
-              <p *ngFor="let f of row?.data?.from">{{ f }}</p>
-            </div>
-
-          </div>
-
-
-        </mat-card-content>
-      </mat-card>
-    </ng-container>
-  </ng-container>
-  <mat-divider></mat-divider>
-  <div class="pagination">
-    <button mat-button [disabled]="currentPage === 1" (click)="previousPage()">
-      Previous
-    </button>
-    <span>{{ currentPage }} / {{ totalPages }}</span>
-    <button
-      mat-button
-      [disabled]="currentPage === totalPages"
-      (click)="nextPage()"
-    >
-      Next
-    </button>
-  </div>
-</div> -->

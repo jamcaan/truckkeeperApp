@@ -21,39 +21,39 @@
           <div class="row">
             <div class="column">
               <div class="subtitle">Driver Name</div>
-              <p class="values">{{ row.driverName }}</p>
+              <p class="values center">{{ row.driverName }}</p>
             </div>
             <div class="column">
               <div class="subtitle">Load #</div>
-              <p class="values">
+              <p class="values center">
                 {{ row?.data?.loadnumber }}
               </p>
             </div>
             <div class="column">
               <div class="subtitle">Pickup Date</div>
-              <p class="values">
+              <p class="values center">
                 {{ row?.data?.loadnumber | date }}
               </p>
             </div>
             <div class="column">
               <div class="subtitle">From</div>
-              <p class="values">{{ row?.data?.from }}</p>
+              <p class="values center">{{ row?.data?.from }}</p>
             </div>
             <div class="column">
               <div class="subtitle">Destination</div>
-              <p class="values">
+              <p class="values center">
                 {{ row?.data?.destination }}
               </p>
             </div>
             <div class="column">
               <div class="subtitle">Charges</div>
-              <p class="values">
+              <p class="values center">
                 {{ row?.data?.commPercentage | percent }}
               </p>
             </div>
             <div class="column">
               <div class="subtitle">Amount</div>
-              <p class="values">
+              <p class="values center">
                 {{ row?.data?.amount | currency }}
               </p>
             </div>

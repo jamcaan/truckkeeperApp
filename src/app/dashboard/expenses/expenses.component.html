@@ -1,1 +1,71 @@
-<p>expenses works!</p>
+<div class="container">
+  <div class="title">Expenses List</div>
+  <div class="filter-field">
+    <mat-form-field class="search-input">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Search"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="filterData()"
+      />
+      <mat-icon matSuffix class="search-icon">search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <ng-container *ngIf="paginatedData">
+    <ng-container *ngFor="let row of paginatedData">
+      <mat-card class="row-card">
+        <mat-card-content>
+          <div class="row">
+            <div class="column">
+              <div class="subtitle">Driver Name</div>
+              <div class="values center">{{ row.driverName }}</div>
+            </div>
+            <div class="column">
+              <div class="subtitle">Amount</div>
+              <div class="values center">
+                {{ row?.data?.amount | currency }}
+              </div>
+            </div>
+            <div class="column">
+              <div class="subtitle">Type</div>
+              <div class="values center">
+                {{ row?.data?.type }}
+              </div>
+            </div>
+            <div class="column">
+              <div class="subtitle">Expense Date</div>
+              <div class="values center">
+                {{ row?.data?.expenseDate | date }}
+              </div>
+            </div>
+            <div class="column">
+              <div class="subtitle">Description</div>
+              <div class="values center">
+                {{ row?.data?.description ? row?.data?.description : "-" }}
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </ng-container>
+
+  <mat-divider class="divider"></mat-divider>
+
+  <div class="pagination">
+    <button mat-button [disabled]="currentPage === 1" (click)="previousPage()">
+      Previous
+    </button>
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+    <button
+      mat-button
+      [disabled]="currentPage === totalPages"
+      (click)="nextPage()"
+    >
+      Next
+    </button>
+  </div>
+</div>

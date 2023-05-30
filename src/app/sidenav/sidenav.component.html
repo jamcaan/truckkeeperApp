@@ -5,20 +5,34 @@
       <span>Dashboard</span>
     </a>
 
+    <mat-divider class="divider" style="margin-top: 10px; margin-bottom: 10px;"></mat-divider>
+
     <a mat-button routerLink="paystub" routerLinkActive="active">
-      <mat-icon>money</mat-icon>
+      <mat-icon>attach_money</mat-icon>
       <span>Pay Stub</span>
     </a>
 
+    <mat-divider class="divider" style="margin-top: 10px; margin-bottom: 10px;"></mat-divider>
+
     <a mat-button routerLink="drivers" routerLinkActive="active">
-      <mat-icon>money</mat-icon>
+      <mat-icon>drive_eta</mat-icon>
       <span>Drivers</span>
     </a>
 
+    <mat-divider class="divider" style="margin-top: 10px; margin-bottom: 10px;"></mat-divider>
+
     <a mat-button routerLink="loads" routerLinkActive="active">
-      <mat-icon>money</mat-icon>
+      <mat-icon>directions_bus</mat-icon>
       <span>Loads</span>
     </a>
+
+    <mat-divider class="divider" style="margin-top: 10px; margin-bottom: 10px;"></mat-divider>
+
+    <a mat-button routerLink="expenses" routerLinkActive="active">
+      <mat-icon>credit_card</mat-icon>
+      <span>Expenses</span>
+    </a>
+    <mat-divider class="divider" style="margin-top: 10px; margin-bottom: 50px;"></mat-divider>
   </div>
 
   <div class="div" *ngIf="authService.isAuthenticated | async; else logIn">

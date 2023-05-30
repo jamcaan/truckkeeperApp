@@ -1,32 +1,17 @@
 .container {
-  margin: 15px;
-  // overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
 .title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 5px;
-  background-color: #f4f4f4;
-  padding: 5px;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-.filter-field {
-  margin-top: 4px;
-  display: flex;
-  align-items: center;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  // padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.search-icon {
-  font-size: 20px;
-  margin-right: 10px;
-  color: #999;
+.filter-field {
+  margin-bottom: 10px;
 }
 
 .search-input {
@@ -34,60 +19,46 @@
 }
 
 .row-card {
-  margin-bottom: 5px;
-  // border: 1px solid rgb(244, 242, 242);
-  // border-radius: 8px;
-  // padding: 5px;
+  margin-bottom: 10px;
 }
 
 .row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .column {
   flex: 1;
+  margin-right: 20px;
   text-align: center;
 }
 
 .subtitle {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: bold;
   margin-bottom: 5px;
-  background-color: #fbfbfb;
 }
 
 .values {
-  margin-top: 0;
-  margin-bottom: 2px;
-  // font-size: 14px;
-  // font-weight: 500;
+  font-size: 13px;
 }
 
-.status-color {
-  color: green;
-}
-
-.pay-stub-color {
-  color: coral;
-}
-
-p {
-  margin-bottom: 5px;
+.center {
+  text-align: center;
 }
 
 .divider {
-  margin: 10px 0;
+  margin-bottom: 20px;
 }
 
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
-button {
+.pagination button {
   margin: 0 5px;
 }
