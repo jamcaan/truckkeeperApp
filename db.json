@@ -315,6 +315,16 @@
       "loadId": "d1e623ec-4ff9-4df8-8d95-563486540633",
       "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5",
       "loadNo": "68766534"
+    },
+    {
+      "id": "71064007-4e76-4dcd-9d1b-a45b0cc83d52",
+      "amount": "450",
+      "type": "Other",
+      "description": "Personal Use",
+      "expenseDate": "Tue May 30 2023",
+      "loadId": "5d209bc8-4495-4559-aeb3-a5903698e917",
+      "driverId": "f524a17f-156f-47e3-935e-32f564230749",
+      "loadNo": "34657589"
     }
   ],
   "payStubSummary": [

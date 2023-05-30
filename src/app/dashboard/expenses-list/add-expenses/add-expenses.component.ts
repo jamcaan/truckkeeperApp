@@ -60,6 +60,7 @@ export class AddExpensesComponent implements OnInit {
       amount: this.addExpenseForm.get('amount')?.value,
       type: this.addExpenseForm.get('type')?.value,
       description: this.addExpenseForm.get('description')?.value,
+      expenseDate: new Date().toDateString(),
       loadId: this.loads.data?.id,
       driverId: this.loads.data?.driverId,
       loadNo: this.loads.data?.loadnumber,
