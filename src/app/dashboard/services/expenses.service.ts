@@ -167,6 +167,35 @@ export class ExpensesService {
       );
   }
 
+  getAllExpenses(): Observable<HttpResponseObject<Expenses>[]> {
+    return this.http.get<Expenses[]>(`${environment.baseUrl}/expenses`).pipe(
+      map((data: Expenses[]) => {
+        const responseObject: HttpResponseObject<Expenses>[] = data.map(
+          (d) => ({
+            success: true,
+            message: 'Expenses List retrieved successfully',
+            data: d,
+            status: 200,
+          })
+        );
+        this.expensesList$.next(data); // update the BehaviorSubject with the HTTP response
+        return responseObject;
+      }),
+      catchError((error) => {
+        console.log('Error occurred while getting expenses list:', error);
+        const responseObject: HttpResponseObject<Expenses>[] = [
+          {
+            success: false,
+            message: `Unable to retrieve expenses list. Error occurred ${error}`,
+            data: undefined,
+            status: error.status,
+          },
+        ];
+        return of(responseObject);
+      })
+    );
+  }
+
   getExpensesList(): Observable<HttpResponseObject<Expenses[]>> {
     return this.expensesList$.asObservable().pipe(
       map((expense: Expenses[]) => {

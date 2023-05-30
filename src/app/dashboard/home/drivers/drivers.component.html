@@ -21,44 +21,47 @@
           <div class="row">
             <div class="column">
               <div class="subtitle">Driver Name</div>
-              <p class="values">{{ row.data?.firstName }}</p>
+              <p class="values center">{{ row.data?.firstName }}</p>
             </div>
             <div class="column">
               <div class="subtitle">Last Name</div>
-              <p class="values">
+              <p class="values center">
                 {{ row.data?.lastName }}
               </p>
             </div>
             <div class="column">
               <div class="subtitle">Truck Number</div>
-              <p class="values">
+              <p class="values center">
                 {{ row.data?.truckNumber | date }}
               </p>
             </div>
             <div class="column">
               <div class="subtitle">License No</div>
-              <p class="values">{{ row.data?.licenseNo }}</p>
+              <p class="values center">{{ row.data?.licenseNo }}</p>
             </div>
             <div class="column">
               <div class="subtitle">Phone Number</div>
-              <p class="values">
+              <p class="values center">
                 {{ row.data?.phoneNumber }}
               </p>
             </div>
             <div class="column">
               <div class="subtitle">Email</div>
-              <p class="values">
+              <p class="values center">
                 {{ row.data?.email }}
               </p>
             </div>
             <div class="column">
               <div class="subtitle">Status</div>
-              <p class="values status-active" *ngIf="row.data?.active === true">
+              <p
+                class="values status-active center"
+                *ngIf="row.data?.active === true"
+              >
                 {{ "active" }}
               </p>
 
               <p
-                class="values status-inactive"
+                class="values status-inactive center"
                 *ngIf="row.data?.active === false"
               >
                 {{ "inactive" }}
