@@ -49,7 +49,7 @@ export class AuthService {
         catchError((error) => {
           const responseObject: HttpResponseObject<User> = {
             success: false,
-            message: `Unable to sign in. Error occurred: ${error}`,
+            message: `Unable to sign in. Error occurred: ${error.message}`,
             data: undefined,
             status: error.status
           };

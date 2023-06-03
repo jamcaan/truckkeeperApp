@@ -7,7 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { combineLatest, map, Observable, takeUntil } from 'rxjs';
-import { HttpResponseObject } from 'src/app/auth/models/auth.model';
+import { HttpResponseObject, User } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../../models/driver.model';
 import { Expenses } from '../../models/expenses.model';
 import { Loads, PayStubSummary } from '../../models/loads.model';
@@ -20,6 +20,7 @@ import { LoadsService } from '../../services/loads.service';
 import { v4 } from 'uuid';
 import { Unsub } from 'src/app/unsub.class';
 import { LoadsWithDriver } from '../../models/reporting.model';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-complete',
@@ -30,7 +31,6 @@ export class CompleteComponent
   extends Unsub
   implements OnInit, AfterContentInit
 {
-  @Input() driver!: Drivers;
   @Input() loads$!: Observable<HttpResponseObject<Loads>[]>;
   loadsAndDrivers$!: Observable<LoadsWithDriver[]>;
   expenses$!: Observable<HttpResponseObject<Expenses>[]>;
@@ -41,6 +41,8 @@ export class CompleteComponent
   totalCharges!: number;
   totalExpenses!: number;
 
+  user!: User;
+  drivers!: Drivers[];
   driverName!: string | undefined;
   driverId!: string | undefined;
 
@@ -50,7 +52,8 @@ export class CompleteComponent
   constructor(
     private driverService: DriverService,
     private expensesService: ExpensesService,
-    private loadsService: LoadsService
+    private loadsService: LoadsService,
+    private dialog: MatDialog
   ) {
     super();
   }
@@ -63,13 +66,14 @@ export class CompleteComponent
       map(([loads, drivers]) => {
         console.log('loads:', loads);
         console.log('drivers:', drivers);
-
+        // this.drivers = drivers
         return loads.map((load) => {
           const driver = drivers.find((driver) => {
             driver.id === load.data?.driverId;
             this.driverId = load.data?.driverId;
 
             const dName = drivers.filter((b) => b.id === load.data?.driverId);
+            this.drivers = drivers.filter((b) => b.id === load.data?.driverId);
             this.driverName = dName.map((t) => t.firstName).toString();
           });
 
@@ -86,6 +90,18 @@ export class CompleteComponent
         });
       })
     );
+
+    this.getUserFromSession();
+  }
+
+  getUserFromSession() {
+    this.user = (JSON.parse(sessionStorage.getItem('currentUser') || '') || {})
+      .entities?.[
+      Object.keys(
+        (JSON.parse(sessionStorage.getItem('currentUser') || '') || {})
+          .entities || {}
+      )[0]
+    ] as User;
   }
 
   ngAfterContentInit(): void {
@@ -112,7 +128,9 @@ export class CompleteComponent
     this.getYTDPayStubCalc();
   }
 
-  onModalClose() {}
+  onModalClose() {
+    this.dialog.closeAll();
+  }
 
   onSubmit() {
     let loadnumbers!: string[];
@@ -161,11 +179,13 @@ export class CompleteComponent
     this.downloadPayStupAsPdf();
   }
 
-  private downloadPayStupAsPdf() {
-    // this is temporary; will change it to send as email to the driver.
+  downloadPayStupAsPdf() {
     const content = this.pdfContent.nativeElement;
 
-    html2canvas(content).then((canvas) => {
+    html2canvas(content, {
+      scrollX: 0,
+      scrollY: -window.scrollY, // Capture the entire scrolled content
+    }).then((canvas) => {
       const imgWidth = 210;
       const pageHeight = 295;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;

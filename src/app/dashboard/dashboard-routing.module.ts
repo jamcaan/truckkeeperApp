@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { DriversComponent } from './home/drivers/drivers.component';
+import { CompleteComponent } from './loads-list/complete/complete.component';
 
 import { LoadsListComponent } from './loads-list/loads-list.component';
 import { LoadsComponent } from './loads/loads.component';
@@ -13,14 +14,11 @@ const routes: Routes = [
   { path: 'drivers', component: DriversComponent },
   { path: 'loads', component: LoadsComponent },
   { path: 'expenses', component: ExpensesComponent },
-
+  { path: 'complete', component: CompleteComponent },
   {
     path: '',
     component: DashboardComponent,
-    children: [
-      // {path: '', component: DashboardComponent},
-      { path: ':id', component: LoadsListComponent },
-    ],
+    children: [{ path: ':id', component: LoadsListComponent }],
   },
 ];
 @NgModule({
