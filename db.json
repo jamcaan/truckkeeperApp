@@ -21,83 +21,23 @@
       "active": true
     },
     {
-      "id": "29af4836-5eb0-42f7-8672-2ef0b2fcda28",
+      "id": "7cd874f2-e232-4dc3-b148-7f2abdac2927",
       "role": "User",
-      "createdAt": "2023-03-05T15:21:32.596Z",
-      "updatedAt": "2023-03-05T15:21:32.596Z",
-      "firstName": "John",
-      "lastName": "Smith",
-      "companyName": "smiths",
-      "phoneNumber": "(234) 567-8888",
-      "email": "smiths@gmail.com",
+      "createdAt": "2023-06-01T04:13:08.240Z",
+      "updatedAt": "2023-06-01T04:13:08.240Z",
+      "firstName": "Jaale",
+      "lastName": "Omar",
+      "companyName": "Jaale Logistics",
+      "phoneNumber": "(345) 567-8888",
+      "email": "jaale@gmail.com",
       "address": {
-        "street": "4567",
-        "city": "Columbus",
-        "state": "OH",
-        "zipCode": "43230"
+        "street": "3456 Jaale st",
+        "city": "Minessota",
+        "state": "ME",
+        "zipCode": "43456"
       },
-      "username": "smith",
-      "password": "john1234",
-      "active": true
-    },
-    {
-      "id": "1a221eee-9492-4bd4-8a1c-b073ffa5e9ec",
-      "role": "User",
-      "createdAt": "2023-03-05T16:05:16.480Z",
-      "updatedAt": "2023-03-05T16:05:16.480Z",
-      "firstName": "Geele",
-      "lastName": "Diiriye",
-      "companyName": "geele",
-      "phoneNumber": "(435) 577-7776",
-      "email": "geele@gmail.com",
-      "address": {
-        "street": "5676",
-        "city": "Columbus",
-        "state": "OH",
-        "zipCode": "45678"
-      },
-      "username": "geele",
-      "password": "geele1234",
-      "active": true
-    },
-    {
-      "id": "811a53bd-0a7b-45b4-8879-7f2034dcc03f",
-      "role": "User",
-      "createdAt": "2023-03-05T16:23:39.967Z",
-      "updatedAt": "2023-03-05T16:23:39.967Z",
-      "firstName": "Farah",
-      "lastName": "Diriye",
-      "companyName": "diriye",
-      "phoneNumber": "(345) 678-8888",
-      "email": "diriye@gmail.com",
-      "address": {
-        "street": "4576",
-        "city": "Kansas City",
-        "state": "KS",
-        "zipCode": "78765"
-      },
-      "username": "diriye",
-      "password": "diriye1234",
-      "active": true
-    },
-    {
-      "id": "2e454b1d-eaa6-4256-867a-b260e8686784",
-      "role": "User",
-      "createdAt": "2023-03-05T17:14:04.860Z",
-      "updatedAt": "2023-03-05T17:14:04.860Z",
-      "firstName": "Mr Honda",
-      "lastName": "Honda",
-      "companyName": "honda",
-      "phoneNumber": "(457) 777-7777",
-      "email": "honda@gmail.com",
-      "address": {
-        "street": "6353 New York Ave",
-        "city": "New York",
-        "state": "NY",
-        "zipCode": "65443"
-      },
-      "username": "honda",
-      "password": "honda1234",
+      "username": "jaale",
+      "password": "jaale1234",
       "active": true
     }
   ],
@@ -253,6 +193,16 @@
       "commPercentage": 0.1,
       "amount": "8900",
       "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "25bb1e1a-f565-4022-9384-803390258218",
+      "loadnumber": "76541234",
+      "date": "2023-06-01T05:33:54.228Z",
+      "from": "AR",
+      "destination": "KY",
+      "commPercentage": 0.1,
+      "amount": "6543",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
     }
   ],
   "expenses": [
@@ -325,6 +275,16 @@
       "loadId": "5d209bc8-4495-4559-aeb3-a5903698e917",
       "driverId": "f524a17f-156f-47e3-935e-32f564230749",
       "loadNo": "34657589"
+    },
+    {
+      "id": "b7ad620c-d832-453e-8a45-9c71dbf91a49",
+      "amount": "345",
+      "type": "Gas",
+      "description": "",
+      "expenseDate": "Thu Jun 01 2023",
+      "loadId": "25bb1e1a-f565-4022-9384-803390258218",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5",
+      "loadNo": "76541234"
     }
   ],
   "payStubSummary": [
@@ -415,6 +375,312 @@
     {
       "id": "ff95b8d3-78ed-4da7-a05a-b0a0a3715e6c",
       "paystubDate": "2023-05-24T16:12:18.056Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "c12c371d-a9c0-4209-84bc-65476dbaaeb9",
+      "paystubDate": "2023-05-30T19:37:30.805Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "ab9c0b63-a0f5-4fa6-b2d7-a5293e8f9c9a",
+      "paystubDate": "2023-05-30T19:39:13.385Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "340de19b-97cb-4224-ae85-d5c5be5451ab",
+      "paystubDate": "2023-05-30T19:41:19.444Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "313d6f9f-ffb9-43d7-8ae1-681d8abcca86",
+      "paystubDate": "2023-05-30T20:12:06.194Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "ec19c850-8e50-43b5-b4e4-0bbffbfdbab6",
+      "paystubDate": "2023-05-30T20:13:36.881Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "e70cda75-c12a-42e7-86a7-92e821e5cf27",
+      "paystubDate": "2023-05-30T20:28:38.651Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "7b6e2feb-1e50-4bd3-943a-2f95f19b365e",
+      "paystubDate": "2023-06-01T04:47:24.426Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "8c53e0e7-6fa0-45b5-8c5b-cc3fa55a465c",
+      "paystubDate": "2023-06-01T05:30:40.147Z",
+      "loadnumbers": [
+        "57668",
+        "68766534"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z"
+      ],
+      "from": [
+        "AR",
+        "CA"
+      ],
+      "destination": [
+        "CA",
+        "IA"
+      ],
+      "commission": [
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900"
+      ],
+      "totalAmount": 15800,
+      "totalCommission": 1580,
+      "totalExpense": 1200,
+      "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "5acb2271-afec-48a1-b542-4a57bba235f8",
+      "paystubDate": "2023-06-01T05:31:34.917Z",
       "loadnumbers": [
         "57668",
         "68766534"

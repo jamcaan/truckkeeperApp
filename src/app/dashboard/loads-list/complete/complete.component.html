@@ -13,6 +13,26 @@
   >
     <div cu-m-content class="modal-body">
       <div class="left-side">
+        <!-- <div class="driver-info">
+          <div class="info-title">Driver Info</div>
+          <div *ngFor="let driver of drivers" class="driver-details">
+            <div class="detail-item">
+              <span class="item-label">Driver Name:</span>
+              <span class="item-value"
+                >{{ driver.firstName }} {{ driver.lastName }}</span
+              >
+            </div>
+            <div class="detail-item">
+              <span class="item-label">Phone:</span>
+              <span class="item-value">{{ driver.phoneNumber }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="item-label">Email:</span>
+              <span class="item-value">{{ driver.email }}</span>
+            </div>
+          </div>
+        </div> -->
+
         <mat-card class="expenses-card">
           <mat-card-header>
             <mat-card-title> Expenses Details </mat-card-title>
@@ -56,6 +76,23 @@
       </div>
 
       <div class="right-side">
+        <!-- <div class="driver-info">
+          <div class="info-title">Company Info</div>
+          <div>
+            <div class="detail-item">
+              <span class="item-label">Company Name:</span>
+              <span class="item-value">{{ user.companyName }} </span>
+            </div>
+            <div class="detail-item">
+              <span class="item-label">Phone:</span>
+              <span class="item-value">{{ user.phoneNumber }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="item-label">Email:</span>
+              <span class="item-value">{{ user.email }}</span>
+            </div>
+          </div>
+        </div> -->
         <mat-card class="expenses-card">
           <mat-card-header>
             <mat-card-title> Loads Details </mat-card-title>
@@ -68,8 +105,7 @@
             <ng-container matColumnDef="loadnumber">
               <th mat-header-cell *matHeaderCellDef>Load#</th>
               <td mat-cell *matCellDef="let item">
-
-                {{ item.data?.loadnumber}}
+                {{ item.data?.loadnumber }}
               </td>
             </ng-container>
 
@@ -133,29 +169,95 @@
             ></tr>
           </table>
           <div class="footer">
-            <p style="display: flex; margin-left: 250px">Total:</p>
-            <p>{{ total | currency }}</p>
+            <p
+              style="
+                display: flex;
+                margin-left: 250px;
+                font-size: 14px;
+                font-weight: 600;
+              "
+            >
+              Total:
+            </p>
+            <p style="font-size: 14px; font-weight: 600">
+              {{ total | currency }}
+            </p>
           </div>
           <div class="footer">
-            <p style="display: flex; margin-left: 250px">Total Charges:</p>
-            <p>{{ totalCharges | currency }}</p>
+            <p
+              style="
+                display: flex;
+                margin-left: 250px;
+                font-size: 14px;
+                font-weight: 600;
+              "
+            >
+              Total Charges:
+            </p>
+            <p style="font-size: 14px; font-weight: 600">
+              {{ totalCharges | currency }}
+            </p>
           </div>
           <div class="footer">
-            <p style="display: flex; margin-left: 250px">Total Expenses:</p>
-            <p>{{ totalExpenses | currency }}</p>
+            <p
+              style="
+                display: flex;
+                margin-left: 250px;
+                font-size: 14px;
+                font-weight: 600;
+              "
+            >
+              Total Expenses:
+            </p>
+            <p style="font-size: 14px; font-weight: 600">
+              {{ totalExpenses | currency }}
+            </p>
           </div>
           <div class="footer">
-            <p style="display: flex; margin-left: 250px">Net:</p>
-            <p>{{ total - (totalCharges + totalExpenses) | currency }}</p>
+            <p
+              style="
+                display: flex;
+                margin-left: 250px;
+                font-size: 14px;
+                font-weight: 600;
+              "
+            >
+              Net:
+            </p>
+            <p style="font-size: 14px; font-weight: 600">
+              {{ total - (totalCharges + totalExpenses) | currency }}
+            </p>
           </div>
 
           <div class="footer">
-            <p style="display: flex; margin-left: 250px">YTD Gross:</p>
-            <p>{{ ytdTotal | currency }}</p>
+            <p
+              style="
+                display: flex;
+                margin-left: 250px;
+                font-size: 14px;
+                font-weight: 600;
+              "
+            >
+              YTD Gross:
+            </p>
+            <p style="font-size: 14px; font-weight: 600">
+              {{ ytdTotal | currency }}
+            </p>
           </div>
           <div class="footer">
-            <p style="display: flex; margin-left: 250px">YTD Net:</p>
-            <p>{{ ytdNet | currency }}</p>
+            <p
+              style="
+                display: flex;
+                margin-left: 250px;
+                font-size: 14px;
+                font-weight: 600;
+              "
+            >
+              YTD Net:
+            </p>
+            <p style="font-size: 14px; font-weight: 600">
+              {{ ytdNet | currency }}
+            </p>
           </div>
         </mat-card>
       </div>

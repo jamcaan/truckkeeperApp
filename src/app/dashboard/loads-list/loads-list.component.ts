@@ -13,7 +13,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
@@ -49,7 +49,8 @@ export class LoadsListComponent implements OnInit {
     public loadsService: LoadsService,
     private expensesService: ExpensesService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   displayedColumns: string[] = [
