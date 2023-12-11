@@ -11,7 +11,7 @@ import { UserStore } from '../user-store';
   styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit {
-  userId: string = 'e3f7fd6e-d9ae-46fd-8282-272f112e08eb';
+  userId!: string;
   hide = true;
 
   loginForm?: FormGroup;
@@ -24,6 +24,8 @@ export class SigninComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getCurrentUserFormSession();
+
     this.loginForm = this.fb.group({
       username: [
         '',
@@ -42,6 +44,23 @@ export class SigninComponent implements OnInit {
         ],
       ],
     });
+  }
+
+  getCurrentUserFormSession() {
+    this.userId = JSON.parse(sessionStorage.getItem('currentUser')!)?.ids?.[0];
+    console.log(
+      'User ID: ',
+      this.userId || 'Unable to retrieve user ID from session storage'
+    );
+
+    //The code above is refactored code below. will remove at the production
+    // if ( sessionData && sessionData.ids){
+    //   const userId = sessionData.ids[0]
+    //   this.testId = userId
+    //   console.log('User Id: ', userId)
+    // }else {
+    //   console.error('Unable to retrieve user ID from session storage.')
+    // }
   }
 
   signin() {
