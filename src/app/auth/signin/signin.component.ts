@@ -27,7 +27,7 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.getCurrentUserFormSession();
-    },2000)
+    },3000)
 
     this.loginForm = this.fb.group({
       username: [
