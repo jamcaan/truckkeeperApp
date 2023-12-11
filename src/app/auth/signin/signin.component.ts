@@ -24,8 +24,7 @@ export class SigninComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    this.getCurrentUserFormSession()
+    this.getCurrentUserFormSession();
 
     this.loginForm = this.fb.group({
       username: [
@@ -47,9 +46,12 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  getCurrentUserFormSession(){
+  getCurrentUserFormSession() {
     this.userId = JSON.parse(sessionStorage.getItem('currentUser')!)?.ids?.[0];
-    console.log('User ID: ', this.userId || 'Unable to retrieve user ID from session storage')
+    console.log(
+      'User ID: ',
+      this.userId || 'Unable to retrieve user ID from session storage'
+    );
 
     //The code above is refactored code below. will remove at the production
     // if ( sessionData && sessionData.ids){
