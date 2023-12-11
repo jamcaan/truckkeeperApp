@@ -11,9 +11,8 @@ import { UserStore } from '../user-store';
   styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit {
-  userId: string = 'e3f7fd6e-d9ae-46fd-8282-272f112e08eb';
+  userId!: string;
   hide = true;
-  testId: string = ''
 
   loginForm?: FormGroup;
 
@@ -49,7 +48,7 @@ export class SigninComponent implements OnInit {
   }
 
   getCurrentUserFormSession(){
-    this.testId = JSON.parse(sessionStorage.getItem('currentUser')!)?.ids?.[0];
+    this.userId = JSON.parse(sessionStorage.getItem('currentUser')!)?.ids?.[0];
     console.log('User ID: ', this.userId || 'Unable to retrieve user ID from session storage')
 
     //The code above is refactored code below. will remove at the production
@@ -71,7 +70,7 @@ export class SigninComponent implements OnInit {
       username: this.loginForm.get('username')?.value,
       password: this.loginForm.get('password')?.value,
     };
-    this.authService.signin(credentials, this.testId).subscribe({
+    this.authService.signin(credentials, this.userId).subscribe({
       next: (response) => {
         if (response.success) {
           console.log('Succesfully singed in', response);
