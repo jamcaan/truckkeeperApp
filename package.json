@@ -24,7 +24,6 @@
     "@ngneat/elf-entities": "^4.4.4",
     "@ngneat/elf-persist-state": "^1.1.6",
     "@ngneat/elf-requests": "^1.6.0",
-    "html2canvas": "^1.4.1",
     "json-server": "^0.17.2",
     "jspdf": "^2.5.1",
     "rxjs": "~7.8.0",
