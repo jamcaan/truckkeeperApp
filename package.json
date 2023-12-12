@@ -34,7 +34,6 @@
     "jspdf": "^2.5.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "typescript": "^4.9.5",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
