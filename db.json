@@ -203,6 +203,16 @@
       "commPercentage": 0.1,
       "amount": "6543",
       "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "804765c8-ee7b-47af-98d9-a3df0f8de57f",
+      "loadnumber": "HB009",
+      "date": "2023-12-12T18:47:55.874Z",
+      "from": "OH",
+      "destination": "AR",
+      "commPercentage": 0.1,
+      "amount": "4790.50",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
     }
   ],
   "expenses": [
@@ -709,6 +719,138 @@
       "totalCommission": 1580,
       "totalExpense": 1200,
       "netAmount": 13020,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "2798497d-4ce4-4b60-8a05-2208b64064d6",
+      "paystubDate": "2023-12-12T18:47:16.768Z",
+      "loadnumbers": [
+        "57668",
+        "68766534",
+        "76541234"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z",
+        "2023-06-01T05:33:54.228Z"
+      ],
+      "from": [
+        "AR",
+        "CA",
+        "AR"
+      ],
+      "destination": [
+        "CA",
+        "IA",
+        "KY"
+      ],
+      "commission": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900",
+        "6543"
+      ],
+      "totalAmount": 22343,
+      "totalCommission": 2234.3,
+      "totalExpense": 1545,
+      "netAmount": 18563.7,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "e6df93c1-ddd0-4ac7-8197-cf6e9a33d358",
+      "paystubDate": "2023-12-12T18:49:19.565Z",
+      "loadnumbers": [
+        "57668",
+        "68766534",
+        "76541234",
+        "HB009"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z",
+        "2023-06-01T05:33:54.228Z",
+        "2023-12-12T18:47:55.874Z"
+      ],
+      "from": [
+        "AR",
+        "CA",
+        "AR",
+        "OH"
+      ],
+      "destination": [
+        "CA",
+        "IA",
+        "KY",
+        "AR"
+      ],
+      "commission": [
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900",
+        "6543",
+        "4790.50"
+      ],
+      "totalAmount": 27133.5,
+      "totalCommission": 2713.3500000000004,
+      "totalExpense": 1545,
+      "netAmount": 22875.15,
+      "status": "Paid",
+      "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
+    },
+    {
+      "id": "0e57dfa9-777b-4453-9258-8c9625da0b5a",
+      "paystubDate": "2023-12-12T18:49:59.161Z",
+      "loadnumbers": [
+        "57668",
+        "68766534",
+        "76541234",
+        "HB009"
+      ],
+      "dates": [
+        "2023-05-21T17:33:58.436Z",
+        "2023-05-24T16:10:06.190Z",
+        "2023-06-01T05:33:54.228Z",
+        "2023-12-12T18:47:55.874Z"
+      ],
+      "from": [
+        "AR",
+        "CA",
+        "AR",
+        "OH"
+      ],
+      "destination": [
+        "CA",
+        "IA",
+        "KY",
+        "AR"
+      ],
+      "commission": [
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ],
+      "amount": [
+        "6900",
+        "8900",
+        "6543",
+        "4790.50"
+      ],
+      "totalAmount": 27133.5,
+      "totalCommission": 2713.3500000000004,
+      "totalExpense": 1545,
+      "netAmount": 22875.15,
       "status": "Paid",
       "driverId": "abc993e0-4a83-443b-81a9-1d928ddf96f5"
     }

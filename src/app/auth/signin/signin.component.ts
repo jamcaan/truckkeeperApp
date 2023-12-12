@@ -11,8 +11,7 @@ import { UserStore } from '../user-store';
   styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit {
-  userId!: string
-  //= 'e3f7fd6e-d9ae-46fd-8282-272f112e08eb';
+  userId: string = 'e3f7fd6e-d9ae-46fd-8282-272f112e08eb';
   hide = true;
 
   loginForm?: FormGroup;
@@ -25,10 +24,6 @@ export class SigninComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.getCurrentUserFormSession();
-    },3000)
-
     this.loginForm = this.fb.group({
       username: [
         '',
