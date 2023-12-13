@@ -13,8 +13,8 @@ import { Expenses } from '../../models/expenses.model';
 import { Loads, PayStubSummary } from '../../models/loads.model';
 import { DriverService } from '../../services/driver.service';
 import { ExpensesService } from '../../services/expenses.service';
-import * as jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+// import * as jsPDF from 'jspdf';
+// import html2canvas from 'html2canvas';
 import { formatDate } from '@angular/common';
 import { LoadsService } from '../../services/loads.service';
 import { v4 } from 'uuid';
@@ -176,57 +176,57 @@ export class CompleteComponent
         },
       });
 
-    this.downloadPayStupAsPdf();
+    // this.downloadPayStupAsPdf();
   }
 
-  downloadPayStupAsPdf() {
-    const content = this.pdfContent.nativeElement;
+  // downloadPayStupAsPdf() {
+  //   const content = this.pdfContent.nativeElement;
 
-    html2canvas(content, {
-      scrollX: 0,
-      scrollY: -window.scrollY, // Capture the entire scrolled content
-    }).then((canvas) => {
-      const imgWidth = 210;
-      const pageHeight = 295;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
+  //   html2canvas(content, {
+  //     scrollX: 0,
+  //     scrollY: -window.scrollY, // Capture the entire scrolled content
+  //   }).then((canvas) => {
+  //     const imgWidth = 210;
+  //     const pageHeight = 295;
+  //     const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  //     let heightLeft = imgHeight;
 
-      const doc = new jsPDF.jsPDF('p', 'mm', 'a4');
-      let position = 0;
+  //     const doc = new jsPDF.jsPDF('p', 'mm', 'a4');
+  //     let position = 0;
 
-      doc.addImage(
-        canvas.toDataURL('image/png'),
-        'PNG',
-        0,
-        position,
-        imgWidth,
-        imgHeight
-      );
-      heightLeft -= pageHeight;
+  //     doc.addImage(
+  //       canvas.toDataURL('image/png'),
+  //       'PNG',
+  //       0,
+  //       position,
+  //       imgWidth,
+  //       imgHeight
+  //     );
+  //     heightLeft -= pageHeight;
 
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        doc.addPage();
-        doc.addImage(
-          canvas.toDataURL('image/png'),
-          'PNG',
-          0,
-          position,
-          imgWidth,
-          imgHeight
-        );
-        heightLeft -= pageHeight;
-      }
+  //     while (heightLeft >= 0) {
+  //       position = heightLeft - imgHeight;
+  //       doc.addPage();
+  //       doc.addImage(
+  //         canvas.toDataURL('image/png'),
+  //         'PNG',
+  //         0,
+  //         position,
+  //         imgWidth,
+  //         imgHeight
+  //       );
+  //       heightLeft -= pageHeight;
+  //     }
 
-      doc.save(
-        `${this.driverName}-${formatDate(
-          new Date(),
-          'MM-dd-yyyy',
-          'en-US'
-        )}.pdf`
-      );
-    });
-  }
+  //     doc.save(
+  //       `${this.driverName}-${formatDate(
+  //         new Date(),
+  //         'MM-dd-yyyy',
+  //         'en-US'
+  //       )}.pdf`
+  //     );
+  //   });
+  // }
 
   getYTDPayStubCalc() {
     this.loadsService
