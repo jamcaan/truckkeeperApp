@@ -2,7 +2,7 @@
   "name": "truckkeeper-app",
   "version": "0.2.3",
   "engines": {
-    "node": "16.17.1"
+    "node": "16.17.1",
     "npm": ">=8.0.0 <=8.15.0",
   },
   "scripts": {
