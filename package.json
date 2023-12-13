@@ -2,16 +2,17 @@
   "name": "truckkeeper-app",
   "version": "0.2.3",
   "engines": {
-    "npm" : ">=8.0.0 <=8.15.0",
-    "node" : ">=16 <20.10.0"
+    "npm": "8.15.0",
+    "node": "16.17.1"
   },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "json:server": "json-server --watch db.json"
+    "json:server": "json-server --watch db.json",
+    "start:app:server": "concurrently --kill-others \"npm run json-server\" \"npm run app\""
   },
   "private": true,
   "dependencies": {
@@ -29,11 +30,11 @@
     "@ngneat/elf-persist-state": "^1.1.6",
     "@ngneat/elf-requests": "^1.6.0",
     "@types/http-errors": "^2.0.4",
-    "typescript": "^4.9.5",
+    "express": "^4.18.2",
     "json-server": "^0.17.2",
-    "jspdf": "^2.5.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "typescript": "^4.9.5",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
