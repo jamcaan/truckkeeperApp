@@ -6,11 +6,11 @@
     "node": "16.17.1"
   },
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --configuration production",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "ng": "yarn",
+    "start": "yarn start",
+    "build": "yarn build --configuration production",
+    "watch": "yarn build --watch --configuration development",
+    "test": "yarn test",
     "json:server": "json-server --watch db.json",
     "start:app:server": "concurrently --kill-others \"npm run json-server\" \"npm run app\""
   },
