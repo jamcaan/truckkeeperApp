@@ -1,15 +1,9 @@
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, DELETE, PATCH, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers'
-}
-
 const express = require("express");
 const jsonServer = require("json-server");
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 app.use("/api", jsonServer.router("db.json"));
 app.use(express.static(__dirname + "/dist/truckkeeper-app"));
