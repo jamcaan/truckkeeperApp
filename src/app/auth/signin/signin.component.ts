@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/auth.model';
 import { AuthService } from '../services/auth.service';
-import { UserStore } from '../user-store';
 import { Unsub } from 'src/app/unsub.class';
 import { takeUntil } from 'rxjs';
 
