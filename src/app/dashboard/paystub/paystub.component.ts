@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { combineLatest, Observable, of, switchMap } from 'rxjs';
+import { combineLatest, Observable, of, switchMap, takeUntil } from 'rxjs';
 import { HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { PayStubSummary } from '../models/loads.model';
 import { PayStubWithDriverName } from '../models/reporting.model';
 import { DriverService } from '../services/driver.service';
 import { ReportingService } from '../services/reporting.service';
+import { Unsub } from 'src/app/unsub.class';
 
 @Component({
   selector: 'app-paystub',
   templateUrl: './paystub.component.html',
   styleUrls: ['./paystub.component.scss'],
 })
-export class PaystubComponent implements OnInit {
+export class PaystubComponent extends Unsub implements OnInit {
   payStub!: HttpResponseObject<PayStubSummary>[];
   driverName!: string | undefined;
   payStubWithDriverName$!: Observable<PayStubWithDriverName[]>;
@@ -27,12 +28,16 @@ export class PaystubComponent implements OnInit {
   constructor(
     private driversService: DriverService,
     private reportService: ReportingService
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
     this.payStubWithDriverName$ = combineLatest([
       this.reportService.getPayStub(),
-      this.driversService.getActiveDriversList(),
+      this.driversService
+        .getActiveDriversList()
+        .pipe(takeUntil(this.unsubscribe$)),
     ]).pipe(
       switchMap(([payStub, drivers]) => {
         this.payStubWithDriverName = payStub.map((pay) => {
@@ -54,7 +59,7 @@ export class PaystubComponent implements OnInit {
       })
     );
 
-    this.payStubWithDriverName$.subscribe();
+    this.payStubWithDriverName$.pipe(takeUntil(this.unsubscribe$)).subscribe();
   }
 
   updatePaginatedData() {
