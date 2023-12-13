@@ -51,7 +51,7 @@ export class AuthService {
         const responseObject: HttpResponseObject<User>[] = [
           {
             success: false,
-            message: `Unable to retrieve driver Users. Error occurred ${error}`,
+            message: `Unable to retrieve Users. Error occurred ${error}`,
             data: undefined,
             status: error.status,
           },
