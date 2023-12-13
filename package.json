@@ -6,11 +6,11 @@
     "node": "16.17.1"
   },
   "scripts": {
-    "ng": "yarn",
-    "start": "yarn start",
-    "build": "yarn build --configuration production",
-    "watch": "yarn build --watch --configuration development",
-    "test": "yarn test",
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --configuration production",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
     "json:server": "json-server --watch db.json",
     "start:app:server": "concurrently --kill-others \"npm run json-server\" \"npm run app\""
   },
@@ -35,6 +35,7 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "typescript": "^4.9.5",
+    "yarn": "^1.22.21",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
