@@ -13,8 +13,6 @@ import { Expenses } from '../../models/expenses.model';
 import { Loads, PayStubSummary } from '../../models/loads.model';
 import { DriverService } from '../../services/driver.service';
 import { ExpensesService } from '../../services/expenses.service';
-// import * as jsPDF from 'jspdf';
-// import html2canvas from 'html2canvas';
 import { formatDate } from '@angular/common';
 import { LoadsService } from '../../services/loads.service';
 import { v4 } from 'uuid';
