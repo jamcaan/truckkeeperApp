@@ -1,0 +1,38 @@
+<div>
+  <app-modal
+    [headerText]="'Driver Details'"
+    [headerStyle]="{
+      backgroundColor: 'coral',
+      color: 'white',
+      borderRadius: '4px',
+      boxShadow: '0px 0px 6px 1px rgba(0, 0, 0, 0.1)'
+    }"
+    [headerTitleStyle]="{
+      color: 'white'
+    }"
+  >
+    <div cu-m-content class="driver-info">
+      <div class="label">Driver Name:</div>
+      <div class="driver-name">
+        {{ driver.firstName }} {{ driver.lastName }}
+      </div>
+
+      <div class="label">Phone:</div>
+      <div class="email">{{ driver.phoneNumber }}</div>
+
+      <div class="label">Email:</div>
+      <div class="email">{{ driver.email }}</div>
+
+      <div class="label">License No:</div>
+      <div class="email">{{ driver.licenseNo }}</div>
+
+      <div class="label">Address:</div>
+      <div class="address">
+        {{ driver.address.street }} {{ driver.address.city }}
+        {{ driver.address.zipCode }}
+      </div>
+    </div>
+
+    <button cu-modal-footer mat-button (click)="onClose()">Close</button>
+  </app-modal>
+</div>

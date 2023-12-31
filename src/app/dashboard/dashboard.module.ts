@@ -29,6 +29,7 @@ import { ResetComponent } from './loads-list/reset/reset.component';
 import { PaystubComponent } from './paystub/paystub.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DriversDataComponent } from './driver-list/drivers-data/drivers-data.component';
+import { DriverDetailsComponent } from './driver-list/driver-details/driver-details.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { DriversDataComponent } from './driver-list/drivers-data/drivers-data.co
     ResetComponent,
     PaystubComponent,
     DashboardComponent,
+    DriverDetailsComponent,
   ],
   imports: [
     CommonModule,
