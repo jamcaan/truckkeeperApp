@@ -48,9 +48,7 @@
 </mat-list>
 
 <ng-template #loadModal let-modal>
-  <!-- <div cu-m-content class="modal-body"> -->
   <app-add-load [driver]="driver"></app-add-load>
-  <!-- </div> -->
 </ng-template>
 
 <ng-template #editDriverModal let-modal>
@@ -59,4 +57,8 @@
 
 <ng-template #deactivate let-modal>
   <app-deactivate-driver [driver]="driver"></app-deactivate-driver>
+</ng-template>
+
+<ng-template #driverDetails let-modal>
+  <app-driver-details [driver]="driver"></app-driver-details>
 </ng-template>
