@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../models/auth.model';
+import { HttpLoginResponse } from '../models/auth.model';
 import { AuthService } from '../services/auth.service';
 import { Unsub } from 'src/app/unsub.class';
 import { takeUntil } from 'rxjs';
+import { Credentials } from '../models/auth.model';
 
 @Component({
   selector: 'app-signin',
@@ -22,7 +23,6 @@ export class SigninComponent extends Unsub implements OnInit {
   ) {
     super();
   }
-
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: [
@@ -49,43 +49,30 @@ export class SigninComponent extends Unsub implements OnInit {
       return;
     }
 
-    const username = this.loginForm.get('username')?.value;
-    const password = this.loginForm.get('password')?.value;
+    const credentials: Credentials = {
+      username: this.loginForm.get('username')?.value,
+      password: this.loginForm.get('password')?.value,
+    };
 
     this.authService
-      .getAllUsers()
+      .signin(credentials)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe({
-        next: (users) => {
-          const matchingUser = users.find(
-            (user) =>
-              user.data?.username === username &&
-              user.data?.password === password
-          );
-          if (matchingUser) {
-            const credentials: Partial<User> = {
-              id: matchingUser.data?.id,
-              username: matchingUser.data?.username,
-              password: matchingUser.data?.password,
-            };
-
-            this.authService
-              .signin(credentials, matchingUser.data?.id)
-              .pipe(takeUntil(this.unsubscribe$))
-              .subscribe({
-                next: (response) => {
-                  if (response.success) {
-                    this.route.navigate(['/dashboard']);
-                  } else {
-                    console.log(response.message);
-                  }
-                },
-                error: (error) => {
-                  console.log(error);
-                },
-                complete: () => {},
-              });
+        next: (response: HttpLoginResponse) => {
+          console.log('response: ', response);
+          if (response.success) {
+            this.route.navigate(['/dashboard']);
+          } else {
+            console.log('Sign-in failed:', response.message);
+            // Handle other cases where sign-in might fail
           }
+        },
+        error: (error: any) => {
+          console.error('Error during sign-in:', error);
+          // Handle other types of errors, if needed
+        },
+        complete: () => {
+          // Optional complete callback
         },
       });
   }

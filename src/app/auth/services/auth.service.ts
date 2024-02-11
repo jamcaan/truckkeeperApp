@@ -1,9 +1,21 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  of,
+  throwError,
+} from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { HttpResponseObject, User } from '../models/auth.model';
-import { UserStore } from '../user-store';
+import {
+  Credentials,
+  HttpLoginResponse,
+  HttpResponseObject,
+  User,
+} from '../models/auth.model';
+import { CurrentUser, UserStore } from '../user-store';
 
 @Injectable({
   providedIn: 'root',
@@ -55,45 +67,51 @@ export class AuthService {
     );
   }
 
-  signin(
-    credentials: Partial<User>,
-    id: string | undefined
-  ): Observable<HttpResponseObject<User>> {
+  signin(credentials: Credentials): Observable<HttpLoginResponse> {
     const headers = this.getHeaders();
-
     return this.http
-      .patch<User>(`${environment.baseUrl}/users/${id}`, credentials, {
-        headers,
-      })
+      .post<HttpLoginResponse>(
+        `${environment.baseUrl}/auth/signin`,
+        credentials,
+        { headers: headers }
+      )
       .pipe(
-        map((data: User) => {
-          this.loggedIn$.next(true);
-
-          //Store the user in the sessionStorage and
-          // Remove the sensive data from the list
-          const sanitizeUser: Partial<User> = {
-            id: data.id,
+        map((response) => {
+          const sanitizeUser: Partial<CurrentUser> = {
+            id: response.userId,
           };
-          this.userStore.update([sanitizeUser] as User[]);
-
-          const responseObject: HttpResponseObject<User> = {
-            success: true,
-            message: 'User signed in successfully!',
-            data: data,
-            status: 200,
-          };
-          return responseObject;
+          this.userStore.update([sanitizeUser] as CurrentUser[]);
+          return response;
         }),
         catchError((error) => {
-          const responseObject: HttpResponseObject<User> = {
-            success: false,
-            message: `Unable to sign in. Error occurred: ${error.message}`,
-            data: undefined,
-            status: error.status,
-          };
-          return of(responseObject);
+          if (error.status === 401) {
+            // Unauthorized error (invalid username or password)
+            return throwError(() => ({
+              success: error.success,
+              message: error.message,
+            }));
+          } else if (error.status === 400) {
+            // Bad request error (invalid input data)
+            return throwError(() => ({
+              success: error.success,
+              message: error.message,
+            }));
+          } else {
+            // Other errors
+            return throwError(() => ({
+              success: error.success,
+              message: error.message,
+            }));
+          }
         })
       );
+    // .pipe(
+    //   map((data: User) => {
+    //     // Store user data in sessionStorage
+    //     sessionStorage.setItem('user', JSON.stringify(data));
+    //   }),
+
+    // );
   }
 
   signup(user: User): Observable<HttpResponseObject<User>> {

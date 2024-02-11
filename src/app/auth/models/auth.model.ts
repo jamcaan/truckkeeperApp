@@ -38,9 +38,40 @@ export interface User {
 //   active: boolean;
 // }
 
+export interface Credentials {
+  username: string;
+  password: string;
+}
+
 export interface HttpResponseObject<T> {
   success: boolean;
   message?: string;
   data: T | undefined;
   status: number;
+}
+
+export interface HttpResponse<T> {
+  data: T | undefined;
+}
+
+// export interface HttpLoginResponse {
+//   success: boolean;
+//   message?: string;
+//   data?: {
+//     accessToken: string;
+//     userId: string;
+//     username: string;
+//     userRole: string;
+//     expiresIn: number;
+//   };
+// }
+
+export interface HttpLoginResponse {
+  success: boolean;
+  message?: string;
+  accessToken?: string;
+  userId?: string;
+  username?: string;
+  userRole?: string;
+  expiresIn?: number;
 }
