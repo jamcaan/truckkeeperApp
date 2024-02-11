@@ -9,7 +9,8 @@
 
 export const environment = {
   production: false, // Set to true for production
-  baseUrl: 'http://localhost:3000',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://truckkeeperbackend-ed9348469be9.herokuapp.com',
 };
 
 /*

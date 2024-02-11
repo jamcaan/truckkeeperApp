@@ -11,12 +11,22 @@ import {
   sessionStorageStrategy,
 } from '@ngneat/elf-persist-state';
 
-interface User {
+// interface User {
+//   id: string;
+//   username: string;
+//   password: string;
+// }
+
+export interface CurrentUser {
   id: string;
+  accessToken: string;
+  userId: string;
   username: string;
-  password: string;
+  userRole: string;
+  expiresIn: number;
 }
-const { state, config } = createState(withEntities<User>());
+
+const { state, config } = createState(withEntities<CurrentUser>());
 
 const store = new Store({ name: 'users', state, config });
 
@@ -32,7 +42,7 @@ export const persist = persistState(store, {
 export class UserStore {
   users$ = store.pipe(selectAllEntities());
 
-  update(users: User[]) {
+  update(users: CurrentUser[]) {
     store.update(setEntities(users));
   }
 }
