@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpLoginResponse } from '../models/auth.model';
@@ -12,7 +12,7 @@ import { Credentials } from '../models/auth.model';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
 })
-export class SigninComponent extends Unsub implements OnInit {
+export class SigninComponent extends Unsub implements OnInit, OnChanges {
   hide = true;
   loginForm?: FormGroup;
 
@@ -23,6 +23,8 @@ export class SigninComponent extends Unsub implements OnInit {
   ) {
     super();
   }
+
+  ngOnChanges() {}
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: [

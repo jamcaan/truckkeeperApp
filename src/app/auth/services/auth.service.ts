@@ -23,10 +23,18 @@ import { CurrentUser, UserStore } from '../user-store';
 export class AuthService {
   private readonly loggedIn$ = new BehaviorSubject<boolean>(false);
   private readonly usersList$ = new BehaviorSubject<User[]>([]);
+  private readonly currentUserSubject = new BehaviorSubject<any>(null);
+  currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(private http: HttpClient, private userStore: UserStore) {}
 
   get isAuthenticated() {
+    const currentUserString = sessionStorage.getItem('currentUser');
+    const currentUser = currentUserString
+      ? JSON.parse(currentUserString)
+      : null;
+    // Set the currentUser in the BehaviorSubject
+    this.currentUserSubject.next(currentUser);
     return this.loggedIn$.asObservable();
   }
 
@@ -77,10 +85,27 @@ export class AuthService {
       )
       .pipe(
         map((response) => {
-          const sanitizeUser: Partial<CurrentUser> = {
+          // Check if accessToken is defined before storing it
+          if (!response.accessToken) {
+            console.error('Access token is missing in the response:', response);
+            throw new Error('Access token is missing in the response');
+          }
+
+          localStorage.setItem('accessToken', response.accessToken);
+
+          // Store other user information as needed
+          const sanitizedUser: Partial<CurrentUser> = {
             id: response.userId,
+            username: response.username,
+            userRole: response.userRole,
+            // Add other user properties here if necessary
           };
-          this.userStore.update([sanitizeUser] as CurrentUser[]);
+          this.userStore.update([sanitizedUser] as CurrentUser[]);
+
+          //  else {
+          //   console.error('Access token is undefined in the response.');
+          // }
+          this.loggedIn$.next(true);
           return response;
         }),
         catchError((error) => {
@@ -105,13 +130,6 @@ export class AuthService {
           }
         })
       );
-    // .pipe(
-    //   map((data: User) => {
-    //     // Store user data in sessionStorage
-    //     sessionStorage.setItem('user', JSON.stringify(data));
-    //   }),
-
-    // );
   }
 
   signup(user: User): Observable<HttpResponseObject<User>> {

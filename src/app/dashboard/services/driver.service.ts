@@ -1,8 +1,18 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
-import { HttpResponseObject } from 'src/app/auth/models/auth.model';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  of,
+  throwError,
+} from 'rxjs';
+import {
+  GeneralResponse,
+  HttpResponseObject,
+} from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
 
 @Injectable({
@@ -10,12 +20,30 @@ import { Drivers } from '../models/driver.model';
 })
 export class DriverService {
   public driversList$ = new BehaviorSubject<Drivers[]>([]);
+
+  public driversList2$ = new BehaviorSubject<GeneralResponse<Drivers>[]>([]);
+
   constructor(private http: HttpClient) {}
 
   private getHeaders() {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return headers;
+  }
+
+  // Helper method to get HTTP headers with access token included
+  private getHeaders2(): HttpHeaders {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      return new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      });
+    } else {
+      return new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+    }
   }
 
   addDriver(driver: Drivers): Observable<HttpResponseObject<Drivers>> {
@@ -160,15 +188,59 @@ export class DriverService {
     );
   }
 
-  getDriversList(): Observable<HttpResponseObject<Drivers[]>> {
-    return this.driversList$.asObservable().pipe(
+  // Modify the frontend method to return an Observable of GeneralResponse<Driver[]>
+  getActiveDriversList2(
+    userId: string
+  ): Observable<GeneralResponse<Drivers[]>> {
+    const headers = this.getHeaders2(); // Retrieve headers with access token
+    return this.http
+      .get<GeneralResponse<Drivers[]>>(
+        `${environment.baseUrl}/drivers/${userId}`,
+        { headers }
+      )
+      .pipe(
+        catchError((error) => {
+          // Handle HTTP errors and return a consistent response structure
+          const errorMessage = error.error?.message || 'Internal Server Error';
+          const statusCode = error.status || HttpStatusCode.InternalServerError;
+          return throwError({
+            success: false,
+            message: `Error: ${errorMessage}`,
+            statusCode: statusCode,
+            data: [],
+          });
+        }),
+        map((response) => {
+          // Update driversList$ if the request is successful
+          if (response.success) {
+            this.driversList$.next(response?.data);
+          }
+
+          return response;
+        })
+      );
+  }
+  // Define a method to return the drivers list as a GeneralResponse<Drivers[]>
+  getDriversList(): Observable<GeneralResponse<Drivers[]>> {
+    return this.driversList$.pipe(
       map((drivers: Drivers[]) => {
         return {
           success: true,
           message: 'Drivers retrieved successfully',
-          data: drivers.filter((s) => s.active === true),
-          status: 200,
+          data: drivers,
+          statusCode: 200,
         };
+      }),
+      catchError((error) => {
+        // Handle errors when retrieving the drivers list
+        const errorMessage = error?.message || 'Internal Server Error';
+        const statusCode = error?.status || HttpStatusCode.InternalServerError;
+        return throwError({
+          success: false,
+          message: `Error: ${errorMessage}`,
+          statusCode: statusCode,
+          data: [],
+        });
       })
     );
   }
