@@ -75,3 +75,11 @@ export interface HttpLoginResponse {
   userRole?: string;
   expiresIn?: number;
 }
+
+export interface GeneralResponse<T> {
+  success: boolean;
+  message: string;
+  statusCode: number;
+  count?: number;
+  data:T;
+}

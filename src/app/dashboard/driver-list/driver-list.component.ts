@@ -1,9 +1,13 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { HttpResponseObject } from 'src/app/auth/models/auth.model';
+import {
+  GeneralResponse,
+  HttpResponseObject,
+} from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
 import { DriverService } from '../services/driver.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-driver-list',
@@ -11,24 +15,54 @@ import { DriverService } from '../services/driver.service';
   styleUrls: ['./driver-list.component.scss'],
 })
 export class DriverListComponent implements OnInit {
-  constructor(private dialog: MatDialog, public driverService: DriverService) {}
+  userId!: string;
+
+  constructor(
+    private dialog: MatDialog,
+    public driverService: DriverService,
+    private route: ActivatedRoute
+  ) {}
 
   isModalVisible = false;
   @ViewChild('AddLoadModal') AddLoadModal!: TemplateRef<any>;
 
-  driversList$: Observable<HttpResponseObject<Drivers[]>> | undefined;
+  driversList$: Observable<GeneralResponse<Drivers[]>> | undefined;
 
   selectedDriver!: Drivers;
 
   ngOnInit(): void {
-    this.driversList$ = this.driverService.getDriversList();
-    this.driverService.getActiveDriversList().subscribe({
-      next: () => {},
-      error: (error) => {
-        console.log(error);
+    // Access resolved data from ActivatedRoute
+    this.route.data.subscribe({
+      next: (data) => {
+        console.log('data: ', data);
       },
-      complete: () => {},
     });
+
+    setTimeout(() => {
+      // Retrieve the currentUser JSON string from sessionStorage
+      const currentUserString = sessionStorage.getItem('currentUser');
+
+      // Check if currentUserString is not null before parsing
+      if (currentUserString) {
+        // Parse the currentUser JSON string into an object
+        const currentUser = JSON.parse(currentUserString);
+
+        // Access the id property of the currentUser object
+        const userId = currentUser?.entities?.[currentUser.ids[0]]?.id;
+        this.userId = userId;
+        // Log the userId
+        console.log(this.userId);
+      }
+      this.driversList$ = this.driverService.getDriversList();
+      this.driverService.getActiveDriversList2(this.userId).subscribe({
+        // will update later n correct the name.
+        next: () => {},
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {},
+      });
+    }, 1000);
   }
 
   openDialog(): void {
