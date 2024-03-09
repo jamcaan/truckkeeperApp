@@ -31,13 +31,6 @@ export class DriverListComponent implements OnInit {
   selectedDriver!: Drivers;
 
   ngOnInit(): void {
-    // Access resolved data from ActivatedRoute
-    this.route.data.subscribe({
-      next: (data) => {
-        console.log('data: ', data);
-      },
-    });
-
     setTimeout(() => {
       // Retrieve the currentUser JSON string from sessionStorage
       const currentUserString = sessionStorage.getItem('currentUser');

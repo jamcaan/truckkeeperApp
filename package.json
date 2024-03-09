@@ -1,6 +1,6 @@
 {
   "name": "truckkeeper-app",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "engines": {
     "npm": "8.15.0",
     "node": "16.17.1"

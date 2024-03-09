@@ -1,11 +1,11 @@
-<div class="container" *ngIf="loadsList$ | async as loadsList">
+<div class="container" *ngIf="(loadsList$ | async)?.data as loadsList">
   <mat-table [dataSource]="loadsList" class="my-table" multiTemplateDataRows>
     <ng-container matColumnDef="loadnumber">
       <mat-header-cell *matHeaderCellDef class="my-header-cell">
         Load #
       </mat-header-cell>
       <mat-cell *matCellDef="let element" class="my-cell">
-        {{ element.data.loadnumber }}
+        {{ element.loadnumber }}
       </mat-cell>
     </ng-container>
 
@@ -14,7 +14,7 @@
         Date
       </mat-header-cell>
       <mat-cell *matCellDef="let element" class="my-cell">
-        {{ element.data.date | date }}
+        {{ element.date | date }}
       </mat-cell>
     </ng-container>
 
@@ -23,7 +23,7 @@
         From
       </mat-header-cell>
       <mat-cell *matCellDef="let element" class="my-cell">
-        {{ element.data.from }}
+        {{ element.from }}
       </mat-cell>
     </ng-container>
 
@@ -32,7 +32,7 @@
         Destination
       </mat-header-cell>
       <mat-cell *matCellDef="let element" class="my-cell">
-        {{ element.data.destination }}
+        {{ element.destination }}
       </mat-cell>
     </ng-container>
 
@@ -41,7 +41,7 @@
         Commission
       </mat-header-cell>
       <mat-cell *matCellDef="let element" class="my-cell">
-        {{ element.data.commPercentage | percent }}
+        {{ element.commPercentage | percent }}
       </mat-cell>
     </ng-container>
 
@@ -50,7 +50,7 @@
         Amount
       </mat-header-cell>
       <mat-cell *matCellDef="let element" class="amount-cell">
-        {{ element.data.amount | currency }}
+        {{ element.amount | currency }}
       </mat-cell>
     </ng-container>
 
@@ -122,15 +122,19 @@
     ></mat-row>
   </mat-table>
 </div>
-<div class="main-complete-buttons-style"
-  *ngIf="(loadsList$ | async)?.length"
->
+<div class="main-complete-buttons-style" *ngIf="(loadsList$ | async)?.count">
   <div class="complete-buttons">
-    <app-complete-button [title]="'Reset'" (clickButton)="openResetDialog()"></app-complete-button>
+    <app-complete-button
+      [title]="'Reset'"
+      (clickButton)="openResetDialog()"
+    ></app-complete-button>
   </div>
 
   <div class="div">
-    <app-complete-button [title]="'Complete'" (clickButton)="openCompleteDialog()"></app-complete-button>
+    <app-complete-button
+      [title]="'Complete'"
+      (clickButton)="openCompleteDialog()"
+    ></app-complete-button>
   </div>
 </div>
 <!-- <button mat-raised-button (click)="openCompleteDialog()">Test</button> -->
@@ -148,7 +152,7 @@
 
 <ng-template #completeModal let modal>
   <div cu-m-content>
-    <app-complete [loads$]="loadsList$"></app-complete>
+    <!-- <app-complete [loads$]="loadsList$"></app-complete> // will be fixed later -->
   </div>
 </ng-template>
 
