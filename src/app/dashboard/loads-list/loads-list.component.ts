@@ -13,9 +13,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { HttpResponseObject } from 'src/app/auth/models/auth.model';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import {
+  GeneralResponse,
+  HttpResponseObject,
+} from 'src/app/auth/models/auth.model';
 import { Drivers } from '../models/driver.model';
 import { Loads } from '../models/loads.model';
 import { ExpensesService } from '../services/expenses.service';
@@ -49,8 +52,7 @@ export class LoadsListComponent implements OnInit {
     public loadsService: LoadsService,
     private expensesService: ExpensesService,
     private route: ActivatedRoute,
-    private dialog: MatDialog,
-    private router: Router
+    private dialog: MatDialog
   ) {}
 
   displayedColumns: string[] = [
@@ -65,14 +67,14 @@ export class LoadsListComponent implements OnInit {
 
   expandedElement: Loads | null | undefined;
 
-  loadsList$!: Observable<HttpResponseObject<Loads>[]>;
+  loadsList$!: Observable<GeneralResponse<Loads[]>>;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const driverId = params.get('id');
       console.log('driverId: ', driverId);
       if (driverId) {
-        this.loadsList$ = this.loadsService.getLoadsByDriver(driverId);
+        this.loadsList$ = this.loadsService.getLoadsByDriver2(driverId);
       }
     });
   }

@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
-import { HttpResponseObject } from 'src/app/auth/models/auth.model';
+import { BehaviorSubject, catchError, map, Observable, of, throwError } from 'rxjs';
+import { GeneralResponse, HttpResponseObject } from 'src/app/auth/models/auth.model';
 import { environment } from 'src/environments/environment';
 import { Loads, PayStubSummary } from '../models/loads.model';
 
@@ -18,6 +18,21 @@ export class LoadsService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return headers;
+  } // Will remove this later
+
+   // Helper method to get HTTP headers with access token included
+   private getHeaders2(): HttpHeaders {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      return new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      });
+    } else {
+      return new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+    }
   }
 
   addLoad(loads: Loads): Observable<HttpResponseObject<Loads>> {
@@ -96,6 +111,7 @@ export class LoadsService {
   }
 
   //revise the url for this method could be baseUrl}/loads?driverId=${driverId}
+  // Will remove later when I finish all temp API replacements.
   getLoadsByDriver(driverId: string): Observable<HttpResponseObject<Loads>[]> {
     this.http
       .get<Loads[]>(`${environment.baseUrl}/drivers/${driverId}/loads`)
@@ -131,6 +147,38 @@ export class LoadsService {
         return of(responseObject);
       })
     );
+  }
+
+  getLoadsByDriver2(
+    driverId: string
+  ): Observable<GeneralResponse<Loads[]>> {
+    const headers = this.getHeaders2(); // Retrieve headers with access token
+    return this.http
+      .get<GeneralResponse<Loads[]>>(
+        `${environment.baseUrl}/loads/fetch-loads/${driverId}`,
+        { headers }
+      )
+      .pipe(
+        catchError((error) => {
+          // Handle HTTP errors and return a consistent response structure
+          const errorMessage = error.error?.message || 'Internal Server Error';
+          const statusCode = error.status || HttpStatusCode.InternalServerError;
+          return throwError({
+            success: false,
+            message: `Error: ${errorMessage}`,
+            statusCode: statusCode,
+            data: [],
+          });
+        }),
+        map((response) => {
+          // Update driversList$ if the request is successful
+          if (response.success) {
+            this.loadsList$.next(response?.data);
+          }
+
+          return response;
+        })
+      );
   }
 
   getAllLoads(): Observable<HttpResponseObject<Loads>[]> {
